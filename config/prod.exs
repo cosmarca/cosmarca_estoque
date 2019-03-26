@@ -10,9 +10,18 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :cosmarca_estoque, CosmarcaEstoqueWeb.Endpoint,
-  http: [:inet6, port: System.get_env("PORT") || 4000],
+  load_from_system_env: true,
   url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  server: true,
+  secrete_key_base: "${SECRET_KEY_BASE}"
+
+config :cosmarca_estoque, CosmarcaEstoque.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}",
+  database: "",
+  ssl: true,
+  pool_size: 1
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -68,4 +77,3 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
-import_config "prod.secret.exs"
