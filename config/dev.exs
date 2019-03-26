@@ -69,7 +69,7 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :cosmarca_estoque, CosmarcaEstoque.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   database: "cosmarca_estoque_dev",
   hostname: "localhost",
   pool_size: 10
