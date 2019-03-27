@@ -1,35 +1,52 @@
-<div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-grey-darkest leading-normal">
+ <div class="w-full p-3">
+                    <!--Table Card-->
+                    <div class="bg-white border rounded shadow">
+                        <div class="border-b p-3">
+                            <h5 class="uppercase text-grey-dark">Lista de Usuários</h5>
+                        </div>
+                        <div class="p-5">
+                            <table class="w-full p-5 text-grey-darker">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left text-blue-darkest">Nome</th>
+                                        <th class="text-left text-blue-darkest">Sobrenome</th>
+                                        <th class="text-left text-blue-darkest">Email</th>
+                                        <th class="text-left text-blue-darkest">Papel</th>
+                                        <th class="text-left text-blue-darkest">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-<h1>Listing Users</h1>
+                              <%= for user <- @users do %>
+                                  <tr>
+                                    <td><%= user.email %></td>
+                                    <td><%= user.first_name %></td>
+                                    <td><%= user.last_name %></td>
+                                    <td><%= user.role %></td>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Role</th>
+                                    <td>
+                                      <%= link to: Routes.user_path(@conn, :show, user), alt: "visualizar usuario",
+                                        class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                                       do %><i class="fas fa-user-plus"></i><% end %>
+                                      <%= link to: Routes.user_path(@conn, :edit, user), alt: "editar usuario",
+                                        class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                                        do %> <i class="fas fa-user-edit"></i><% end %>
+                                      <%= link to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
+                                        class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                                       do %><i class="fas fa-user-minus"></i><% end %>
+                                    </td>
+                                  </tr>
+                              <% end %>
+                
+                                </tbody>
+                            </table>
+                            <p class="py-2">
+                              <%= link "Cadastrar Novo Usuário", to: Routes.user_path(@conn, :new),
+                                  class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                               %>
+                            </p>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for user <- @users do %>
-    <tr>
-      <td><%= user.email %></td>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
-      <td><%= user.role %></td>
-
-      <td>
-        <%= link "Show", to: Routes.user_path(@conn, :show, user) %>
-        <%= link "Edit", to: Routes.user_path(@conn, :edit, user) %>
-        <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
-</div>
+                        </div>
+                    </div>
+                    <!--/table Card-->
+                </div>
