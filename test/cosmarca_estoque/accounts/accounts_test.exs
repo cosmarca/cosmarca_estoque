@@ -6,9 +6,20 @@ defmodule CosmarcaEstoque.AccountsTest do
   describe "users" do
     alias CosmarcaEstoque.Accounts.User
 
-    @valid_attrs %{email: "some@email", first_name: "some first_name", last_name: "some last_name", password: "some password_hash", password_confirmation: "some password_hash" }
-    @update_attrs %{email: "some@updatedemail", first_name: "some updated first_name", last_name: "some updated last_name", 
-    password: "some updated password_hash", password_confirmation: "some updated password_hash"}
+    @valid_attrs %{
+      email: "some@email",
+      first_name: "some first_name",
+      last_name: "some last_name",
+      password: "some password_hash",
+      password_confirmation: "some password_hash"
+    }
+    @update_attrs %{
+      email: "some@updatedemail",
+      first_name: "some updated first_name",
+      last_name: "some updated last_name",
+      password: "some updated password_hash",
+      password_confirmation: "some updated password_hash"
+    }
     @invalid_attrs %{email: nil, first_name: nil, last_name: nil, password_hash: nil, role: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -22,7 +33,7 @@ defmodule CosmarcaEstoque.AccountsTest do
 
     test "list_users/0 returns all users" do
       user = user_fixture()
-      assert Enum.count(Accounts.list_users())  == Enum.count([user])
+      assert Enum.count(Accounts.list_users()) == Enum.count([user])
     end
 
     test "get_user!/1 returns the user with given id" do
