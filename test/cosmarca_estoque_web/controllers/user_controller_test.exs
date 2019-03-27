@@ -3,8 +3,8 @@ defmodule CosmarcaEstoqueWeb.UserControllerTest do
 
   alias CosmarcaEstoque.Accounts
 
-  @create_attrs %{email: "some email", first_name: "some first_name", last_name: "some last_name", password_hash: "some password_hash", role: "some role"}
-  @update_attrs %{email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name", password_hash: "some updated password_hash", role: "some updated role"}
+  @create_attrs %{email: "some@email", first_name: "some first_name", last_name: "some last_name", password: "some password_hash", password_confirmation: "some password_hash"}
+  @update_attrs %{email: "some@updated email", first_name: "some updated first_name", last_name: "some updated last_name", password: "some password_hash update", password_confirmation: "some password_hash update"}
   @invalid_attrs %{email: nil, first_name: nil, last_name: nil, password_hash: nil, role: nil}
 
   def fixture(:user) do
@@ -60,7 +60,7 @@ defmodule CosmarcaEstoqueWeb.UserControllerTest do
       assert redirected_to(conn) == Routes.user_path(conn, :show, user)
 
       conn = get(conn, Routes.user_path(conn, :show, user))
-      assert html_response(conn, 200) =~ "some updated email"
+      assert html_response(conn, 200) =~ "some@updated email"
     end
 
     test "renders errors when data is invalid", %{conn: conn, user: user} do
