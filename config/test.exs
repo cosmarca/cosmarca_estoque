@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :cosmarca_estoque, CosmarcaEstoque.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   database: "cosmarca_estoque_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
