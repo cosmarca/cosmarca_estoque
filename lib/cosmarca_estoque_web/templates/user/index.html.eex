@@ -1,3 +1,5 @@
+<div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-grey-darkest leading-normal">
+
 <h1>Listing Users</h1>
 
 <table>
@@ -6,7 +8,6 @@
       <th>Email</th>
       <th>First name</th>
       <th>Last name</th>
-      <th>Password hash</th>
       <th>Role</th>
 
       <th></th>
@@ -18,7 +19,6 @@
       <td><%= user.email %></td>
       <td><%= user.first_name %></td>
       <td><%= user.last_name %></td>
-      <td><%= user.password_hash %></td>
       <td><%= user.role %></td>
 
       <td>
@@ -32,3 +32,4 @@
 </table>
 
 <span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
+</div>
