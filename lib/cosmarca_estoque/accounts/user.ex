@@ -28,11 +28,11 @@ defmodule CosmarcaEstoque.Accounts.User do
      |> update_change(:email, &String.downcase(&1))
      |> validate_length(:password, min: 6, max: 100)
      |> validate_confirmation(:password)
-     |> unique_contraint(:email)
+     |> unique_constraint(:email)
      |> hash_password
   end
 
-  defp hash_password(%Ecto.Changeset{valid?: true, changes: %{:password: :password}} = changeset) do
+  defp hash_password(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
     change(changeset, Comeonin.Argon2.add_hash(password))
   end
 
