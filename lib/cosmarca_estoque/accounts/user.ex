@@ -18,18 +18,20 @@ defmodule CosmarcaEstoque.Accounts.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:email, :first_name, :last_name, :password, :password_confirmation, :role])
-    |> validate_required([:email, 
-    :first_name, 
-    :last_name, 
-    :password,
-    :password_confirmation,
-     :role])
-     |> validate_format(:email, ~r/@/)
-     |> update_change(:email, &String.downcase(&1))
-     |> validate_length(:password, min: 6, max: 100)
-     |> validate_confirmation(:password)
-     |> unique_constraint(:email)
-     |> hash_password
+    |> validate_required([
+      :email,
+      :first_name,
+      :last_name,
+      :password,
+      :password_confirmation,
+      :role
+    ])
+    |> validate_format(:email, ~r/@/)
+    |> update_change(:email, &String.downcase(&1))
+    |> validate_length(:password, min: 6, max: 100)
+    |> validate_confirmation(:password)
+    |> unique_constraint(:email)
+    |> hash_password
   end
 
   defp hash_password(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
@@ -39,5 +41,4 @@ defmodule CosmarcaEstoque.Accounts.User do
   defp hash_password(changeset) do
     changeset
   end
-
 end
