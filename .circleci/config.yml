@@ -18,18 +18,18 @@ jobs:  # basic units of work in a run
       - checkout  # check out source code to working directory
       - run: sudo apt-get update
       - run: sudo apt-get install -y python-pip
-      - run: sudo pip install gigalixir --ignore-installed six
-      - run: gigalixir login -e "$GIGALIXIR_EMAIL" -y -p "$GIGALIXIR_PASSWORD"
-      - run:
-          name: Set app name # See https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-shell-command
-          command: |
-            echo 'export SUFFIX=$(echo $CIRCLE_BRANCH | tr "[:upper:]" "[:lower:]" | tr -cd "[a-z0-9-]")' >> $BASH_ENV
-            echo 'export APP_NAME="$GIGALIXIR_APP_NAME-$SUFFIX"' >> $BASH_ENV
-            source $BASH_ENV
-      - run: gigalixir create --name $APP_NAME || gigalixir git:remote $APP_NAME
-      - run: git push -f gigalixir HEAD:refs/heads/master
-      - run: mix local.hex --force  # install Hex locally (without prompt)
-      - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
+      #- run: sudo pip install gigalixir --ignore-installed six
+      #- run: gigalixir login -e "$GIGALIXIR_EMAIL" -y -p "$GIGALIXIR_PASSWORD"
+      #- run:
+      #    name: Set app name # See https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-shell-command
+      #    command: |
+      #      echo 'export SUFFIX=$(echo $CIRCLE_BRANCH | tr "[:upper:]" "[:lower:]" | tr -cd "[a-z0-9-]")' >> $BASH_ENV
+      #      echo 'export APP_NAME="$GIGALIXIR_APP_NAME-$SUFFIX"' >> $BASH_ENV
+      #      source $BASH_ENV
+      #- run: gigalixir create --name $APP_NAME || gigalixir git:remote $APP_NAME
+      #- run: git push -f gigalixir HEAD:refs/heads/master
+      #- run: mix local.hex --force  # install Hex locally (without prompt)
+      #- run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
 
       - restore_cache:  # restores saved mix cache
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
