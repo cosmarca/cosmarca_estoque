@@ -23,7 +23,7 @@
 				
 			<div class="w-1/2 pl-2 md:pl-0">
 				<a class="text-black text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#"> 
-					<i class="fas fa-sun text-blue-dark pr-3"></i> Cosmarca
+					<i class="far fa-copyright text-blue-dark pr-3"></i><span class="text-blue-dark">Cosmarca</span>
 				</a>
             </div>
 			<div class="w-1/2 pr-0">
