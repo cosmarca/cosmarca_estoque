@@ -23,7 +23,7 @@
 				
 			<div class="w-1/2 pl-2 md:pl-0">
 				<a class="text-black text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#"> 
-					<i class="fas fa-sun text-orange-dark pr-3"></i> Cosmarca
+					<i class="fas fa-sun text-blue-dark pr-3"></i> Cosmarca
 				</a>
             </div>
 			<div class="w-1/2 pr-0">
@@ -58,13 +58,13 @@
 			<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20" id="nav-content">
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
 					<li class="mr-6 my-2 md:my-0">
-                        <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-orange-dark no-underline hover:text-black border-b-2 border-orange-dark hover:border-orange-dark">
-                            <i class="fas fa-home fa-fw mr-3 text-orange-dark"></i><span class="pb-1 md:pb-0 text-sm">Home</span>
+                        <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-blue-dark no-underline hover:text-black border-b-2 border-blue-dark hover:border-blue-dark">
+                            <i class="fas fa-home fa-fw mr-3 text-blue-dark"></i><span class="pb-1 md:pb-0 text-sm">Home</span>
                         </a>
                     </li>
 					<li class="mr-6 my-2 md:my-0">
                         <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-pink">
-                            <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Tasks</span>
+                            <i class="fas fa-users"></i></i><span class="pb-1 md:pb-0 text-sm">Cliente</span>
                         </a>
                     </li>
                     <li class="mr-6 my-2 md:my-0">
