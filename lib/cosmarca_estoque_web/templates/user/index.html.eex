@@ -25,10 +25,10 @@
                                     <td><%= user.role %></td>
 
                                     <td>
-                                      <%= link to: Routes.user_path(@conn, :show, user), alt: "visualizar usuario",
+                                      <%= link to: Routes.user_path(@conn, :show, user), 
                                         class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                                       do %><i class="fas fa-user-plus"></i><% end %>
-                                      <%= link to: Routes.user_path(@conn, :edit, user), alt: "editar usuario",
+                                       do %><i class="fas fa-user"></i><% end %>
+                                      <%= link to: Routes.user_path(@conn, :edit, user),
                                         class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                                         do %> <i class="fas fa-user-edit"></i><% end %>
                                       <%= link to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
@@ -41,12 +41,12 @@
                                 </tbody>
                             </table>
                             <p class="py-2">
-                              <%= link "Cadastrar Novo Usuário", to: Routes.user_path(@conn, :new),
-                                  class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                               %>
+                                  <%= link to: Routes.user_path(@conn, :new),
+                                        class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                                       do %><i class="fas fa-user-plus"></i><% end %>
                             </p>
 
                         </div>
                     </div>
                     <!--/table Card-->
-                </div>
+    </div>
