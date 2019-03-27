@@ -16,8 +16,8 @@ jobs:  # basic units of work in a run
 
     steps:  # commands that comprise the `build` job
       - checkout  # check out source code to working directory
-      - run: sudo apt-get update
-      - run: sudo apt-get install -y python-pip
+      #- run: sudo apt-get update
+      #- run: sudo apt-get install -y python-pip
       #- run: sudo pip install gigalixir --ignore-installed six
       #- run: gigalixir login -e "$GIGALIXIR_EMAIL" -y -p "$GIGALIXIR_PASSWORD"
       #- run:
@@ -28,8 +28,8 @@ jobs:  # basic units of work in a run
       #      source $BASH_ENV
       #- run: gigalixir create --name $APP_NAME || gigalixir git:remote $APP_NAME
       #- run: git push -f gigalixir HEAD:refs/heads/master
-      #- run: mix local.hex --force  # install Hex locally (without prompt)
-      #- run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
+      - run: mix local.hex --force  # install Hex locally (without prompt)
+      - run: mix local.rebar --force  # fetch a copy of rebar (without prompt)
 
       - restore_cache:  # restores saved mix cache
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
