@@ -1,4 +1,4 @@
-defmodule CosmarcaEstoque.Accounts.Guardian do
+defmodule CosmarcaEstoque.Accounts.Session do
     alias CosmarcaEstoque.Accounts.User
     alias CosmarcaEstoque.Repo
 
