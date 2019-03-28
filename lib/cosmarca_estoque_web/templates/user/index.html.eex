@@ -5,7 +5,7 @@
                             <h5 class="uppercase text-grey-dark">Lista de Usuários</h5>
                         </div>
                         <div class="p-5">
-                            <table class="w-full p-5 text-grey-darker">
+                            <table class="w-full p-5 text-grey-darker table-auto">
                                 <thead>
                                     <tr>
                                         <th class="text-left text-blue-darkest">Nome</th>
