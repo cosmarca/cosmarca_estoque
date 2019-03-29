@@ -47,6 +47,7 @@ defmodule CosmarcaEstoque.MixProject do
       {:comeonin, "~> 4.1"},
       {:argon2_elixir, "~> 1.3"},
       {:ueberauth, "~> 0.6"},
+      {:ueberauth_identity, "~> 0.2"},
       {:guardian, "~> 1.0"}
     ]
   end
