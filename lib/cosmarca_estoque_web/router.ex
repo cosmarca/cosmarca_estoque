@@ -13,11 +13,29 @@ defmodule CosmarcaEstoqueWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
+  pipeline :auth do
+    plug CosmarcaEstoque.Accounts.Pipeline
+  end
+
   scope "/", CosmarcaEstoqueWeb do
     pipe_through :browser
 
     get "/", PageController, :index
     resources "/users", UserController
+
+    get "/login", SessionController, :new
+    post "/login", SessionController, :login
+    get "/logout", SessionController, :logout
+  end
+
+  scope "/", CosmarcaEstoqueWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+    get "/secret", PageController, :secret
+
   end
 
   # Other scopes may use custom stacks.

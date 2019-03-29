@@ -25,6 +25,12 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :cosmarca_estoque, CosmarcaEstoque.Accounts.Guardian ,
+       issuer: "cosmarca_estoque",
+       secret_key: "lFp3x36MlY2xktFApHKLewZcJm4eyRD4pgLrzsGXhG4UI4VtPNzYD5qVtm907p3B"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+
