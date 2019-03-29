@@ -20,13 +20,15 @@ defmodule CosmarcaEstoqueWeb.SessionController do
 
     def logout(conn, _) do
         conn
+        |> configure_session(drop: true)
         |> Guardian.Plug.sign_out()
         |> redirect(to: "/login")
     end
 
     defp login_reply({:ok, user}, conn) do
         conn
-        |> put_flash(:sucess, "Bem vindo!")
+        |> put_flash(:sucess, "Bem vindo! #{user.first_name}")
+        |> put_session(:user_id, user.id)
         |> Guardian.Plug.sign_in(user)
         |> redirect(to: Routes.page_path(conn, :secret))
     end
