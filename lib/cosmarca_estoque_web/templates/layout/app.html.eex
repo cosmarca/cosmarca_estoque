@@ -106,8 +106,17 @@
 
 		
 		
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+                   <%= if get_flash(@conn, :info) do %>
+                <div class="bg-blue-lightest border-t border-b border-blue text-blue-dark px-4 py-3" role="alert">
+                    <p class="font-bold">Informational message</p>
+                    <p class="text-sm"><%= get_flash(@conn, :info) %></p>
+                </div>    
+             <% end %>
+            <%= if get_flash(@conn, :error) do %>
+                <p class="bg-red-lightest border border-red-light text-red-dark px-4 py-3 rounded relative" role="alert">
+                   <%= get_flash(@conn, :error) %>
+                </p>
+             <% end %>
       <%= render @view_module, @view_template, assigns %>
 			</div>
   </div> 
