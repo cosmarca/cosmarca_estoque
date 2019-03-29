@@ -28,3 +28,7 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :cosmarca_estoque, cosmarca_estoque,
+       issuer: "cosmarca_estoque",
+       secret_key: "lFp3x36MlY2xktFApHKLewZcJm4eyRD4pgLrzsGXhG4UI4VtPNzYD5qVtm907p3B"
