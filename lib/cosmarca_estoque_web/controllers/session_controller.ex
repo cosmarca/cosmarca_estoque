@@ -26,7 +26,7 @@ defmodule CosmarcaEstoqueWeb.SessionController do
 
     defp login_reply({:ok, user}, conn) do
         conn
-        |> put_flash(:sucess, "Bem vindo!")
+        |> put_flash(:info, "Bem vindo! #{user.first_name}")
         |> Guardian.Plug.sign_in(user)
         |> redirect(to: Routes.page_path(conn, :secret))
     end
