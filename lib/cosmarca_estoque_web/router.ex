@@ -24,8 +24,6 @@ defmodule CosmarcaEstoqueWeb.Router do
   scope "/", CosmarcaEstoqueWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
-
     get "/login", SessionController, :new
     post "/login", SessionController, :login
     get "/logout", SessionController, :logout
@@ -35,6 +33,8 @@ defmodule CosmarcaEstoqueWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
     get "/secret", PageController, :secret
     resources "/users", UserController
+    get "/", PageController, :index
+
 
   end
 
