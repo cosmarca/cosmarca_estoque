@@ -9,7 +9,7 @@ defmodule CosmarcaEstoqueWeb.ErrorHandler do
     def auth_error(conn, {type, _reason}, _opts) do
       body = to_string(type)
       conn
-      |> put_flash(:error, "Você precisa estar logado!")
+      # |> put_flash(:error, "Você precisa estar logado!")
       |> redirect(to: "/login")
       |> halt
     end

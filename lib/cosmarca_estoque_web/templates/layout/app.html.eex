@@ -43,7 +43,7 @@
 					  <div id="userMenu" class="bg-white rounded shadow-md mt-2 absolute mt-12 pin-t pin-r min-w-full overflow-auto z-30 invisible">
 						  <ul class="list-reset">
 							<li>
-							 <%= link  class: "px-4 py-2 block text-black hover:bg-grey-light no-underline hover:no-underline", to: Routes.user_path(@conn, :show, 1) do  %>
+							 <%= link  class: "px-4 py-2 block text-black hover:bg-grey-light no-underline hover:no-underline", to: Routes.user_path(@conn, :show,  @conn.private.guardian_default_resource.id) do  %>
 								Minha Conta
 								<% end %>
 							</li>

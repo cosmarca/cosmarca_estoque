@@ -31,11 +31,8 @@ defmodule CosmarcaEstoqueWeb.Router do
 
   scope "/", CosmarcaEstoqueWeb do
     pipe_through [:browser, :auth, :ensure_auth]
-    get "/secret", PageController, :secret
     resources "/users", UserController
     get "/", PageController, :index
-
-
   end
 
   # Other scopes may use custom stacks.

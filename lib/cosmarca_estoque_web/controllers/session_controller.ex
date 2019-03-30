@@ -27,7 +27,7 @@ defmodule CosmarcaEstoqueWeb.SessionController do
     defp login_reply({:ok, user}, conn) do
         conn
         |> Guardian.Plug.sign_in(user)
-        |> redirect(to: Routes.page_path(conn, :secret))
+        |> redirect(to: Routes.page_path(conn, :index))
     end
 
     defp login_reply({:error, reason}, conn) do
