@@ -21,6 +21,7 @@ defmodule CosmarcaEstoqueWeb.Router do
     plug CosmarcaEstoque.Accounts.Pipeline
   end
 
+  #everyone can see
   scope "/", CosmarcaEstoqueWeb do
     pipe_through :browser
 
@@ -29,11 +30,19 @@ defmodule CosmarcaEstoqueWeb.Router do
     get "/logout", SessionController, :logout
   end
 
+    # just authenticated can see
+    scope "/", CosmarcaEstoqueWeb do
+      pipe_through [:browser, :auth, :ensure_auth]
+      resources "/users", UserController, only: [:show, :update]
+    end
+
+  # just authenticated can see
   scope "/", CosmarcaEstoqueWeb do
     pipe_through [:browser, :auth, :ensure_auth]
     resources "/users", UserController
     get "/", PageController, :index
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", CosmarcaEstoqueWeb do
