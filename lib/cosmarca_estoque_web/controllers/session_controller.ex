@@ -5,8 +5,7 @@ defmodule CosmarcaEstoqueWeb.SessionController do
 
     def new(conn, _) do
         changeset = Accounts.change_user(%User{})
-        maybe_user = Guardian.Plug.current_resource(conn)
-        if maybe_user do
+        if Guardian.Plug.current_resource(conn) do
           redirect(conn, to: Routes.page_path(conn, :index))
         else
           render(conn, "new.html", changeset: changeset, action: Routes.session_path(conn, :login))
