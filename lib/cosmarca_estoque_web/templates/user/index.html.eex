@@ -1,10 +1,12 @@
 <div class="container bg-white">
 
-  <h1 class="text-grey-dark mb-8">
-    Lista de Usuários <%= link to: Routes.user_path(@conn, :new),
+  <h3 class="text-grey-dark mb-8">
+    Lista de Usuários 
+    
+    <%= link to: Routes.user_path(@conn, :new),
       class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-      do %><i class="fas fa-user-plus"></i><% end %>
-  </h1>
+      do %><i class="fas fa-plus-circle"></i><% end %>
+  </h3>
 
 	<table class="text-left w-full">
 		<thead class="flex text-white w-full">
@@ -26,21 +28,24 @@
 				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.email %></td>
 				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.role %></td>
         <td class="p-4 w-1/4 border-b border-grey-light">
+        <div class="flex items-center justify-between">
         <%= link to: Routes.user_path(@conn, :show, user), 
               class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %>
-                <i class="fas fa-user"></i>
-              <% end %>
+                <i class="fas fa-paper-plane"></i>
+          <% end %>
               <%= link to: Routes.user_path(@conn, :edit, user),
               class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %> 
-                <i class="fas fa-user-edit"></i>
+                <i class="far fa-edit"></i>
               <% end %>
               <%= link to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
               class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %>
-                <i class="fas fa-user-minus"></i>
+                <i class="fas fa-trash"></i>
               <% end %>
+            </div>
+
         </td>
 
 			</tr>
