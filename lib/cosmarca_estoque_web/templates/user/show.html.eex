@@ -22,5 +22,4 @@
 <hr />
 <span><%= link "Edit", class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline",  to: Routes.user_path(@conn, :edit, @user) %></span>
 
-<span><%= link "Back", class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline",  to: Routes.user_path(@conn, :index) %></span>
 </div>

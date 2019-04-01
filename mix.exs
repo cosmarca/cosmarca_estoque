@@ -45,7 +45,10 @@ defmodule CosmarcaEstoque.MixProject do
       {:distillery, "~> 1.5", runtime: false},
       {:plug_cowboy, "~> 2.0"},
       {:comeonin, "~> 4.1"},
-      {:argon2_elixir, "~> 1.3"}
+      {:argon2_elixir, "~> 1.3"},
+      {:ueberauth, "~> 0.6"},
+      {:ueberauth_identity, "~> 0.2"},
+      {:guardian, "~> 1.0"}
     ]
   end
 

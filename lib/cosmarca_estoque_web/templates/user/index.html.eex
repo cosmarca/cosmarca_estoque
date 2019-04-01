@@ -1,52 +1,50 @@
- <div class="w-full p-3">
-                    <!--Table Card-->
-                    <div class="bg-white border rounded shadow">
-                        <div class="border-b p-3">
-                            <h5 class="uppercase text-grey-dark">Lista de Usuários</h5>
-                        </div>
-                        <div class="p-5">
-                            <table class="w-full p-5 text-grey-darker">
-                                <thead>
-                                    <tr>
-                                        <th class="text-left text-blue-darkest">Nome</th>
-                                        <th class="text-left text-blue-darkest">Sobrenome</th>
-                                        <th class="text-left text-blue-darkest">Email</th>
-                                        <th class="text-left text-blue-darkest">Papel</th>
-                                        <th class="text-left text-blue-darkest">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+<div class="container bg-white">
 
-                              <%= for user <- @users do %>
-                                  <tr>
-                                    <td><%= user.email %></td>
-                                    <td><%= user.first_name %></td>
-                                    <td><%= user.last_name %></td>
-                                    <td><%= user.role %></td>
+  <h1 class="text-grey-dark mb-8">
+    Lista de Usuários <%= link to: Routes.user_path(@conn, :new),
+      class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+      do %><i class="fas fa-user-plus"></i><% end %>
+  </h1>
 
-                                    <td>
-                                      <%= link to: Routes.user_path(@conn, :show, user), 
-                                        class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                                       do %><i class="fas fa-user"></i><% end %>
-                                      <%= link to: Routes.user_path(@conn, :edit, user),
-                                        class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                                        do %> <i class="fas fa-user-edit"></i><% end %>
-                                      <%= link to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
-                                        class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                                       do %><i class="fas fa-user-minus"></i><% end %>
-                                    </td>
-                                  </tr>
-                              <% end %>
-                
-                                </tbody>
-                            </table>
-                            <p class="py-2">
-                                  <%= link to: Routes.user_path(@conn, :new),
-                                        class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-                                       do %><i class="fas fa-user-plus"></i><% end %>
-                            </p>
+	<table class="text-left w-full">
+		<thead class="flex text-white w-full">
+			<tr class="flex w-full mb-4">
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nome</th>
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Sobrenome</th>
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Papel</th>
+        <th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Acoes</th>
+			</tr>
+		</thead>
+    <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+		<tbody class="bg-white flex flex-col items-center justify-between w-full">
+			        <%= for user <- @users do %>
 
-                        </div>
-                    </div>
-                    <!--/table Card-->
-    </div>
+      <tr class="flex w-full mb-4 hover:bg-grey-lighter">
+				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.first_name %></td>
+				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.last_name %></td>
+				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.email %></td>
+				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.role %></td>
+        <td class="p-4 w-1/4 border-b border-grey-light">
+        <%= link to: Routes.user_path(@conn, :show, user), 
+              class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              do %>
+                <i class="fas fa-user"></i>
+              <% end %>
+              <%= link to: Routes.user_path(@conn, :edit, user),
+              class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              do %> 
+                <i class="fas fa-user-edit"></i>
+              <% end %>
+              <%= link to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
+              class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              do %>
+                <i class="fas fa-user-minus"></i>
+              <% end %>
+        </td>
+
+			</tr>
+      <% end %>
+		</tbody>
+	</table>
+</div>
