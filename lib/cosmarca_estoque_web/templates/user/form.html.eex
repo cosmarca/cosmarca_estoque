@@ -54,7 +54,6 @@
     <p class="text-red text-xs italic"><%= error_tag f, :password_confirmation %></p>
   </div>
 
-  <%= if @current_user.role == "admin" do %>
     <div class="mb-4">
     <label class="block text-grey-darker text-sm font-bold mb-2" for="role">
         Papel
@@ -62,7 +61,6 @@
     <%= select f, :role, ["admin", "user"],  class: "block appearance-none w-full bg-white border border-grey-light hover:border-grey px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline", id: "role" %>
     <p class="text-red text-xs italic"><%= error_tag f, :role %></p>
   </div>
-  <% end %>
 
  <div class="flex items-center justify-between">
     <%= submit "Criar Usuário",  class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
