@@ -14,5 +14,8 @@ defmodule CosmarcaEstoque.Stocks.Products do
     products
     |> cast(attrs, [:name])
     |> validate_required([:name], message: "Você deve inserir o nome do Produto")
+    |> update_change(:name, &String.downcase(&1))
+    |> unique_constraint(:name, message: "Já existe este produto!")
+
   end
 end
