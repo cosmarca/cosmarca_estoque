@@ -1,32 +1,32 @@
-<div class="w-2/3 mx-auto">
-  <div class="bg-white shadow-md rounded my-6">
-    <div class="border-b p-3">
-      <h5 class="uppercase text-grey-dark">Lista de Usuários</h5>     <p class="py-2">
-      <%= link to: Routes.user_path(@conn, :new),
+<div class="container bg-white">
+
+  <h1 class="text-grey-dark mb-8">
+    Lista de Usuários <%= link to: Routes.user_path(@conn, :new),
       class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
       do %><i class="fas fa-user-plus"></i><% end %>
-      </p>
-    </div>
-    <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-      <thead>
-        <tr>
-        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nome</th>
-        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Sobrenome</th>
-        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
-        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Papel</th>
-        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= for user <- @users do %>
-          <tr class="hover:bg-grey-lighter">
-            <td class="py-4 px-6 border-b border-grey-light"><%= user.email %></td>
-            <td class="py-4 px-6 border-b border-grey-light"><%= user.first_name %></td>
-            <td class="py-4 px-6 border-b border-grey-light"><%= user.last_name %></td>
-            <td class="py-4 px-6 border-b border-grey-light"><%= user.role %></td>
+  </h1>
 
-            <td class="py-4 px-6 border-b border-grey-light">
-              <%= link to: Routes.user_path(@conn, :show, user), 
+	<table class="text-left w-full">
+		<thead class="flex text-white w-full">
+			<tr class="flex w-full mb-4">
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nome</th>
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Sobrenome</th>
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Papel</th>
+        <th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Acoes</th>
+			</tr>
+		</thead>
+    <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
+		<tbody class="bg-white flex flex-col items-center justify-between w-full">
+			        <%= for user <- @users do %>
+
+      <tr class="flex w-full mb-4 hover:bg-grey-lighter">
+				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.first_name %></td>
+				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.last_name %></td>
+				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.email %></td>
+				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.role %></td>
+        <td class="p-4 w-1/4 border-b border-grey-light">
+        <%= link to: Routes.user_path(@conn, :show, user), 
               class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %>
                 <i class="fas fa-user"></i>
@@ -41,10 +41,10 @@
               do %>
                 <i class="fas fa-user-minus"></i>
               <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+        </td>
+
+			</tr>
+      <% end %>
+		</tbody>
+	</table>
 </div>
