@@ -1,7 +1,7 @@
 defmodule CosmarcaEstoqueWeb.Auth.CheckAdmin do
     import Phoenix.Controller
     import Plug.Conn
-    import Guardian.Plug
+    alias CosmarcaEstoqueWeb.Router.Helpers, as: Routes
 
 
     def init(opts), do: opts
@@ -9,11 +9,11 @@ defmodule CosmarcaEstoqueWeb.Auth.CheckAdmin do
     def call(conn, _opts) do
       case Guardian.Plug.current_resource(conn).role do
         "admin" -> conn
-        _ -> 
+        _ ->
             conn
-            |> put_status(:not_found)
-            |> render(CosmarcaEstoqueWeb.ErrorView, "404.html")
+            |> put_flash(:error, "Você não tem permissao para executar esta operação")
+            |> redirect(to: Routes.page_path(conn, :index))
             |> halt
-         end 
+         end
     end
 end
