@@ -19,7 +19,7 @@
 <%= for products <- @products do %>
 
       <tr class="flex w-full mb-4 hover:bg-grey-lighter">
-				<td class="p-4 w-3/4 border-b border-grey-light"><%= products.name %></td>
+				<td class="p-4 w-3/4 border-b border-grey-light uppercase"><%= products.name %></td>
         <td class="p-4 w-1/4 border-b border-grey-light">
         <div class="flex items-center justify-between">
         <%= link to: Routes.products_path(@conn, :show, products), 
