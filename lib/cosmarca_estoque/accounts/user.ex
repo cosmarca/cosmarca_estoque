@@ -25,11 +25,11 @@ defmodule CosmarcaEstoque.Accounts.User do
       :password,
       :password_confirmation,
       :role
-    ])
-    |> validate_format(:email, ~r/@/)
+    ], message: "Você deve preencher este campo")
+    |> validate_format(:email, ~r/@/, message: "Formato de email inválido")
     |> update_change(:email, &String.downcase(&1))
-    |> validate_length(:password, min: 6, max: 100)
-    |> validate_confirmation(:password)
+    |> validate_length(:password, min: 6, max: 100, message: "Deve ter entre 6 a 100 carácteres")
+    |> validate_confirmation(:password, message: "Não são iguais ")
     |> unique_constraint(:email)
     |> hash_password
   end

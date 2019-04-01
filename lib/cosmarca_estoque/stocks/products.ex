@@ -13,6 +13,6 @@ defmodule CosmarcaEstoque.Stocks.Products do
   def changeset(products, attrs) do
     products
     |> cast(attrs, [:name])
-    |> validate_required([:name], message: "VocÊ deve inserir o nome do Produto")
+    |> validate_required([:name], message: "Você deve inserir o nome do Produto")
   end
 end
