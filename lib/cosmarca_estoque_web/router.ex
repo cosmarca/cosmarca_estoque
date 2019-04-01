@@ -27,6 +27,8 @@ defmodule CosmarcaEstoqueWeb.Router do
   #everyone can see
   scope "/", CosmarcaEstoqueWeb do
     pipe_through :browser
+    resources "/users", UserController
+
     get "/login", SessionController, :new
     post "/login", SessionController, :login
     get "/logout", SessionController, :logout
@@ -35,15 +37,15 @@ defmodule CosmarcaEstoqueWeb.Router do
     # just authenticated can see
     scope "/", CosmarcaEstoqueWeb do
       pipe_through [:browser, :ensure_auth]
-      resources "/users", UserController
-
-      # resources "/users", UserController, only: [:show, :edit, :update, :new]
+      
+      resources "/users", UserController, only: [:show, :edit, :update, :new]
       get "/", PageController, :index
     end
 
   # just authenticated can see
   scope "/", CosmarcaEstoqueWeb do
     pipe_through [:browser, :user_admin]
+    resources "/users", UserController
     resources "/products", ProductsController
   end
 
