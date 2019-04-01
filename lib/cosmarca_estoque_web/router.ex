@@ -14,12 +14,15 @@ defmodule CosmarcaEstoqueWeb.Router do
   end
 
   pipeline :ensure_auth do
+    plug  CosmarcaEstoqueWeb.Auth.Pipeline
     plug Guardian.Plug.EnsureAuthenticated
   end
 
-  pipeline :auth do
-    plug CosmarcaEstoque.Accounts.Pipeline
+  pipeline :user_admin do
+    plug :ensure_auth
+    plug CosmarcaEstoqueWeb.Auth.CheckAdmin
   end
+
 
   #everyone can see
   scope "/", CosmarcaEstoqueWeb do
@@ -32,15 +35,16 @@ defmodule CosmarcaEstoqueWeb.Router do
 
     # just authenticated can see
     scope "/", CosmarcaEstoqueWeb do
-      pipe_through [:browser, :auth, :ensure_auth]
-      resources "/users", UserController, only: [:show, :update]
+      pipe_through [:browser, :ensure_auth]
+      resources "/users", UserController, only: [:show, :edit, :update, :new]
+      get "/", PageController, :index
+
     end
 
   # just authenticated can see
   scope "/", CosmarcaEstoqueWeb do
-    pipe_through [:browser, :auth, :ensure_auth]
+    pipe_through [:browser, :user_admin]
     resources "/users", UserController
-    get "/", PageController, :index
   end
 
 

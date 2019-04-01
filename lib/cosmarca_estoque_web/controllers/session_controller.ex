@@ -1,7 +1,8 @@
 defmodule CosmarcaEstoqueWeb.SessionController do
     use CosmarcaEstoqueWeb, :controller
 
-    alias CosmarcaEstoque.{Accounts, Accounts.User, Accounts.Guardian, Accounts.Session}
+    alias CosmarcaEstoque.{Accounts, Accounts.User, Accounts.Session}
+    alias  CosmarcaEstoqueWeb.Auth.Guardian
 
     def new(conn, _) do
         changeset = Accounts.change_user(%User{})
@@ -20,7 +21,7 @@ defmodule CosmarcaEstoqueWeb.SessionController do
     def logout(conn, _) do
         conn
         |> Guardian.Plug.sign_out()
-        |> redirect(to: "/login")
+        |> redirect(to: Routes.session_path(conn, :login))
     end
 
     defp login_reply({:ok, user}, conn) do

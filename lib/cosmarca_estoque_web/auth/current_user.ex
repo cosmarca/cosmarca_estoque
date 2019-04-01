@@ -1,4 +1,4 @@
-defmodule CosmarcaEstoqueWeb.CurrentUser do
+defmodule CosmarcaEstoqueWeb.Auth.CurrentUser do
     import Plug.Conn
     import Guardian.Plug
 

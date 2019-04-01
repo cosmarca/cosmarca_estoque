@@ -1,4 +1,4 @@
-defmodule CosmarcaEstoque.Accounts.GuardianSerializer do
+defmodule CosmarcaEstoque.Auth.GuardianSerializer do
     @behaviour Guardian.Serializer
     alias CosmarcaEstoque.{Accounts, Accounts.User}
 

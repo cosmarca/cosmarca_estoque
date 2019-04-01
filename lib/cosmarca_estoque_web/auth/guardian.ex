@@ -1,4 +1,4 @@
-defmodule CosmarcaEstoque.Accounts.Guardian do
+defmodule CosmarcaEstoqueWeb.Auth.Guardian do
   alias CosmarcaEstoque.Accounts
   use Guardian, otp_app: :cosmarca_estoque
 

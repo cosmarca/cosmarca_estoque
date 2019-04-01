@@ -27,7 +27,7 @@
 					<i class="far fa-copyright text-blue-dark pr-3"></i><span class="text-blue-dark">Cosmarca</span>
 				<% end %>
             </div>
-												 <%= if @current_user do %>
+												 <%= if @conn.assigns[:current_user] do %>
 
 			<div class="w-1/2 pr-0">
 				<div class="flex relative inline-block float-right">

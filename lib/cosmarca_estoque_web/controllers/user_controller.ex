@@ -4,6 +4,9 @@ defmodule CosmarcaEstoqueWeb.UserController do
   alias CosmarcaEstoque.Accounts
   alias CosmarcaEstoque.Accounts.User
 
+  plug :verify_permission when action in [:update, :edit, :show]
+
+
   def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.html", users: users)
@@ -58,5 +61,18 @@ defmodule CosmarcaEstoqueWeb.UserController do
     conn
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: Routes.user_path(conn, :index))
+  end
+
+  def verify_permission(conn, _) do
+    %{params: %{"id" => id}} =  conn
+    current_user = conn.assigns.current_user
+    if current_user.id == String.to_integer(id) or current_user.role == "admin" do
+      conn
+    else
+      conn
+      |> put_flash(:error, "Você não tem permissao para executar esta ação!")
+      |> redirect(to: Routes.session_path(conn, :login))
+      |> halt
+    end
   end
 end

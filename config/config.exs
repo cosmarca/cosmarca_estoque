@@ -25,7 +25,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :cosmarca_estoque, CosmarcaEstoque.Accounts.Guardian ,
+config :cosmarca_estoque, CosmarcaEstoqueWeb.Auth.Guardian ,
        issuer: "cosmarca_estoque",
        secret_key: "lFp3x36MlY2xktFApHKLewZcJm4eyRD4pgLrzsGXhG4UI4VtPNzYD5qVtm907p3B"
 
