@@ -71,7 +71,7 @@ defmodule CosmarcaEstoqueWeb.UserController do
     else
       conn
       |> put_flash(:error, "Você não tem permissao para executar esta ação!")
-      |> redirect(to: Routes.session_path(conn, :login))
+      |> redirect(to: Routes.page_path(conn, :index))
       |> halt
     end
   end
