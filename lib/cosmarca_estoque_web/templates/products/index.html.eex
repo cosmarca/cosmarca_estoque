@@ -1,26 +1,46 @@
-<h1>Listing Products</h1>
+<div class="w-2/3 mx-auto">
+  <div class="bg-white shadow-md rounded my-6">
+    <div class="border-b p-3">
+      <h5 class="uppercase text-grey-dark">Lista de Produtos</h5>     <p class="py-2">
+      <%= link to: Routes.products_path(@conn, :new),
+      class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+      do %><i class="fas fa-plus-circle"></i><% end %>
+      </p>
+    </div>
+    <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+      <thead>
+        <tr>
+        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Produto</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Ações</th>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+        </tr>
+      </thead>
+      <tbody>
 <%= for products <- @products do %>
-    <tr>
-      <td><%= products.name %></td>
+          <tr class="hover:bg-grey-lighter">
+            <td class="py-4 px-6 border-b border-grey-light"><%= products.name %></td>
 
-      <td>
-        <%= link "Show", to: Routes.products_path(@conn, :show, products) %>
-        <%= link "Edit", to: Routes.products_path(@conn, :edit, products) %>
-        <%= link "Delete", to: Routes.products_path(@conn, :delete, products), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
 
-<span><%= link "New Products", to: Routes.products_path(@conn, :new) %></span>
+            <td class="py-4 px-6 border-b border-grey-light">
+              <%= link to: Routes.products_path(@conn, :show, products), 
+              class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              do %>
+                <i class="fas fa-paper-plane"></i>
+              <% end %>
+              <%= link to: Routes.products_path(@conn, :edit, products),
+              class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              do %> 
+                <i class="fas fa-user-edit"></i>
+              <% end %>
+              <%= link to: Routes.products_path(@conn, :delete, products), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
+              class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
