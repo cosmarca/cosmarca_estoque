@@ -44,6 +44,7 @@ defmodule CosmarcaEstoqueWeb.Router do
     pipe_through [:browser, :user_admin]
     resources "/users", UserController
     resources "/products", ProductsController
+    resources "/stocks", StockController
   end
 
 

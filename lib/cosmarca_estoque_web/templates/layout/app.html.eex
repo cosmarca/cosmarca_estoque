@@ -89,9 +89,9 @@
 										<% end %>
 
                     <li class="mr-6 my-2 md:my-0">
-                        <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-green">
+                        <%= link  class: "block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-green", to: Routes.stock_path(@conn, :index) do %>
                             <i class="fas fa-store"></i><span class="pb-1 md:pb-0 text-sm">Estoque</span>
-                        </a>
+													<% end %>
                     </li>
                     <li class="mr-6 my-2 md:my-0">
                         <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-red">

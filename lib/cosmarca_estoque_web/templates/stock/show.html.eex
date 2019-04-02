@@ -1,0 +1,21 @@
+
+
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div class="border-b p-3">
+    <h5 class="uppercase text-grey-dark">Dados do Estoque</h5>
+</div>
+
+<div class="border-b p-3">
+    <strong>Titulo:</strong>
+    <%= @stock.title %>
+</div>
+
+<div class="border-b p-3">
+    <strong>Dono do estoque:</strong>
+    <%= @stock.user.first_name %>
+</div>
+
+<hr />
+<span><%= link "votar", class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline",  to: Routes.stock_path(@conn, :index) %></span>
+
+</div>
