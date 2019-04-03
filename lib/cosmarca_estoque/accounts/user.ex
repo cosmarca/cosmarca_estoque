@@ -12,6 +12,7 @@ defmodule CosmarcaEstoque.Accounts.User do
     field :role, :string, default: "user"
 
     has_one :stock, CosmarcaEstoque.Stocks.Stock
+    has_many :register, CosmarcaEstoque.Stocks.Register
     timestamps()
   end
 

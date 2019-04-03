@@ -1,0 +1,28 @@
+<h1>Listing Registers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Input quantity</th>
+      <th>Output quantity</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for register <- @registers do %>
+    <tr>
+      <td><%= register.input_quantity %></td>
+      <td><%= register.output_quantity %></td>
+
+      <td>
+        <%= link "Show", to: Routes.stock_register_path(@conn, :show, register) %>
+        <%= link "Edit", to: Routes.stock_register_path(@conn, :edit, register) %>
+        <%= link "Delete", to: Routes.stock_register_path(@conn, :delete, register), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Register", to: Routes.stock_register_path(@conn, :new, @stock) %></span>

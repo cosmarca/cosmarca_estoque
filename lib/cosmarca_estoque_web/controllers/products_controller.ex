@@ -1,4 +1,4 @@
-defmodule CosmarcaEstoqueWeb.ProductsController do
+defmodule CosmarcaEstoqueWeb.ProductController do
   use CosmarcaEstoqueWeb, :controller
 
   alias CosmarcaEstoque.Stocks

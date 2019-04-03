@@ -6,6 +6,7 @@ defmodule CosmarcaEstoque.Stocks.Products do
   @derive {Phoenix.Param, key: :id}
   schema "products" do
     field :name, :string
+    has_many :register, CosmarcaEstoque.Stocks.Register
     timestamps()
   end
 

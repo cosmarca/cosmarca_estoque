@@ -1,0 +1,18 @@
+<h1>Show Register</h1>
+
+<ul>
+
+  <li>
+    <strong>Input quantity:</strong>
+    <%= @register.input_quantity %>
+  </li>
+
+  <li>
+    <strong>Output quantity:</strong>
+    <%= @register.output_quantity %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.stock_register_path(@conn, :edit, @register ) %></span>
+<span><%= link "Back", to: Routes.stock_register_path(@conn, :indexr ) %></span>

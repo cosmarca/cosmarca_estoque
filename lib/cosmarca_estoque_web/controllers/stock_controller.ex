@@ -3,7 +3,6 @@ defmodule CosmarcaEstoqueWeb.StockController do
 
   alias CosmarcaEstoque.Stocks
   alias CosmarcaEstoque.Stocks.Stock
-  import Ecto.Query, only: [from: 2]
 
   def index(conn, _params) do
     stocks = Stocks.list_stocks()
@@ -11,17 +10,10 @@ defmodule CosmarcaEstoqueWeb.StockController do
   end
 
   def new(conn, _params) do
-    # users_with_stock = CosmarcaEstoque.Repo.all from u in "stocks", select: u.user_id
-    users_select = CosmarcaEstoque.Repo.all from u in "users", select: {u.first_name, u.id}
-    stock = CosmarcaEstoque.Repo.all from s in "stocks", select: s.user_id
-    users = Enum.map users_select, fn {x, id} -> 
-       if Enum.count(Enum.filter(stock, fn x -> x == id end)) == 0 do 
-        {x, id}  
-       end 
-    end
+    users_without_stock = Stocks.users_without_stock()
     changeset = 
     Stocks.change_stock(%Stock{})
-    render(conn, "new.html", changeset: changeset, users: users )
+    render(conn, "new.html", changeset: changeset, users: users_without_stock )
   end
 
   def create(conn, %{"stock" => stock_params}) do
@@ -43,11 +35,9 @@ defmodule CosmarcaEstoqueWeb.StockController do
   end
 
   def edit(conn, %{"id" => id}) do
-    users_select = CosmarcaEstoque.Repo.all from u in "users", select: {u.first_name, u.id} 
-
     stock = Stocks.get_stock!(id)
     changeset = Stocks.change_stock(stock)
-    render(conn, "edit.html", stock: stock, changeset: changeset, users: users_select)
+    render(conn, "edit.html", stock: stock, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "stock" => stock_params}) do

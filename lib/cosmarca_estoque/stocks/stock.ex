@@ -5,7 +5,7 @@ defmodule CosmarcaEstoque.Stocks.Stock do
   schema "stocks" do
     field :title, :string
     belongs_to :user,  CosmarcaEstoque.Accounts.User 
-    # has_many :register, CosmarcaEstoque.Stocks.Register
+    has_many :register, CosmarcaEstoque.Stocks.Register
     timestamps()
   end
 

@@ -120,4 +120,65 @@ defmodule CosmarcaEstoque.StocksTest do
       assert %Ecto.Changeset{} = Stocks.change_stock(stock)
     end
   end
+
+  describe "registers" do
+    alias CosmarcaEstoque.Stocks.Register
+
+    @valid_attrs %{input_quantity: "some input_quantity", output_quantity: "some output_quantity"}
+    @update_attrs %{input_quantity: "some updated input_quantity", output_quantity: "some updated output_quantity"}
+    @invalid_attrs %{input_quantity: nil, output_quantity: nil}
+
+    def register_fixture(attrs \\ %{}) do
+      {:ok, register} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Stocks.create_register()
+
+      register
+    end
+
+    test "list_registers/0 returns all registers" do
+      register = register_fixture()
+      assert Stocks.list_registers() == [register]
+    end
+
+    test "get_register!/1 returns the register with given id" do
+      register = register_fixture()
+      assert Stocks.get_register!(register.id) == register
+    end
+
+    test "create_register/1 with valid data creates a register" do
+      assert {:ok, %Register{} = register} = Stocks.create_register(@valid_attrs)
+      assert register.input_quantity == "some input_quantity"
+      assert register.output_quantity == "some output_quantity"
+    end
+
+    test "create_register/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Stocks.create_register(@invalid_attrs)
+    end
+
+    test "update_register/2 with valid data updates the register" do
+      register = register_fixture()
+      assert {:ok, %Register{} = register} = Stocks.update_register(register, @update_attrs)
+      assert register.input_quantity == "some updated input_quantity"
+      assert register.output_quantity == "some updated output_quantity"
+    end
+
+    test "update_register/2 with invalid data returns error changeset" do
+      register = register_fixture()
+      assert {:error, %Ecto.Changeset{}} = Stocks.update_register(register, @invalid_attrs)
+      assert register == Stocks.get_register!(register.id)
+    end
+
+    test "delete_register/1 deletes the register" do
+      register = register_fixture()
+      assert {:ok, %Register{}} = Stocks.delete_register(register)
+      assert_raise Ecto.NoResultsError, fn -> Stocks.get_register!(register.id) end
+    end
+
+    test "change_register/1 returns a register changeset" do
+      register = register_fixture()
+      assert %Ecto.Changeset{} = Stocks.change_register(register)
+    end
+  end
 end
