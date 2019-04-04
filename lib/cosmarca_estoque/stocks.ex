@@ -4,6 +4,7 @@ defmodule CosmarcaEstoque.Stocks do
   """
 
   import Ecto.Query, warn: false
+  
   alias CosmarcaEstoque.Repo
 
   alias CosmarcaEstoque.Stocks.Products
@@ -20,6 +21,21 @@ defmodule CosmarcaEstoque.Stocks do
   def list_products do
     Repo.all(Products)
   end
+
+  @doc """
+  Returns the list of products.
+
+  ## Examples
+
+      iex> list_products()
+      {{"beauty cream", 1}, ...]
+
+  """
+  def list_products_select do
+    Repo.all(from p in "products", select: {p.name, p.id})
+  end
+
+  
 
   @doc """
   Gets a single products.
@@ -227,12 +243,13 @@ defmodule CosmarcaEstoque.Stocks do
 
   ## Examples
 
-      iex> list_registers()
+      iex> list_registers(stock_id)
       [%Register{}, ...]
 
   """
-  def list_registers do
-    Repo.all(Register)
+  def list_registers(stock_id) do
+    stock = get_stock!(stock_id) |> Repo.preload(:register)
+    stock.register
   end
 
   @doc """
@@ -263,9 +280,14 @@ defmodule CosmarcaEstoque.Stocks do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_register(attrs \\ %{}) do
-    %Register{}
-    |> Register.changeset(attrs)
+  def create_register(attrs \\ %{}, stock_id, user) do
+    %{"input_quantity" => input, "output_quantity" => output, "product" => product} =  attrs
+    product_id = String.to_integer(product)
+    get_stock!(stock_id) 
+    |> Ecto.build_assoc(:register, 
+    user_id: user.id, 
+    products_id: product_id)
+    |> Register.changeset(%{"input_quantity" => input, "output_quantity" => output})
     |> Repo.insert()
   end
 

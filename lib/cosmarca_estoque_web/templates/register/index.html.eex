@@ -16,9 +16,9 @@
       <td><%= register.output_quantity %></td>
 
       <td>
-        <%= link "Show", to: Routes.stock_register_path(@conn, :show, register) %>
-        <%= link "Edit", to: Routes.stock_register_path(@conn, :edit, register) %>
-        <%= link "Delete", to: Routes.stock_register_path(@conn, :delete, register), method: :delete, data: [confirm: "Are you sure?"] %>
+        <%= link "Show", to: Routes.stock_register_path(@conn, :show, @stock, register) %>
+        <%= link "Edit", to: Routes.stock_register_path(@conn, :edit, @stock, register) %>
+        <%= link "Delete", to: Routes.stock_register_path(@conn, :delete, @stock, register), method: :delete, data: [confirm: "Are you sure?"] %>
       </td>
     </tr>
 <% end %>

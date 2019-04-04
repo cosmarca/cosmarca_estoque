@@ -14,5 +14,5 @@
 
 </ul>
 
-<span><%= link "Edit", to: Routes.stock_register_path(@conn, :edit, @register ) %></span>
-<span><%= link "Back", to: Routes.stock_register_path(@conn, :indexr ) %></span>
+<%= link "Edit", to: Routes.stock_register_path(@conn, :edit, @stock, @register) %>
+<span><%= link "Back", to: Routes.stock_register_path(@conn, :index, @stock ) %></span>

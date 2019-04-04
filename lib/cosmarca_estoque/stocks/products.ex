@@ -2,8 +2,8 @@ defmodule CosmarcaEstoque.Stocks.Products do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @primary_key {:id, :binary_id, autogenerate: true}
-  @derive {Phoenix.Param, key: :id}
+  # @primary_key {:id, :binary_id, autogenerate: true}
+  # @derive {Phoenix.Param, key: :id}
   schema "products" do
     field :name, :string
     has_many :register, CosmarcaEstoque.Stocks.Register

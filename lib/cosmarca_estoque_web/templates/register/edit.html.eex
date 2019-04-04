@@ -1,5 +1,5 @@
 <h1>Edit Register</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.stock_register_path(@conn, :update, @register)) %>
+<%= render "form.html", Map.put(assigns, :action, Routes.stock_register_path(@conn, :update, @register, @stock)) %>
 
-<span><%= link "Back", to: Routes.stock_register_path(@conn, :index) %></span>
+<span><%= link "Back", to: Routes.stock_register_path(@conn, :index, @stock ) %></span>
