@@ -20,14 +20,17 @@ defmodule CosmarcaEstoque.Accounts.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:email, :first_name, :last_name, :password, :password_confirmation, :role])
-    |> validate_required([
-      :email,
-      :first_name,
-      :last_name,
-      :password,
-      :password_confirmation,
-      :role
-    ], message: "Você deve preencher este campo")
+    |> validate_required(
+      [
+        :email,
+        :first_name,
+        :last_name,
+        :password,
+        :password_confirmation,
+        :role
+      ],
+      message: "Você deve preencher este campo"
+    )
     |> validate_format(:email, ~r/@/, message: "Formato de email inválido")
     |> update_change(:email, &String.downcase(&1))
     |> validate_length(:password, min: 6, max: 100, message: "Deve ter entre 6 a 100 carácteres")

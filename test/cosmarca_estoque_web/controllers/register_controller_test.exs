@@ -4,7 +4,10 @@ defmodule CosmarcaEstoqueWeb.RegisterControllerTest do
   alias CosmarcaEstoque.Stocks
 
   @create_attrs %{input_quantity: "some input_quantity", output_quantity: "some output_quantity"}
-  @update_attrs %{input_quantity: "some updated input_quantity", output_quantity: "some updated output_quantity"}
+  @update_attrs %{
+    input_quantity: "some updated input_quantity",
+    output_quantity: "some updated output_quantity"
+  }
   @invalid_attrs %{input_quantity: nil, output_quantity: nil}
 
   def fixture(:register) do
@@ -75,6 +78,7 @@ defmodule CosmarcaEstoqueWeb.RegisterControllerTest do
     test "deletes chosen register", %{conn: conn, register: register} do
       conn = delete(conn, Routes.register_path(conn, :delete, register))
       assert redirected_to(conn) == Routes.register_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.register_path(conn, :show, register))
       end

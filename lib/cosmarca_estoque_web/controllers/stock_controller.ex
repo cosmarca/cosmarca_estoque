@@ -11,13 +11,11 @@ defmodule CosmarcaEstoqueWeb.StockController do
 
   def new(conn, _params) do
     users_without_stock = Stocks.users_without_stock()
-    changeset = 
-    Stocks.change_stock(%Stock{})
-    render(conn, "new.html", changeset: changeset, users: users_without_stock )
+    changeset = Stocks.change_stock(%Stock{})
+    render(conn, "new.html", changeset: changeset, users: users_without_stock)
   end
 
   def create(conn, %{"stock" => stock_params}) do
-
     case Stocks.create_stock(stock_params) do
       {:ok, stock} ->
         conn

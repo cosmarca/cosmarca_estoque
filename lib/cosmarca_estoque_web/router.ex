@@ -14,7 +14,7 @@ defmodule CosmarcaEstoqueWeb.Router do
   end
 
   pipeline :ensure_auth do
-    plug  CosmarcaEstoqueWeb.Auth.Pipeline
+    plug CosmarcaEstoqueWeb.Auth.Pipeline
     plug Guardian.Plug.EnsureAuthenticated
   end
 
@@ -23,8 +23,7 @@ defmodule CosmarcaEstoqueWeb.Router do
     plug CosmarcaEstoqueWeb.Auth.CheckAdmin
   end
 
-
-  #everyone can see
+  # everyone can see
   scope "/", CosmarcaEstoqueWeb do
     pipe_through :browser
     get "/login", SessionController, :new
@@ -32,23 +31,23 @@ defmodule CosmarcaEstoqueWeb.Router do
     get "/logout", SessionController, :logout
   end
 
-    # just authenticated can see
-    scope "/", CosmarcaEstoqueWeb do
-      pipe_through [:browser, :ensure_auth]
-      resources "/users", UserController, only: [:show, :edit, :update, :new]
-      get "/", PageController, :index
-    end
+  # just authenticated can see
+  scope "/", CosmarcaEstoqueWeb do
+    pipe_through [:browser, :ensure_auth]
+    resources "/users", UserController, only: [:show, :edit, :update, :new]
+    get "/", PageController, :index
+  end
 
   # just authenticated can see
   scope "/", CosmarcaEstoqueWeb do
     pipe_through [:browser, :user_admin]
     resources "/users", UserController
     resources "/products", ProductsController
+
     resources "/stocks", StockController do
       resources "/registers", RegisterController
     end
   end
-
 
   # Other scopes may use custom stacks.
   # scope "/api", CosmarcaEstoqueWeb do

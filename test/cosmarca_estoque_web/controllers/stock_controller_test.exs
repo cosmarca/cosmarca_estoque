@@ -75,6 +75,7 @@ defmodule CosmarcaEstoqueWeb.StockControllerTest do
     test "deletes chosen stock", %{conn: conn, stock: stock} do
       conn = delete(conn, Routes.stock_path(conn, :delete, stock))
       assert redirected_to(conn) == Routes.stock_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.stock_path(conn, :show, stock))
       end

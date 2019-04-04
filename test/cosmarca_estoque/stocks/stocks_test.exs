@@ -125,7 +125,10 @@ defmodule CosmarcaEstoque.StocksTest do
     alias CosmarcaEstoque.Stocks.Register
 
     @valid_attrs %{input_quantity: "some input_quantity", output_quantity: "some output_quantity"}
-    @update_attrs %{input_quantity: "some updated input_quantity", output_quantity: "some updated output_quantity"}
+    @update_attrs %{
+      input_quantity: "some updated input_quantity",
+      output_quantity: "some updated output_quantity"
+    }
     @invalid_attrs %{input_quantity: nil, output_quantity: nil}
 
     def register_fixture(attrs \\ %{}) do

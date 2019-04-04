@@ -4,7 +4,7 @@ defmodule CosmarcaEstoque.Stocks do
   """
 
   import Ecto.Query, warn: false
-  
+
   alias CosmarcaEstoque.Repo
 
   alias CosmarcaEstoque.Stocks.Products
@@ -34,8 +34,6 @@ defmodule CosmarcaEstoque.Stocks do
   def list_products_select do
     Repo.all(from p in "products", select: {p.name, p.id})
   end
-
-  
 
   @doc """
   Gets a single products.
@@ -143,13 +141,14 @@ defmodule CosmarcaEstoque.Stocks do
 
   """
   def users_without_stock do
-    users = Repo.all from u in "users", select: {u.first_name, u.id}
-    stock = Repo.all from s in "stocks", select: s.user_id
-    Enum.map users, fn {x, id} -> 
-       if Enum.filter(stock, &(&1 == id)) |> Enum.count() == 0 do 
-        {x, id}  
-       end 
-    end
+    users = Repo.all(from u in "users", select: {u.first_name, u.id})
+    stock = Repo.all(from s in "stocks", select: s.user_id)
+
+    Enum.map(users, fn {x, id} ->
+      if Enum.filter(stock, &(&1 == id)) |> Enum.count() == 0 do
+        {x, id}
+      end
+    end)
   end
 
   @doc """
@@ -183,6 +182,7 @@ defmodule CosmarcaEstoque.Stocks do
   def create_stock(attrs \\ %{}) do
     %{"user_stock" => user_id} = attrs
     user = CosmarcaEstoque.Accounts.get_user!(user_id)
+
     user
     |> Ecto.build_assoc(:stock)
     |> Stock.changeset(attrs)
@@ -281,12 +281,14 @@ defmodule CosmarcaEstoque.Stocks do
 
   """
   def create_register(attrs \\ %{}, stock_id, user) do
-    %{"input_quantity" => input, "output_quantity" => output, "product" => product} =  attrs
+    %{"input_quantity" => input, "output_quantity" => output, "product" => product} = attrs
     product_id = String.to_integer(product)
-    get_stock!(stock_id) 
-    |> Ecto.build_assoc(:register, 
-    user_id: user.id, 
-    products_id: product_id)
+
+    get_stock!(stock_id)
+    |> Ecto.build_assoc(:register,
+      user_id: user.id,
+      products_id: product_id
+    )
     |> Register.changeset(%{"input_quantity" => input, "output_quantity" => output})
     |> Repo.insert()
   end

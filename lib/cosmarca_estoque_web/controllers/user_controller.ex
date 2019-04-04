@@ -6,7 +6,6 @@ defmodule CosmarcaEstoqueWeb.UserController do
 
   plug :verify_permission when action in [:update, :edit, :show]
 
-
   def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.html", users: users)
@@ -64,8 +63,9 @@ defmodule CosmarcaEstoqueWeb.UserController do
   end
 
   def verify_permission(conn, _) do
-    %{params: %{"id" => id}} =  conn
+    %{params: %{"id" => id}} = conn
     current_user = conn.assigns.current_user
+
     if current_user.id == String.to_integer(id) or current_user.role == "admin" do
       conn
     else
