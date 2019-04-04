@@ -1,5 +1,1 @@
-<h1>Edit Stock</h1>
-
-<%= render "form.html", Map.put(assigns, :action, Routes.stock_path(@conn, :update, @stock)) %>
-
-<span><%= link "Back", to: Routes.stock_path(@conn, :index) %></span>
+Não se pode editar estoque
