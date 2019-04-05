@@ -140,15 +140,14 @@ defmodule CosmarcaEstoque.Stocks do
         [{"admin", "id"}, ...]
 
   """
-  def users_without_stock do
-    users = Repo.all(from u in "users", select: {u.first_name, u.id})
-    stock = Repo.all(from s in "stocks", select: s.user_id)
-
-    Enum.map(users, fn {x, id} ->
-      if Enum.filter(stock, &(&1 == id)) |> Enum.count() == 0 do
-        {x, id}
-      end
-    end)
+  def user_for_select do
+    Repo.all(from u in "users", select: {u.first_name, u.id})
+    # stock = Repo.all(from s in "stocks", select: s.user_id)
+    # Enum.map(users, fn {x, id} ->
+    #   if Enum.filter(stock, &(&1 == id)) |> Enum.count() == 0 do
+    #     {x, id}
+    #   end
+    # end)
   end
 
   @doc """
@@ -187,53 +186,6 @@ defmodule CosmarcaEstoque.Stocks do
     |> Ecto.build_assoc(:stock)
     |> Stock.changeset(attrs)
     |> Repo.insert()
-  end
-
-  @doc """
-  Updates a stock.
-
-  ## Examples
-
-      iex> update_stock(stock, %{field: new_value})
-      {:ok, %Stock{}}
-
-      iex> update_stock(stock, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_stock(%Stock{} = stock, attrs) do
-    stock
-    |> Stock.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a Stock.
-
-  ## Examples
-
-      iex> delete_stock(stock)
-      {:ok, %Stock{}}
-
-      iex> delete_stock(stock)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_stock(%Stock{} = stock) do
-    Repo.delete(stock)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking stock changes.
-
-  ## Examples
-
-      iex> change_stock(stock)
-      %Ecto.Changeset{source: %Stock{}}
-
-  """
-  def change_stock(%Stock{} = stock) do
-    Stock.changeset(stock, %{})
   end
 
   alias CosmarcaEstoque.Stocks.Register

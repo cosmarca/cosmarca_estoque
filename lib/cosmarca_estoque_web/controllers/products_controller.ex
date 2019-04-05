@@ -11,7 +11,7 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
 
   def new(conn, _params) do
     changeset = Stocks.change_products(%Products{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, users: Stocks.user_for_select() )
   end
 
   def create(conn, %{"products" => products_params}) do

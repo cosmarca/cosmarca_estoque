@@ -10,11 +10,6 @@ defmodule CosmarcaEstoque.Repo.Migrations.CreateRegisters do
 
       timestamps()
     end
-
-    alter table(:stocks) do
-      add :register_id, references(:registers, on_delete: :delete_all)
-    end
-
     create index(:registers, [:products_id])
   end
 end
