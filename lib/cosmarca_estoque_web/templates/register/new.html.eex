@@ -1,5 +1,5 @@
-<h1>New Register</h1>
+<h1>Novo Registro</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.stock_register_path(@conn, :create, @stock)) %>
 
-<span><%= link "Back", to: Routes.stock_register_path(@conn, :index, @stock) %></span>
+<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.stock_register_path(@conn, :index, @stock ) %></span>

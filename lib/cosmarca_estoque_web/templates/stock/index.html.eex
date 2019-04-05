@@ -11,7 +11,8 @@
 	<table class="text-left w-full">
 		<thead class="flex text-white w-full">
 			<tr class="flex w-full mb-4">
-				<th class="p-4 w-3/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Titulo</th>
+				<th class="p-4 w-3/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nome</th>
+  			<th class="p-4 w-3/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Proprietário</th>
         <th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Acoes</th>
 			</tr>
 		</thead>
@@ -20,6 +21,7 @@
 
       <tr class="flex w-full mb-4 hover:bg-grey-lighter">
 				<td class="p-4 w-3/4 border-b border-grey-light uppercase"><%= stock.title %></td>
+				<td class="p-4 w-3/4 border-b border-grey-light uppercase"><%= stock.user.first_name %></td>
         <td class="p-4 w-1/4 border-b border-grey-light">
         <div class="flex items-center justify-between">
         <%= link to: Routes.stock_path(@conn, :show, stock), 
@@ -28,7 +30,7 @@
                 <i class="fas fa-paper-plane"></i>
           <% end %>
              
-              <%= link to: Routes.stock_path(@conn, :delete, stock), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
+              <%= link to: Routes.stock_path(@conn, :delete, stock), method: :delete, data: [confirm: "Tem certeza?"] , alt: "deletar usuario",
               class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %>
                 <i class="fas fa-trash"></i>

@@ -248,7 +248,21 @@ defmodule CosmarcaEstoque.Stocks do
 
   """
   def list_registers(stock_id) do
-    stock = get_stock!(stock_id) |> Repo.preload(:register)
+    stock = get_stock!(stock_id) |> Repo.preload(register: [:products, :user])
+    stock.register
+  end
+
+    @doc """
+  Returns the list of registers.
+
+  ## Examples
+
+      iex> list_registers(user_id)
+      [%Register{}, ...]
+
+  """
+  def list_registers_from_user(user_id) do
+    stock = Repo.all(from s in "stocks", where: s.user_id == ^user_id) |> Repo.preload(register: [:products, :user])
     stock.register
   end
 
@@ -266,7 +280,7 @@ defmodule CosmarcaEstoque.Stocks do
       ** (Ecto.NoResultsError)
 
   """
-  def get_register!(id), do: Repo.get!(Register, id)
+  def get_register!(id), do: Repo.get!(Register, id) |> Repo.preload([:products, :user])
 
   @doc """
   Creates a register.

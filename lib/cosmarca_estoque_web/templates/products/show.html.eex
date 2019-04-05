@@ -4,11 +4,15 @@
 </div>
 
 <div class="border-b p-3">
-    <strong>Titulo:</strong>
+    <strong>Nome:</strong>
     <%= @products.name %>
 </div>
 
 <hr />
-<span><%= link "Edit", class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline",  to: Routes.products_path(@conn, :edit, @products) %></span>
 
+<div class="border-b p-3">
+
+<span><%= link "Editar", class: "bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_path(@conn, :edit, @products) %></span>
+<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_path(@conn, :index) %></span>
+</div>
 </div>
