@@ -22,6 +22,10 @@ defmodule CosmarcaEstoque.Stocks do
     Repo.all(Products)
   end
 
+  def list_products_by_user(user_id) do
+    Enum.filter Repo.all(Products) |> Repo.preload(:register) , &(&1.user_id == user_id)
+  end
+
   @doc """
   Returns the list of products.
 
@@ -124,19 +128,6 @@ defmodule CosmarcaEstoque.Stocks do
   alias CosmarcaEstoque.Stocks.Stock
 
   @doc """
-  Returns the list of stocks.
-
-  ## Examples
-
-      iex> list_stocks()
-      [%Stock{}, ...]
-
-  """
-  def list_stocks do
-    Repo.all(Stock) |> Repo.preload(:user)
-  end
-
-  @doc """
     Returns the list of users without stock.
 
     ## Examples
@@ -154,24 +145,6 @@ defmodule CosmarcaEstoque.Stocks do
     #   end
     # end)
   end
-
-  @doc """
-  Gets a single stock.
-
-  Raises `Ecto.NoResultsError` if the Stock does not exist.
-
-  ## Examples
-
-      iex> get_stock!(123)
-      %Stock{}
-
-      iex> get_stock!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_stock!(id), do: Repo.get!(Stock, id) |> Repo.preload(:user)
-
-
 
   alias CosmarcaEstoque.Stocks.Register
 

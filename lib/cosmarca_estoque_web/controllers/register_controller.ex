@@ -4,9 +4,8 @@ defmodule CosmarcaEstoqueWeb.RegisterController do
   alias CosmarcaEstoque.Stocks
   alias CosmarcaEstoque.Stocks.Register
 
+
   def index(conn, %{"products_id" => product_id}) do
-    IO.inspect "ooio"
-    IO.inspect product_id
     registers = Stocks.list_registers(product_id)
     render(conn, "index.html", registers: registers, product: product_id)
   end
@@ -37,7 +36,6 @@ defmodule CosmarcaEstoqueWeb.RegisterController do
   end
 
   def show(conn, %{"id" => id, "products_id" => products_id}) do
-    IO.inspect "oooi"
     register = Stocks.get_register!(id)
     render(conn, "show.html", stock: products_id, register: register)
   end
@@ -78,4 +76,5 @@ defmodule CosmarcaEstoqueWeb.RegisterController do
     |> put_flash(:info, "Register deleted successfully.")
     |> redirect(to: Routes.stock_register_path(conn, :index, products_id))
   end
+
 end
