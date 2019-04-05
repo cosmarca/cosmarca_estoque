@@ -11,7 +11,7 @@ defmodule CosmarcaEstoque.Accounts.User do
     field :password_confirmation, :string, virtual: true
     field :role, :string, default: "user"
 
-    has_one :stock, CosmarcaEstoque.Stocks.Stock
+    has_many :products, CosmarcaEstoque.Stocks.Products
     has_many :register, CosmarcaEstoque.Stocks.Register
     timestamps()
   end

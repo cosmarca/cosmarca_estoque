@@ -3,7 +3,7 @@
   <h3 class="text-grey-dark mb-8">
     Registros 
     
-    <%= link to: Routes.stock_register_path(@conn, :new, @stock),
+    <%= link to: Routes.products_register_path(@conn, :new, @product),
       class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
       do %><i class="fas fa-plus-circle"></i><% end %>
   </h3>
@@ -11,11 +11,10 @@
 	<table class="text-left w-full">
 		<thead class="flex text-white w-full">
 			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/5 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Registro</th>
-				<th class="p-4 w-1/5 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Produto</th>
-  			<th class="p-4 w-1/5 bg-green-lightest font-bold uppercase text-sm text-green-dark border-b border-green-light">Quantidade de Entrada</th>
-        <th class="p-4 w-1/5 bg-red-lightest font-bold uppercase text-sm text-red-dark border-b border-red-light">Quantidade de Saida</th>
-        <th class="p-4 w-1/5 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Ações</th>
+				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Registro</th>
+  			<th class="p-4 w-1/4 bg-green-lightest font-bold uppercase text-sm text-green-dark border-b border-green-light">Quantidade de Entrada</th>
+        <th class="p-4 w-1/4 bg-red-lightest font-bold uppercase text-sm text-red-dark border-b border-red-light">Quantidade de Saida</th>
+        <th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Ações</th>
 			</tr>
 		</thead>
 		<tbody class="bg-white flex flex-col items-center justify-between w-full">
@@ -23,31 +22,29 @@
 
       <%= if register.input_quantity >= register.output_quantity  do %>
           <tr class="flex w-full mb-4 hover:bg-green-lightest">
-            <td class="p-4 w-1/5 border-b border-green-light downcase text-sm"> <%= register.user.first_name %> - <%= register.updated_at %></td>
-            <td class="p-4 w-1/5 border-b border-green-light uppercase"><%= register.products.name %></td>
-            <td class="p-4 w-1/5 bg-green-lightest border-b border-green-light uppercase"><%= register.input_quantity %></td>
-            <td class="p-4 w-1/5 bg-green-lightest border-b border-green-light uppercase"><%= register.output_quantity %></td>
+            <td class="p-4 w-1/4 border-b border-green-light downcase text-sm"> <%= register.user.first_name %> - <%= register.updated_at %></td>
+            <td class="p-4 w-1/4 bg-green-lightest border-b border-green-light uppercase"><%= register.input_quantity %></td>
+            <td class="p-4 w-1/4 bg-green-lightest border-b border-green-light uppercase"><%= register.output_quantity %></td>
 
       <% else %>
           <tr class="flex w-full mb-4 hover:bg-red-lightest">
-            <td class="p-4 w-1/5 border-b border-red-light downcase text-sm"> <%= register.user.first_name %> - <%= register.updated_at %></td>
-            <td class="p-4 w-1/5 border-b border-red-light uppercase"><%= register.products.name %></td>
-            <td class="p-4 w-1/5 bg-red-lightest border-b border-red-light uppercase"><%= register.input_quantity %></td>
-            <td class="p-4 w-1/5 bg-red-lightest border-b border-red-light uppercase"><%= register.output_quantity %></td>
+            <td class="p-4 w-1/4 border-b border-red-light downcase text-sm"> <%= register.user.first_name %> - <%= register.updated_at %></td>
+            <td class="p-4 w-1/4 bg-red-lightest border-b border-red-light uppercase"><%= register.input_quantity %></td>
+            <td class="p-4 w-1/4 bg-red-lightest border-b border-red-light uppercase"><%= register.output_quantity %></td>
       <% end %>
-        <td class="p-4 w-1/5 border-b border-grey-light">
+        <td class="p-4 w-1/4 border-b border-grey-light">
         <div class="flex items-center justify-between">
-        <%= link to: Routes.stock_register_path(@conn, :show, @stock, register), 
+        <%= link to: Routes.products_register_path(@conn, :show, @product, register), 
               class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %>
                 <i class="fas fa-paper-plane"></i>
           <% end %>
-                     <%= link to:  Routes.stock_register_path(@conn, :edit, @stock, register) , 
+                     <%= link to:  Routes.products_register_path(@conn, :edit, @product, register) , 
               class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %>
                 <i class="far fa-edit"></i>
           <% end %>
-              <%= link to: Routes.stock_register_path(@conn, :delete, @stock, register), method: :delete, data: [confirm: "Tem certeza?"],
+              <%= link to: Routes.products_register_path(@conn, :delete, @product, register), method: :delete, data: [confirm: "Tem certeza?"],
               class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %>
                 <i class="fas fa-trash"></i>
@@ -61,4 +58,4 @@
 		</tbody>
 	</table>
 </div>
-<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.stock_path(@conn, :show, @stock) %></span>
+<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_path(@conn, :show, @product) %></span>

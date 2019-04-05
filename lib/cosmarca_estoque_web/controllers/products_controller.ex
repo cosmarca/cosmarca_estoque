@@ -11,14 +11,14 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
 
   def new(conn, _params) do
     changeset = Stocks.change_products(%Products{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, users: Stocks.user_for_select() )
   end
 
   def create(conn, %{"products" => products_params}) do
     case Stocks.create_products(products_params) do
       {:ok, products} ->
         conn
-        |> put_flash(:info, "Products created successfully.")
+        |> put_flash(:info, "Produto #{products.name} criado!")
         |> redirect(to: Routes.products_path(conn, :show, products))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -56,7 +56,7 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
     {:ok, _products} = Stocks.delete_products(products)
 
     conn
-    |> put_flash(:info, "Products deleted successfully.")
+    |> put_flash(:info, "Produto #{products.name} deletado!.")
     |> redirect(to: Routes.products_path(conn, :index))
   end
 end
