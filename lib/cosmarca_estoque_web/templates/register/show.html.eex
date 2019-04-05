@@ -17,6 +17,8 @@
     <%= @register.output_quantity %>
 </div>
 <hr />
+  <%= if @current_user.role == "admin" do %>
 
 <span><%= link "Editar", class: "bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_register_path(@conn, :edit, @stock, @register) %></span>
+<%end %>
 <span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_register_path(@conn, :index, @stock ) %></span>

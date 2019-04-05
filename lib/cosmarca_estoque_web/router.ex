@@ -36,6 +36,7 @@ defmodule CosmarcaEstoqueWeb.Router do
     pipe_through [:browser, :ensure_auth]
     resources "/users", UserController, only: [:show, :edit, :update, :new]
     resources "/products", ProductsController, only: [:show, :index]
+    resources "/products/:products_id/registers", RegisterController, only: [:index, :show]
     get "/", PageController, :index
   end
 
