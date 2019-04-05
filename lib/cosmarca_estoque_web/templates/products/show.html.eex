@@ -8,10 +8,15 @@
     <%= @products.name %>
 </div>
 
+<div class="border-b p-3">
+    <strong>Dono do Produto:</strong>
+    <%= @products.user.first_name %>
+</div>
+
 <hr />
 
 <div class="border-b p-3">
-
+<span><%= link "Registros do Estoque", class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_register_path(@conn, :index, @products) %></span>
 <span><%= link "Editar", class: "bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_path(@conn, :edit, @products) %></span>
 <span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_path(@conn, :index) %></span>
 </div>

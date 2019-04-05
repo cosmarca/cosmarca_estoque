@@ -49,7 +49,7 @@ defmodule CosmarcaEstoque.Stocks do
       ** (Ecto.NoResultsError)
 
   """
-  def get_products!(id), do: Repo.get!(Products, id)
+  def get_products!(id), do: Repo.get!(Products, id) |> Repo.preload(:user)
 
   @doc """
   Creates a products.
@@ -64,10 +64,15 @@ defmodule CosmarcaEstoque.Stocks do
 
   """
   def create_products(attrs \\ %{}) do
-    %Products{}
+    %{"user_owner" => user_id} = attrs
+    user = CosmarcaEstoque.Accounts.get_user!(user_id)
+
+    user
+    |> Ecto.build_assoc(:products)
     |> Products.changeset(attrs)
     |> Repo.insert()
   end
+
 
   @doc """
   Updates a products.
@@ -166,27 +171,7 @@ defmodule CosmarcaEstoque.Stocks do
   """
   def get_stock!(id), do: Repo.get!(Stock, id) |> Repo.preload(:user)
 
-  @doc """
-  Creates a stock.
 
-  ## Examples
-
-      iex> create_stock(%{field: value})
-      {:ok, %Stock{}}
-
-      iex> create_stock(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_stock(attrs \\ %{}) do
-    %{"user_stock" => user_id} = attrs
-    user = CosmarcaEstoque.Accounts.get_user!(user_id)
-
-    user
-    |> Ecto.build_assoc(:stock)
-    |> Stock.changeset(attrs)
-    |> Repo.insert()
-  end
 
   alias CosmarcaEstoque.Stocks.Register
 
@@ -195,13 +180,13 @@ defmodule CosmarcaEstoque.Stocks do
 
   ## Examples
 
-      iex> list_registers(stock_id)
+      iex> list_registers(product_id)
       [%Register{}, ...]
 
   """
-  def list_registers(stock_id) do
-    stock = get_stock!(stock_id) |> Repo.preload(register: [:products, :user])
-    stock.register
+  def list_registers(product_id) do
+    product = get_products!(product_id) |> Repo.preload(register: [:user])
+    product.register
   end
 
     @doc """
@@ -246,14 +231,14 @@ defmodule CosmarcaEstoque.Stocks do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_register(attrs \\ %{}, stock_id, user) do
+  def create_register(attrs \\ %{}, products_id, user) do
     %{"input_quantity" => input, "output_quantity" => output, "product" => product} = attrs
     product_id = String.to_integer(product)
 
-    get_stock!(stock_id)
+    get_products!(products_id)
     |> Ecto.build_assoc(:register,
-      user_id: user.id,
-      products_id: product_id
+      products_id: product_id,
+      user_id: user.id
     )
     |> Register.changeset(%{"input_quantity" => input, "output_quantity" => output})
     |> Repo.insert()
