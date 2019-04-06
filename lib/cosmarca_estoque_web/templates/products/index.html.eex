@@ -2,10 +2,12 @@
 
   <h3 class="text-grey-dark mb-8">
     Lista de Produtos 
-    
+      <%= if @current_user.role == "admin" do %>
+
     <%= link to: Routes.products_path(@conn, :new),
       class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
       do %><i class="fas fa-plus-circle"></i><% end %>
+      <% end %>
   </h3>
 
 	<table class="text-left w-full">
@@ -27,6 +29,8 @@
               do %>
                 <i class="fas fa-paper-plane"></i>
           <% end %>
+            <%= if @current_user.role == "admin" do %>
+
               <%= link to: Routes.products_path(@conn, :edit, products),
               class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %> 
@@ -36,6 +40,7 @@
               class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
               do %>
                 <i class="fas fa-trash"></i>
+              <% end %>
               <% end %>
             </div>
 

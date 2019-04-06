@@ -35,12 +35,16 @@ defmodule CosmarcaEstoqueWeb.Router do
   scope "/", CosmarcaEstoqueWeb do
     pipe_through [:browser, :ensure_auth]
     resources "/users", UserController, only: [:show, :edit, :update, :new]
-    resources "/products", ProductsController, only: [:show, :index]
+    resources "/products", ProductsController, only: [:show, :index] do
+      resources "/registers", RegisterController, only: [:show, :index]
+    end
+    # resources "/products", ProductsController, only: [:show, :index]
+    # resources "/products/:products_id/registers", RegisterController, only: [:index, :show]
     get "/", PageController, :index
   end
 
   # just authenticated can see
-  scope "/", CosmarcaEstoqueWeb do
+  scope "/admin", CosmarcaEstoqueWeb do
     pipe_through [:browser, :user_admin]
     resources "/users", UserController
     resources "/products", ProductsController do
