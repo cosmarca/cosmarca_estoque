@@ -49,6 +49,8 @@ defmodule CosmarcaEstoque.MixProject do
       {:ueberauth, "~> 0.6"},
       {:ueberauth_identity, "~> 0.2"},
       {:httpoison, "~> 1.4"},
+      {:poison, "~> 3.1"},
+      {:sweet_xml, "~> 0.6.5"},
       {:guardian, "~> 1.0"}
     ]
   end
