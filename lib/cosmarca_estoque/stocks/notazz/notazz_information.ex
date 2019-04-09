@@ -18,8 +18,13 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformation do
             fancy_name: xml_to_string(xml_doc, @fancy_name), 
             product_name: xml_to_string(xml_doc, @product_name), 
             metric_type: xml_to_string(xml_doc, @metric_type), 
-            sell_amount:  xml_to_string(xml_doc, @sell_amount)
+            sell_amount:  xml_to_integer(xml_doc,  @sell_amount)
         }
+    end
+
+    defp xml_to_integer(xml_doc, path) do
+         [value | _ ] = String.codepoints(xml_to_string(xml_doc, path))
+         String.to_integer(value)
     end
 
     defp xml_to_string(xml_doc, path) do

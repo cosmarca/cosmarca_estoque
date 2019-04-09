@@ -8,13 +8,13 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
     @expected_fields ~w(rastreio emissa xml)
 
     def products_registers(product, initial_date, final_date) do
-        {:ok, response} = HTTPoison.post @url, process_body(product, initial_date, final_date), @content_type
+        {:ok, response} = HTTPoison.post @url, process_body(product.user.key_notazz, initial_date, final_date), @content_type
         product_list = 
         response.body
         |> Poison.decode!
         |> Enum.map(fn {_id, note} -> Map.take(note, @expected_fields) end)
         |> Enum.map( &(notazz_type(&1)) )
-        |> Enum.filter( &(find_products(&1.product_name, product)) )
+        |> Enum.filter( &(find_products(&1.product_name, product.name)) )
         product_list
     end
 
@@ -29,8 +29,8 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
         |> NotazzInformation.create()
     end 
 
-    defp process_body(product, initial_date, final_date) do
-        "fields=%7B%22API_KEY%22+%3A+%22#{@key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B%22INITIAL_DATE%22%3A+%222019-04-08+08%3A00%3A00%22%2C+%22FINAL_DATE%22%3A+%222019-04-08+14%3A00%3A00%22%7D%7D"
+    defp process_body(key, initial_date, final_date) do
+        "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B%22INITIAL_DATE%22%3A+%222019-04-08+08%3A00%3A00%22%2C+%22FINAL_DATE%22%3A+%222019-04-08+14%3A00%3A00%22%7D%7D"
     end
     
 end
