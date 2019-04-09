@@ -9,6 +9,10 @@ defmodule CosmarcaEstoque.Accounts.User do
     field :password_hash, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
+    field :key_notazz, :string
+    field :cnpj, :string
+    field :business_name, :string
+    field :fancy_name, :string
     field :role, :string, default: "user"
 
     has_many :products, CosmarcaEstoque.Stocks.Products
@@ -19,7 +23,18 @@ defmodule CosmarcaEstoque.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :first_name, :last_name, :password, :password_confirmation, :role])
+    |> cast(attrs, [
+        :email,
+        :first_name, 
+        :last_name, 
+        :password, 
+        :password_confirmation, 
+        :key_notazz, 
+        :cnpj, 
+        :business_name, 
+        :fancy_name, 
+        :role
+      ])
     |> validate_required(
       [
         :email,
@@ -27,6 +42,10 @@ defmodule CosmarcaEstoque.Accounts.User do
         :last_name,
         :password,
         :password_confirmation,
+        :key_notazz, 
+        :cnpj, 
+        :business_name, 
+        :fancy_name, 
         :role
       ],
       message: "Você deve preencher este campo"
