@@ -14,7 +14,6 @@ defmodule CosmarcaEstoque.Stocks.Notazz.RegisterOutput do
             register = %{"input_quantity" => 0, "output_quantity" => x.sell_amount}
             Stocks.create_register(register, product.id, product.user) end
             )
-        
     end
 
 end

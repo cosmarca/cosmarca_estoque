@@ -39,7 +39,7 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
   def edit(conn, %{"id" => id}) do
     products = Stocks.get_products!(id)
     changeset = Stocks.change_products(products)
-    render(conn, "edit.html", products: products, changeset: changeset)
+    render(conn, "edit.html", products: products, changeset: changeset, users: Stocks.user_for_select())
   end
 
   def update(conn, %{"id" => id, "products" => products_params}) do
