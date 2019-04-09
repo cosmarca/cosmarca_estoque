@@ -51,7 +51,9 @@ defmodule CosmarcaEstoque.MixProject do
       {:httpoison, "~> 1.4"},
       {:poison, "~> 3.1"},
       {:sweet_xml, "~> 0.6.5"},
-      {:guardian, "~> 1.0"}
+      {:guardian, "~> 1.0"},
+      {:quantum, "~> 2.3"},
+      {:timex, "~> 3.0"}
     ]
   end
 
