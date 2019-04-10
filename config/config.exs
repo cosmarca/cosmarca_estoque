@@ -19,18 +19,25 @@ config :cosmarca_estoque, CosmarcaEstoqueWeb.Endpoint,
 
 # Configures Elixir's Logger
 config :logger, :console,
+  level: :debug,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :cosmarca_estoque, CosmarcaEstoqueWeb.Auth.Guardian ,
-       issuer: "cosmarca_estoque",
-       secret_key: "lFp3x36MlY2xktFApHKLewZcJm4eyRD4pgLrzsGXhG4UI4VtPNzYD5qVtm907p3B"
+config :cosmarca_estoque, CosmarcaEstoque.Scheduler,
+  jobs: [
+    phoenix_job: [
+      schedule: "*/15 * * * *",
+      task: {CosmarcaEstoque.Task, :work, []},
+    ]
+  ]
+
+config :cosmarca_estoque, CosmarcaEstoqueWeb.Auth.Guardian,
+  issuer: "cosmarca_estoque",
+  secret_key: "lFp3x36MlY2xktFApHKLewZcJm4eyRD4pgLrzsGXhG4UI4VtPNzYD5qVtm907p3B"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
-
-

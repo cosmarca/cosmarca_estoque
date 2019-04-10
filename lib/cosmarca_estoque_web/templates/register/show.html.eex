@@ -1,0 +1,24 @@
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div class="border-b p-3">
+    <h5 class="uppercase text-grey-dark">Dados do Registro:
+</h5>
+</div>
+<div class="border-b p-3">
+    <strong>Produto:</strong>
+    <%= @register.products.name %>
+</div>
+
+<div class="border-b p-3">
+    <strong>Quantitade Entrada:</strong>
+    <%= @register.input_quantity %>
+</div>
+<div class="border-b p-3">
+    <strong>Quantitade Saida:</strong>
+    <%= @register.output_quantity %>
+</div>
+<hr />
+  <%= if @current_user.role == "admin" do %>
+
+<span><%= link "Editar", class: "bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_register_path(@conn, :edit, @stock, @register) %></span>
+<%end %>
+<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_register_path(@conn, :index, @stock ) %></span>

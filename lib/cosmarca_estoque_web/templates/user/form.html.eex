@@ -35,6 +35,33 @@
     py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "last_name", placeholder: "Produtos de cosméticos" %>
     <p class="text-red text-xs italic"><%= error_tag f, :last_name %></p>
   </div>
+
+ <div class="mb-4">
+    <label class="block text-grey-darker text-sm font-bold mb-2" for="cnpj">
+        CNPJ
+    </label>
+  <%= text_input f, :cnpj, class: "shadow appearance-none border rounded w-full 
+    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "cnpj", placeholder: "ex: 111111 (somente números)" %>
+    <p class="text-red text-xs italic"><%= error_tag f, :cnpj %></p>
+  </div>
+
+ <div class="mb-4">
+    <label class="block text-grey-darker text-sm font-bold mb-2" for="business_name">
+        Nome da Empresa
+    </label>
+  <%= text_input f, :business_name, class: "shadow appearance-none border rounded w-full 
+    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "business_name", placeholder: "ex: Cosmarca Cosméticos" %>
+    <p class="text-red text-xs italic"><%= error_tag f, :business_name %></p>
+  </div>
+
+ <div class="mb-4">
+    <label class="block text-grey-darker text-sm font-bold mb-2" for="fancy_name">
+        Nome Fantasia
+    </label>
+  <%= text_input f, :fancy_name, class: "shadow appearance-none border rounded w-full 
+    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "fancy_name", placeholder: "ex: Cosmarca Cosméticos de Osasco" %>
+    <p class="text-red text-xs italic"><%= error_tag f, :fancy_name %></p>
+  </div>
   
   <div class="mb-4">
     <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
@@ -55,6 +82,15 @@
   </div>
 
   <%= if @current_user.role == "admin" do %>
+ <div class="mb-4">
+    <label class="block text-grey-darker text-sm font-bold mb-2" for="fancy_name">
+        Chave do Notazz
+    </label>
+  <%= text_input f, :key_notazz, class: "shadow appearance-none border rounded w-full 
+    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "key_notazz", placeholder: "ex: yzdk2832e0ufeowrf2oiveef..." %>
+    <p class="text-red text-xs italic"><%= error_tag f, :key_notazz %></p>
+  </div>
+
     <div class="mb-4">
     <label class="block text-grey-darker text-sm font-bold mb-2" for="role">
         Papel
@@ -65,6 +101,6 @@
   <% end %>
 
  <div class="flex items-center justify-between">
-    <%= submit "Criar Usuário",  class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    <%= submit "Salvar Usuário",  class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>

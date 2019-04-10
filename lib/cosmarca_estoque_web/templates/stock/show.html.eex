@@ -1,0 +1,18 @@
+
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div class="border-b p-3">
+    <h5 class="uppercase text-grey-dark">Estoque do/a:     <%= @stock.user.first_name %>
+</h5>
+</div>
+
+<div class="border-b p-3">
+    <strong>Nome do Estoque:</strong>
+    <%= @stock.title %>
+</div>
+<hr />
+
+<div class="border-b p-3">
+<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.stock_path(@conn, :index) %></span>
+<span><%= link "Registros do Estoque", class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.stock_register_path(@conn, :index, @stock) %></span>
+</div>
+</div>

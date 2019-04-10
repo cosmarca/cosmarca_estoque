@@ -11,24 +11,18 @@
 
     <div class="mb-4">
 
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
-        Nome do Produto
+    <label class="block text-grey-darker text-sm font-bold mb-2" for="title">
+        Nome do Estoque
     </label>   
-    <%= text_input f, :name, class: "shadow appearance-none border rounded w-full 
+    <%= text_input f, :title, class: "shadow appearance-none border rounded w-full 
     py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", 
-    id: "name", placeholder: "ex: Beauty cream" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :name %></p>
+    id: "title", placeholder: "ex: Lifened" %>
+    <p class="text-red text-xs italic"><%= error_tag f, :title %></p>
   </div>
 
-    <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="user">
-        Dono do Produto
-    </label>
 
-    <%= select f, :user_owner, @users, class: "block appearance-none w-full bg-white border border-grey-light hover:border-grey px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline", id: "user" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :user %></p>
-  </div>
+
  <div class="flex items-center justify-between">
-    <%= submit "Salvar Produto",  class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    <%= submit "Cadastrar Estoque",  class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
   </div>
 <% end %>

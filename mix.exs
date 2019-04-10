@@ -20,7 +20,7 @@ defmodule CosmarcaEstoque.MixProject do
   def application do
     [
       mod: {CosmarcaEstoque.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :httpoison]
     ]
   end
 
@@ -48,8 +48,11 @@ defmodule CosmarcaEstoque.MixProject do
       {:argon2_elixir, "~> 1.3"},
       {:ueberauth, "~> 0.6"},
       {:ueberauth_identity, "~> 0.2"},
-      {:guardian, "~> 1.0"}
-    ]
+      {:httpoison, "~> 1.4"},
+      {:poison, "~> 3.1"},
+      {:sweet_xml, "~> 0.6.5"},
+      {:guardian, "~> 1.0"},
+      {:quantum, "~> 2.3"}    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

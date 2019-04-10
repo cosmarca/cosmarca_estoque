@@ -69,7 +69,7 @@
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
 					<li class="mr-6 my-2 md:my-0">
                         <%= link  class: "block py-1 md:py-3 pl-1 align-middle text-blue-dark no-underline hover:text-black border-b-2 border-blue-dark hover:border-blue-dark" ,  to: Routes.page_path(@conn, :index)  do %>
-                            <i class="fas fa-home fa-fw mr-3 text-blue-dark"></i><span class="pb-1 md:pb-0 text-sm">Home</span>
+                            <i class="fas fa-home fa-fw mr-3 text-blue-dark"></i><span class="pb-1 md:pb-0 text-sm">DashBoard</span>
                         <% end %>
                     </li>
 										  <%= if @current_user.role == "admin" do %>
@@ -80,24 +80,11 @@
 													<% end %>
                     		</li>
 										<% end %>
-										<%= if @current_user.role == "admin" do %>
 											<li class="mr-6 my-2 md:my-0">
 													<%= link  class: "block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-purple", to: Routes.products_path(@conn, :index) do %>
 															<i class="fab fa-product-hunt"></i><span class="pb-1 md:pb-0 text-sm">Produtos</span>
-													<% end %>
 											</li>
 										<% end %>
-
-                    <li class="mr-6 my-2 md:my-0">
-                        <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-green">
-                            <i class="fas fa-store"></i><span class="pb-1 md:pb-0 text-sm">Estoque</span>
-                        </a>
-                    </li>
-                    <li class="mr-6 my-2 md:my-0">
-                        <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-red">
-                            <i class="fa fa-wallet fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Payments</span>
-                        </a>
-                    </li>
 				</ul>
 
 				

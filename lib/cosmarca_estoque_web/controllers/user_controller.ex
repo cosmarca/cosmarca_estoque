@@ -6,7 +6,6 @@ defmodule CosmarcaEstoqueWeb.UserController do
 
   plug :verify_permission when action in [:update, :edit, :show]
 
-
   def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, "index.html", users: users)
@@ -21,7 +20,7 @@ defmodule CosmarcaEstoqueWeb.UserController do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "User created successfully.")
+        |> put_flash(:info, "Usuario criado com sucesso")
         |> redirect(to: Routes.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -46,7 +45,7 @@ defmodule CosmarcaEstoqueWeb.UserController do
     case Accounts.update_user(user, user_params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, "User updated successfully.")
+        |> put_flash(:info, "Usuário atualizado com sucesso!")
         |> redirect(to: Routes.user_path(conn, :show, user))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -64,8 +63,9 @@ defmodule CosmarcaEstoqueWeb.UserController do
   end
 
   def verify_permission(conn, _) do
-    %{params: %{"id" => id}} =  conn
+    %{params: %{"id" => id}} = conn
     current_user = conn.assigns.current_user
+
     if current_user.id == String.to_integer(id) or current_user.role == "admin" do
       conn
     else
