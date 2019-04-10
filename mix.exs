@@ -52,9 +52,7 @@ defmodule CosmarcaEstoque.MixProject do
       {:poison, "~> 3.1"},
       {:sweet_xml, "~> 0.6.5"},
       {:guardian, "~> 1.0"},
-      {:quantum, "~> 2.3"},
-      {:timex, "~> 3.0"}
-    ]
+      {:quantum, "~> 2.3"}    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
