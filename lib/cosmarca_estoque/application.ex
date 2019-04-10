@@ -7,11 +7,16 @@ defmodule CosmarcaEstoque.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
+    import Supervisor.Spec, warn: false
     children = [
+
+      
       # Start the Ecto repository
       CosmarcaEstoque.Repo,
       # Start the endpoint when the application starts
-      CosmarcaEstoqueWeb.Endpoint
+      CosmarcaEstoqueWeb.Endpoint,
+      worker(CosmarcaEstoque.Scheduler, [])
+
       # Starts a worker by calling: CosmarcaEstoque.Worker.start_link(arg)
       # {CosmarcaEstoque.Worker, arg},
     ]

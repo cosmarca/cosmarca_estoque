@@ -19,11 +19,20 @@ config :cosmarca_estoque, CosmarcaEstoqueWeb.Endpoint,
 
 # Configures Elixir's Logger
 config :logger, :console,
+  level: :debug,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :cosmarca_estoque, CosmarcaEstoque.Scheduler,
+  jobs: [
+    phoenix_job: [
+      schedule: "*/15 * * * *",
+      task: {CosmarcaEstoque.Task, :work, []},
+    ]
+  ]
 
 config :cosmarca_estoque, CosmarcaEstoqueWeb.Auth.Guardian,
   issuer: "cosmarca_estoque",

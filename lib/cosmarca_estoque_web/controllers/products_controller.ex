@@ -65,17 +65,17 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
     |> redirect(to: Routes.products_path(conn, :index))
   end
 
-  # def verify_permission(conn, params) do
-  #   %{params: %{"id" => id}} = conn
-  #   current_user = conn.assigns.current_user
+  def verify_permission(conn, params) do
+    %{params: %{"id" => id}} = conn
+    current_user = conn.assigns.current_user
     
-  #   if Stocks.get_products!(id).user_id == current_user.id do
-  #     conn
-  #   else
-  #     conn
-  #     |> put_flash(:error, "Você não tem permissao para executar esta ação!")
-  #     |> redirect(to: Routes.page_path(conn, :index))
-  #     |> halt
-  #   end
-  # end
+    if Stocks.get_products!(id).user_id == current_user.id do
+      conn
+    else
+      conn
+      |> put_flash(:error, "Você não tem permissao para executar esta ação!")
+      |> redirect(to: Routes.page_path(conn, :index))
+      |> halt
+    end
+  end
 end
