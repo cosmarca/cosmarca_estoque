@@ -29,7 +29,7 @@ config :phoenix, :json_library, Jason
 config :cosmarca_estoque, CosmarcaEstoque.Scheduler,
   jobs: [
     phoenix_job: [
-      schedule: "*/15 * * * *",
+      schedule: "*/60 * * * *",
       task: {CosmarcaEstoque.Task, :work, []},
     ]
   ]
