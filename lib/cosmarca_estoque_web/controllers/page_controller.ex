@@ -19,9 +19,12 @@ defmodule CosmarcaEstoqueWeb.PageController do
   defp product_info(register) do
     entrada = sum_in(register)
     saida = sum_out(register)
-    percentage =cond do
+
+    percentage = cond do
+      entrada == 0 -> 100
       saida == 0 -> 100
-      true -> 100  - ((saida * 100) / entrada)
+      true ->
+        100  - ((saida * 100) / entrada)
     end
     %{qt_stock: entrada - saida, percentage_stock: percentage}
   end

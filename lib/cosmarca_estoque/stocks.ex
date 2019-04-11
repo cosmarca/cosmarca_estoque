@@ -205,14 +205,14 @@ defmodule CosmarcaEstoque.Stocks do
 
   """
   def create_register(attrs \\ %{}, products_id, user) do
-    %{"input_quantity" => input, "output_quantity" => output} = attrs
+    %{"input_quantity" => input, "output_quantity" => output, "pdf" => pdf, "rastreio" => rastreio} = attrs
 
     get_products!(products_id)
     |> Ecto.build_assoc(:register,
       products_id: products_id,
       user_id: user.id
     )
-    |> Register.changeset(%{"input_quantity" => input, "output_quantity" => output})
+    |> Register.changeset(%{"input_quantity" => input, "output_quantity" => output, "pdf" => pdf, "rastreio" => rastreio})
     |> Repo.insert()
   end
 

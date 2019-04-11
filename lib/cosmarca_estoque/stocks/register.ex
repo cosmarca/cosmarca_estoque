@@ -5,6 +5,8 @@ defmodule CosmarcaEstoque.Stocks.Register do
   schema "registers" do
     field :input_quantity, :integer, default: 0
     field :output_quantity, :integer, default: 0
+    field :pdf, :string
+    field :rastreio, :string
     belongs_to :products, CosmarcaEstoque.Stocks.Products
     belongs_to :user, CosmarcaEstoque.Accounts.User
     timestamps()
@@ -13,7 +15,7 @@ defmodule CosmarcaEstoque.Stocks.Register do
   @doc false
   def changeset(register, attrs) do
     register
-    |> cast(attrs, [:input_quantity, :output_quantity])
+    |> cast(attrs, [:input_quantity, :output_quantity, :pdf, :rastreio])
     |> validate_required([:input_quantity, :output_quantity])
   end
 end
