@@ -17,7 +17,13 @@
     <%= @register.output_quantity %>
 </div>
 
+<div class="border-b p-3">
+    <%= link "Nota Fiscal", class: "bg-blue hover:bg-blue-light text-white font-bold py-2 px-4 rounded-full",  to: @register.pdf %>
+</div>
 
+<div class="border-b p-3">
+    <%= link "Código de Rastreio", class: "bg-blue hover:bg-blue-light text-white font-bold py-2 px-4 rounded-full",  to: @register.rastreio %>
+</div>
 <hr />
   <%= if @current_user.role == "admin" do %>
 
