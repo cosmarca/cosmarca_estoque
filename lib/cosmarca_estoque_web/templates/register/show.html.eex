@@ -17,15 +17,7 @@
     <%= @register.output_quantity %>
 </div>
 
-<div class="border-b p-3">
-    <strong>Nota:</strong>
-    <%= @register.pdf %>
-</div>
 
-<div class="border-b p-3">
-    <strong>Rastreio:</strong>
-    <%= @register.rastreio %>
-</div>
 <hr />
   <%= if @current_user.role == "admin" do %>
 
