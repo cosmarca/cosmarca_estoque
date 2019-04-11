@@ -11,13 +11,11 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
         intial_date = build_date(4, 01)
         final_date = build_date(3, 00)
         {:ok, response} = HTTPoison.post @url, process_body(product.user.key_notazz, intial_date, final_date), @content_type
-        with response.status_code == 200 do
-                response.body
-                |> Poison.decode!
-                |> Enum.map(fn {_id, note} -> Map.take(note, @expected_fields)   end )
-                |> Enum.map( &(notazz_type(&1)) )
-                |> Enum.filter( &(find_products(&1.product_name, product.name)) )
-        end 
+            response.body
+            |> Poison.decode!
+            |> Enum.map(fn {_id, note} -> Map.take(note, @expected_fields)   end )
+            |> Enum.map( &(notazz_type(&1)) )
+            |> Enum.filter( &(find_products(&1.product_name, product.name)) )
     end
     
     def build_date(minus_hour, second) do
