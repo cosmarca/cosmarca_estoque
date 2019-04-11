@@ -5,7 +5,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.RegisterOutput do
     @user_notazz_id 2
 
     def register do
-        products =  CosmarcaEstoque.Stocks.list_products |> CosmarcaEstoque.Repo.preload(:user)
+        CosmarcaEstoque.Stocks.list_products |> CosmarcaEstoque.Repo.preload(:user)
         |> Enum.filter(&(&1.user.key_notazz != nil))
         |> Enum.map( &(create_register(&1)))
     end

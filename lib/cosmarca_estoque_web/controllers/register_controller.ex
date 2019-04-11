@@ -74,7 +74,7 @@ defmodule CosmarcaEstoqueWeb.RegisterController do
 
     conn
     |> put_flash(:info, "Register deleted successfully.")
-    |> redirect(to: Routes.stock_register_path(conn, :index, products_id))
+    |> redirect(to: Routes.products_register_path(conn, :index, products_id))
   end
 
 end
