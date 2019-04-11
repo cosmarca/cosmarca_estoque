@@ -42,7 +42,6 @@ defmodule CosmarcaEstoque.Accounts.User do
         :last_name,
         :password,
         :password_confirmation,
-        :key_notazz, 
         :cnpj, 
         :business_name, 
         :fancy_name, 
