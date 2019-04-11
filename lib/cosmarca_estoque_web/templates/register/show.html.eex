@@ -17,7 +17,22 @@
     <%= @register.output_quantity %>
 </div>
 
+<div class="border-b p-3">       
 
+      <%= link to: @register.pdf, target: "_blank",
+              class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              do %>
+                <i class="far fa-file-pdf"></i>
+          <% end %>
+ |
+               <%= link to: @register.rastreio,  target: "_blank",
+              class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              do %>                <i class="fas fa-truck-loading"></i>
+          <% end %>
+</div>
+
+<div class="border-b p-3">
+</div>
 <hr />
   <%= if @current_user.role == "admin" do %>
 

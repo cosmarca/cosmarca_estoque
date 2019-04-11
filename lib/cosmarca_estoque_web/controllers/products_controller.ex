@@ -65,7 +65,7 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
     |> redirect(to: Routes.products_path(conn, :index))
   end
 
-  def verify_permission(conn, params) do
+  def verify_permission(conn, _params) do
     %{params: %{"id" => id}} = conn
     current_user = conn.assigns.current_user
     
