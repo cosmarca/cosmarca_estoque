@@ -5,14 +5,13 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
 
     @url "https://app.notazz.com/api"
     @content_type  [{"Content-Type", "application/x-www-form-urlencoded"}]
-    @expected_fields ~w(rastreio emissa xml statusNota pdf)
+    @expected_fields ~w( rastreio emissao xml statusNota pdf)
 
     def products_registers(product) do
         intial_date = build_date(4, 01)
         final_date = build_date(3, 00)
         {:ok, response} = HTTPoison.post @url, process_body(product.user.key_notazz, intial_date, final_date), @content_type
         with response.status_code == 200 do
-            IO.inspect response.body |> Poison.decode!
                 response.body
                 |> Poison.decode!
                 |> Enum.map(fn {_id, note} -> Map.take(note, @expected_fields)   end )
@@ -30,17 +29,14 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
          String.contains?(String.downcase(notazz_element_name),String.downcase(product_name))
     end
 
-    defp notazz_type(note) do
-        %{"xml" => xml} = note
+    defp notazz_type(%{"xml" => xml, "rastreio" => rastreio, "pdf" => pdf}) do
         {:ok, response } = HTTPoison.get(xml)
         response.body
-        |> NotazzInformation.create(note.rastreio, note.pdf)
+        |> NotazzInformation.create(rastreio, pdf)
     end 
 
     defp process_body(key, initial_date, final_date) do
-        body = "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{initial_date}%22%2C+%22FINAL_DATE%22%3A+%22#{final_date}%22%7D%7D"
-        IO.inspect body 
-        body
+        "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{initial_date}%22%2C+%22FINAL_DATE%22%3A+%22#{final_date}%22%7D%7D"
     end
     
 end
