@@ -26,7 +26,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformation do
 
     defp xml_to_integer(xml_doc, path) do
          [value | _ ] = String.codepoints(xml_to_string(xml_doc, path))
-         String.to_integer(value)
+         String.to_float(value) |> Kernel.trunc
     end
 
     defp xml_to_string(xml_doc, path) do
