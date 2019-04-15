@@ -101,6 +101,9 @@
   <% end %>
 
  <div class="flex items-center justify-between">
-    <%= submit "Salvar Usuário",  class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    <%= submit "Salvar Usuário",  
+     class: 
+      "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+       %>
   </div>
 <% end %>
