@@ -4,8 +4,10 @@
     Lista de Usuários 
     
     <%= link to: Routes.user_path(@conn, :new),
-      class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-      do %><i class="fas fa-plus-circle"></i><% end %>
+
+      class: 
+      "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+      do %><i class="fas fa-plus"></i><% end %>
   </h3>
 
 	<table class="text-left w-full">
@@ -30,18 +32,18 @@
         <td class="p-4 w-1/4 border-b border-grey-light">
         <div class="flex items-center justify-between">
         <%= link to: Routes.user_path(@conn, :show, user), 
-              class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-              do %>
+              class:  "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+                do %>
                 <i class="fas fa-paper-plane"></i>
           <% end %>
               <%= link to: Routes.user_path(@conn, :edit, user),
-              class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-              do %> 
+              class:  "py-2 px-4 shadow-md no-underline rounded-full bg-green text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-green-light focus:outline-none active:shadow-none mr-2"
+                do %> 
                 <i class="far fa-edit"></i>
               <% end %>
               <%= link to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
-              class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-              do %>
+                           class:  "py-2 px-4 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-red hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
+                 do %>
                 <i class="fas fa-trash"></i>
               <% end %>
             </div>

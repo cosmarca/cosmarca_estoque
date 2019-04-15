@@ -8,8 +8,8 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
     @expected_fields ~w( rastreio emissao xml statusNota pdf)
 
     def products_registers(product) do
-        intial_date = build_date(4, 01)
-        final_date = build_date(3, 00)
+        intial_date = build_date(8, 01)
+        final_date = build_date(7, 00)
         {:ok, response} = HTTPoison.post @url, process_body(product.user.key_notazz, intial_date, final_date), @content_type
             response.body
             |> Poison.decode!
@@ -20,7 +20,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
     
     def build_date(minus_hour, second) do
         date = DateTime.utc_now()
-        "#{date.year}-#{date.month}-#{date.day}+#{date.hour - minus_hour}%3A00%3A#{second}"
+        "#{date.year}-#{date.month}-#{11}+#{17 - minus_hour}%3A00%3A#{second}"
     end
 
     defp find_products(notazz_element_name, product_name) do

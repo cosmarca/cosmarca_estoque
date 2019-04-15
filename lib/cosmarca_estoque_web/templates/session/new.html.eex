@@ -1,6 +1,5 @@
-<div class="w-full max-w-xs">
+<%= form_for @changeset, @action, [class: "w-full max-w-xs"], fn f -> %>
 
-<%= form_for @changeset, @action, [class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"], fn f -> %>
 
   <div class="mb-4">
     <%= label f, :email, class: "block text-grey-darker text-sm font-bold mb-2", for: "email" %>
@@ -23,5 +22,3 @@
     </a>
   </div>
 <% end %>
-
-</div>
