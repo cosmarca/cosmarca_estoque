@@ -8,7 +8,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
     @expected_fields ~w( rastreio emissao xml statusNota pdf)
 
     def products_registers(product) do
-        intial_date = build_date(8, 01)
+        intial_date = build_date(12, 01)
         final_date = build_date(7, 00)
         {:ok, response} = HTTPoison.post @url, process_body(product.user.key_notazz, intial_date, final_date), @content_type
             response.body
