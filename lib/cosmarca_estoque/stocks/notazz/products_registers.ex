@@ -8,8 +8,8 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
     @expected_fields ~w( rastreio emissao xml statusNota pdf)
 
     def products_registers(product) do
-        intial_date = build_date(12, 01)
-        final_date = build_date(7, 00)
+        intial_date = build_date(10, 01)
+        final_date = build_date(09, 00)
         {:ok, response} = HTTPoison.post @url, process_body(product.user.key_notazz, intial_date, final_date), @content_type
             response.body
             |> Poison.decode!
@@ -17,7 +17,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
             |> Enum.map( &(notazz_type(&1)) )
             |> Enum.filter( &(find_products(&1.product_name, product.name)) )
     end
-    
+
     def build_date(minus_hour, second) do
         date = DateTime.utc_now()
         "#{date.year}-#{date.month}-#{11}+#{17 - minus_hour}%3A00%3A#{second}"
@@ -31,10 +31,10 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
         {:ok, response } = HTTPoison.get(xml)
         response.body
         |> NotazzInformation.create(rastreio, pdf)
-    end 
+    end
 
     defp process_body(key, initial_date, final_date) do
         "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{initial_date}%22%2C+%22FINAL_DATE%22%3A+%22#{final_date}%22%7D%7D"
     end
-    
+
 end
