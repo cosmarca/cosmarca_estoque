@@ -30,7 +30,7 @@ config :cosmarca_estoque, CosmarcaEstoque.Scheduler,
   jobs: [
     phoenix_job: [
       schedule: "* * * * *",
-      task: {CosmarcaEstoque.Task, :work, []},
+      task: {CosmarcaEstoque.Task, :work, []}
     ]
   ]
 

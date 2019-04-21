@@ -4,7 +4,6 @@ defmodule CosmarcaEstoqueWeb.RegisterController do
   alias CosmarcaEstoque.Stocks
   alias CosmarcaEstoque.Stocks.Register
 
-
   def index(conn, %{"products_id" => product_id}) do
     registers = Stocks.list_registers(product_id)
     render(conn, "index.html", registers: registers, product: product_id)
@@ -20,15 +19,12 @@ defmodule CosmarcaEstoqueWeb.RegisterController do
     )
   end
 
-  def create(conn, %{"products_id" => products_id,  "register" => register_params}) do
+  def create(conn, %{"products_id" => products_id, "register" => register_params}) do
     case Stocks.create_register(register_params, products_id, conn.assigns.current_user) do
       {:ok, register} ->
         conn
         |> put_flash(:info, "Registro criado com sucesso!")
-        |> redirect(
-          to:
-            Routes.products_register_path(conn, :show, products_id, register)
-        )
+        |> redirect(to: Routes.products_register_path(conn, :show, products_id, register))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset, stock: products_id)
@@ -59,16 +55,14 @@ defmodule CosmarcaEstoqueWeb.RegisterController do
       {:ok, register} ->
         conn
         |> put_flash(:info, "Registro Atualizado com Sucesso!")
-        |> redirect(
-          to: Routes.products_register_path(conn, :show, products_id, register)
-        )
+        |> redirect(to: Routes.products_register_path(conn, :show, products_id, register))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", changeset: changeset, stock: products_id, register: register)
     end
   end
 
-  def delete(conn, %{ "products_id" => products_id, "id" => id}) do
+  def delete(conn, %{"products_id" => products_id, "id" => id}) do
     register = Stocks.get_register!(id)
     {:ok, _register} = Stocks.delete_register(register)
 
@@ -76,5 +70,4 @@ defmodule CosmarcaEstoqueWeb.RegisterController do
     |> put_flash(:info, "Register deleted successfully.")
     |> redirect(to: Routes.products_register_path(conn, :index, products_id))
   end
-
 end

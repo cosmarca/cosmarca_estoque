@@ -23,7 +23,7 @@ defmodule CosmarcaEstoque.Stocks do
   end
 
   def list_products_by_user(user_id) do
-    Enum.filter Repo.all(Products) |> Repo.preload(:register) , &(&1.user_id == user_id)
+    Enum.filter(Repo.all(Products) |> Repo.preload(:register), &(&1.user_id == user_id))
   end
 
   @doc """
@@ -76,7 +76,6 @@ defmodule CosmarcaEstoque.Stocks do
     |> Products.changeset(attrs)
     |> Repo.insert()
   end
-
 
   @doc """
   Updates a products.
@@ -162,7 +161,7 @@ defmodule CosmarcaEstoque.Stocks do
     product.register
   end
 
-    @doc """
+  @doc """
   Returns the list of registers.
 
   ## Examples
@@ -172,7 +171,10 @@ defmodule CosmarcaEstoque.Stocks do
 
   """
   def list_registers_from_user(user_id) do
-    stock = Repo.all(from s in "stocks", where: s.user_id == ^user_id) |> Repo.preload(register: [:products, :user])
+    stock =
+      Repo.all(from s in "stocks", where: s.user_id == ^user_id)
+      |> Repo.preload(register: [:products, :user])
+
     stock.register
   end
 

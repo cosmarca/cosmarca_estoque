@@ -6,17 +6,21 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
 
   # plug :verify_permission when action in [:update, :edit, :delete, :show]
 
-
   def index(conn, _params) do
     case conn.assigns.current_user.role == "admin" do
-      true -> render(conn, "index.html", products: Stocks.list_products())
-      false -> render(conn, "index.html", products: Stocks.list_products_by_user(conn.assigns.current_user.id))
+      true ->
+        render(conn, "index.html", products: Stocks.list_products())
+
+      false ->
+        render(conn, "index.html",
+          products: Stocks.list_products_by_user(conn.assigns.current_user.id)
+        )
     end
   end
 
   def new(conn, _params) do
     changeset = Stocks.change_products(%Products{})
-    render(conn, "new.html", changeset: changeset, users: Stocks.user_for_select() )
+    render(conn, "new.html", changeset: changeset, users: Stocks.user_for_select())
   end
 
   def create(conn, %{"products" => products_params}) do
@@ -39,7 +43,12 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
   def edit(conn, %{"id" => id}) do
     products = Stocks.get_products!(id)
     changeset = Stocks.change_products(products)
-    render(conn, "edit.html", products: products, changeset: changeset, users: Stocks.user_for_select())
+
+    render(conn, "edit.html",
+      products: products,
+      changeset: changeset,
+      users: Stocks.user_for_select()
+    )
   end
 
   def update(conn, %{"id" => id, "products" => products_params}) do
@@ -68,7 +77,7 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
   def verify_permission(conn, _params) do
     %{params: %{"id" => id}} = conn
     current_user = conn.assigns.current_user
-    
+
     if Stocks.get_products!(id).user_id == current_user.id do
       conn
     else

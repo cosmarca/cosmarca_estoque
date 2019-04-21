@@ -7,6 +7,7 @@ defmodule CosmarcaEstoque.Repo.Migrations.CreateProducts do
       add :user_id, references(:users, on_delete: :delete_all)
       timestamps()
     end
+
     create(unique_index(:products, [:name]))
   end
 end

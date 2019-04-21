@@ -10,6 +10,7 @@ defmodule CosmarcaEstoque.Repo.Migrations.CreateRegisters do
 
       timestamps()
     end
+
     create index(:registers, [:products_id])
   end
 end

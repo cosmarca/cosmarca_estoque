@@ -8,9 +8,8 @@ defmodule CosmarcaEstoque.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     import Supervisor.Spec, warn: false
-    children = [
 
-      
+    children = [
       # Start the Ecto repository
       CosmarcaEstoque.Repo,
       # Start the endpoint when the application starts
