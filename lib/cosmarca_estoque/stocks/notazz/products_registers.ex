@@ -26,9 +26,12 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
     |> Enum.filter(&find_products(&1.product_name, product.name))
   end
 
+  @spec build_date(number(), any()) :: <<_::64, _::_*8>>
   def build_date(minus_hour, second) do
     date = DateTime.utc_now()
-    "#{date.year}-#{date.month}-#{11}+#{17 - minus_hour}%3A00%3A#{second}"
+    hour = minus_hour -  date.hour
+    hour = if hour  <  0 do hour + 24 else hour end
+    "#{date.year}-#{date.month}-#{date.day}+#{hour}%3A00%3A#{second}"
   end
 
   defp find_products(notazz_element_name, product_name) do
