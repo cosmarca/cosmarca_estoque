@@ -46,8 +46,12 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
   end
 
   defp process_body(key, initial_date, final_date) do
-    "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{
+    body = "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{
       initial_date
     }%22%2C+%22FINAL_DATE%22%3A+%22#{final_date}%22%7D%7D"
+    IO.inspect initial_date
+    IO.inspect final_date
+    IO.inspect body
+    body
   end
 end
