@@ -4,7 +4,7 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
   alias CosmarcaEstoque.Stocks
   alias CosmarcaEstoque.Stocks.Products
 
-  # plug :verify_permission when action in [:update, :edit, :delete, :show]
+  plug :verify_permission when action in [:update, :edit, :delete, :show]
 
   def index(conn, _params) do
     case conn.assigns.current_user.role == "admin" do
@@ -77,8 +77,7 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
   def verify_permission(conn, _params) do
     %{params: %{"id" => id}} = conn
     current_user = conn.assigns.current_user
-
-    if Stocks.get_products!(id).user_id == current_user.id do
+    if Stocks.get_products!(id).user_id == current_user.id or current_user.role == "admin" do
       conn
     else
       conn
