@@ -29,7 +29,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
   @spec build_date(number(), any()) :: <<_::64, _::_*8>>
   def build_date(minus_hour, second) do
     date = DateTime.utc_now()
-    hour = minus_hour -  date.hour
+    hour = date.hour - minus_hour
     hour = if hour  <  0 do hour + 24 else hour end
     "#{date.year}-#{date.month}-#{date.day}+#{hour}%3A00%3A#{second}"
   end
