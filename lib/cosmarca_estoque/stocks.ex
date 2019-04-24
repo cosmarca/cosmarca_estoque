@@ -124,8 +124,6 @@ defmodule CosmarcaEstoque.Stocks do
     Products.changeset(products, %{})
   end
 
-  alias CosmarcaEstoque.Stocks.Stock
-
   @doc """
     Returns the list of users without stock.
 

@@ -2,12 +2,6 @@
 
   <h3 class="text-grey-dark mb-8">
     Registros 
-      <%= if @current_user.role == "admin" do %>
-
-    <%= link to: Routes.products_register_path(@conn, :new, @product),
-      class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-      do %><i class="fas fa-plus-circle"></i><% end %>
-      <% end %>
   </h3>
 
 	<table class="text-left w-full">
@@ -37,31 +31,31 @@
         <td class="p-4 w-1/4 border-b border-grey-light">
         <div class="flex items-center justify-between">
         <%= link to: Routes.products_register_path(@conn, :show, @product, register), 
-              class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="fas fa-paper-plane"></i>
           <% end %>
                       <%= if  register.pdf  != nil and  register.rastreio  != nil do %>
       <%= link to: register.pdf, target: "_blank",
-              class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="far fa-file-pdf"></i>
           <% end %>
 
                <%= link to: register.rastreio,  target: "_blank",
-              class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue focus:outline-none active:shadow-none mr-2"
               do %>                <i class="fas fa-truck-loading"></i>
           <% end %>
             <% end %>
             <%= if @current_user.role == "admin" do %>
 
                      <%= link to:  Routes.products_register_path(@conn, :edit, @product, register) , 
-              class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-green text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-green-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="far fa-edit"></i>
           <% end %>
               <%= link to: Routes.products_register_path(@conn, :delete, @product, register), method: :delete, data: [confirm: "Tem certeza?"],
-              class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="fas fa-trash"></i>
               <% end %>
@@ -76,3 +70,11 @@
 	</table>
 </div>
 <span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_path(@conn, :show, @product) %></span>
+
+            <%= if @current_user.role == "admin" do %>
+
+    <%= link to: Routes.products_register_path(@conn, :new, @product),
+     class: 
+      "h-16 w-16 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+      do %><i class="fas fa-plus"></i><% end %>
+      <% end %>

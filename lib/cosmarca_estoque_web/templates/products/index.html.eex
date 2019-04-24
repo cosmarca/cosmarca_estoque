@@ -2,12 +2,7 @@
 
   <h3 class="text-grey-dark mb-8">
     Lista de Produtos 
-      <%= if @current_user.role == "admin" do %>
 
-    <%= link to: Routes.products_path(@conn, :new),
-      class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-      do %><i class="fas fa-plus-circle"></i><% end %>
-      <% end %>
   </h3>
 
 	<table class="text-left w-full">
@@ -25,19 +20,19 @@
         <td class="p-4 w-1/4 border-b border-grey-light">
         <div class="flex items-center justify-between">
         <%= link to: Routes.products_path(@conn, :show, products), 
-              class: "bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                      class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="fas fa-paper-plane"></i>
           <% end %>
             <%= if @current_user.role == "admin" do %>
 
               <%= link to: Routes.products_path(@conn, :edit, products),
-              class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-green text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-green-light focus:outline-none active:shadow-none mr-2"
               do %> 
                 <i class="far fa-edit"></i>
               <% end %>
               <%= link to: Routes.products_path(@conn, :delete, products), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
-              class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="fas fa-trash"></i>
               <% end %>
@@ -51,3 +46,11 @@
 		</tbody>
 	</table>
 </div>
+
+            <%= if @current_user.role == "admin" do %>
+
+    <%= link to: Routes.products_path(@conn, :new),
+     class: 
+      "h-16 w-16 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+      do %><i class="fas fa-plus"></i><% end %>
+      <% end %>

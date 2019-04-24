@@ -30,7 +30,14 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
   def build_date(minus_hour, second) do
     date = DateTime.utc_now()
     hour = date.hour - minus_hour
-    hour = if hour  <  0 do hour + 24 else hour end
+
+    hour =
+      if hour < 0 do
+        hour + 24
+      else
+        hour
+      end
+
     "#{date.year}-#{date.month}-#{date.day}+#{hour}%3A00%3A#{second}"
   end
 
@@ -46,12 +53,8 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
   end
 
   defp process_body(key, initial_date, final_date) do
-    body = "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{
+    "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{
       initial_date
     }%22%2C+%22FINAL_DATE%22%3A+%22#{final_date}%22%7D%7D"
-    IO.inspect initial_date
-    IO.inspect final_date
-    IO.inspect body
-    body
   end
 end

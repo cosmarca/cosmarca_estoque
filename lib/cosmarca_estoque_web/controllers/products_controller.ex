@@ -77,6 +77,7 @@ defmodule CosmarcaEstoqueWeb.ProductsController do
   def verify_permission(conn, _params) do
     %{params: %{"id" => id}} = conn
     current_user = conn.assigns.current_user
+
     if Stocks.get_products!(id).user_id == current_user.id or current_user.role == "admin" do
       conn
     else
