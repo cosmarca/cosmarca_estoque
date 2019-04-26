@@ -7,6 +7,8 @@ defmodule CosmarcaEstoque.Stocks.Register do
     field :output_quantity, :integer, default: 0
     field :pdf, :string, default: ""
     field :rastreio, :string, default: ""
+    field :xNf, :string
+    field :client_name, :string
     belongs_to :products, CosmarcaEstoque.Stocks.Products
     belongs_to :user, CosmarcaEstoque.Accounts.User
     timestamps()
