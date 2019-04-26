@@ -18,6 +18,8 @@ defmodule CosmarcaEstoque.Stocks.Notazz.RegisterOutput do
         "input_quantity" => 0,
         "output_quantity" => x.sell_amount,
         "pdf" => x.pdf,
+        "nNf" => x.xNf,
+        "client_name" => x.client_name,
         "rastreio" => x.rastreio
       }
 

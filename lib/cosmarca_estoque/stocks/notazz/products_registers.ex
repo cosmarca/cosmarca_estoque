@@ -9,7 +9,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
 
   @spec products_registers(atom() | %{user: atom() | %{key_notazz: any()}}) :: [any()]
   def products_registers(product) do
-    intial_date = build_date(6, 00, 00)
+    intial_date = build_date(12, 00, 00)
     final_date = build_date(6, 59, 59)
 
     {:ok, response} =
@@ -45,9 +45,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
   end
 
   defp notazz_type(%{"xml" => xml, "rastreio" => rastreio, "pdf" => pdf}) do
-    IO.inspect(xml)
     {:ok, response} = HTTPoison.get(xml)
-
     response.body
     |> NotazzInformation.create(rastreio, pdf)
   end
