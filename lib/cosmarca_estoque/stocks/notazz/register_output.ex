@@ -18,11 +18,11 @@ defmodule CosmarcaEstoque.Stocks.Notazz.RegisterOutput do
         "input_quantity" => 0,
         "output_quantity" => x.sell_amount,
         "pdf" => x.pdf,
-        "nNf" => x.xNf,
+        "nNf" => x.nNf,
         "client_name" => x.client_name,
         "rastreio" => x.rastreio
       }
-
+      IO.inspect register
       Stocks.create_register(
         register,
         product.id,

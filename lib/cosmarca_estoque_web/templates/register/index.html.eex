@@ -1,36 +1,52 @@
-<div class="container bg-white">
 
-  <h3 class="text-grey-dark mb-8">
-    Registros 
-  </h3>
+  <div class="flex mb-4">
+  
+    <div class="flex-1 text-center border-b border-r border-grey-light h-12">
+    Dados do Registro
+    </div>
+    <div class="flex-1 text-center border-b border-r border-grey-light uppercase h-12">
+    Nota Fiscal
+    </div>
+    <div class="flex-1 text-center border-b border-r border-blue-light uppercase h-12">
+     Cliente
+    </div>
+    <div class="flex-1 text-center border-b border-r border-green-light uppercase h-12">
+      Qt. Entrada
+    </div>
+    <div class="flex-1 text-center border-b border-r border-red-light uppercase h-12">
+      Qt. Saida
+    </div>
 
-	<table class="text-left w-full">
-		<thead class="flex text-white w-full">
-			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Registro</th>
-  			<th class="p-4 w-1/4 bg-green-lightest font-bold uppercase text-sm text-green-dark border-b border-green-light">Quantidade de Entrada</th>
-        <th class="p-4 w-1/4 bg-red-lightest font-bold uppercase text-sm text-red-dark border-b border-red-light">Quantidade de Saida</th>
-        <th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Ações</th>
-			</tr>
-		</thead>
-		<tbody class="bg-white flex flex-col items-center justify-between w-full">
+    <div class="flex-1 text-center border-b border-r border-grey-light uppercase h-12">
+    Acoes
+    </div>
+</div>
+
 <%= for register <- @registers do %>
 
       <%= if register.input_quantity >= register.output_quantity  do %>
-          <tr class="flex w-full mb-4 hover:bg-green-lightest">
-            <td class="p-4 w-1/4 border-b border-green-light downcase text-sm"> <%= register.user.first_name %> - <%= register.updated_at %></td>
-            <td class="p-4 w-1/4 bg-green-lightest border-b border-green-light uppercase"><%= register.input_quantity %></td>
-            <td class="p-4 w-1/4 bg-green-lightest border-b border-green-light uppercase"><%= register.output_quantity %></td>
 
-      <% else %>
-          <tr class="flex w-full mb-4 hover:bg-red-lightest">
-            <td class="p-4 w-1/4 border-b border-red-light downcase text-sm"> <%= register.user.first_name %> - <%= register.updated_at %></td>
-            <td class="p-4 w-1/4 bg-red-lightest border-b border-red-light uppercase"><%= register.input_quantity %></td>
-            <td class="p-4 w-1/4 bg-red-lightest border-b border-red-light uppercase"><%= register.output_quantity %></td>
-      <% end %>
-        <td class="p-4 w-1/4 border-b border-grey-light">
-        <div class="flex items-center justify-between">
-        <%= link to: Routes.products_register_path(@conn, :show, @product, register), 
+  <div class="flex hover:bg-green-lightest mb-4">
+  
+    <div class="flex-1 text-center border-b border-grey-light h-12">
+      <%= register.user.first_name %> - <%= register.updated_at %>
+    </div>
+    <div class="flex-1 text-center border-b border-grey-light uppercase h-12">
+      <%= register.nNf %>
+    </div>
+    <div class="flex-1 text-center border-b border-blue-light uppercase h-12">
+      <%= register.client_name %>
+    </div>
+    <div class="flex-1 text-center border-b border-green-light uppercase h-12">
+      <%= register.input_quantity %>
+    </div>
+    <div class="flex-1 text-center border-b border-red-light uppercase h-12">
+      <%= register.output_quantity %>
+    </div>
+
+    <div class="flex-1 text-center border-b border-grey-light uppercase h-12">
+
+       <%= link to: Routes.products_register_path(@conn, :show, @product, register), 
               class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="fas fa-paper-plane"></i>
@@ -60,16 +76,67 @@
                 <i class="fas fa-trash"></i>
               <% end %>
               <% end%>
-            </div>
+     
+  </div>
+  </div>
+          <% else %>
+  <div class="flex hover:bg-red-lightest mb-4">
+    <div class="flex-1 text-center border-b border-grey-light h-12">
+      <%= register.user.first_name %> - <%= register.updated_at %>
+    </div>
+    <div class="flex-1 text-center border-b border-grey-light uppercase h-12">
+      <%= register.nNf %>
+    </div>
+    <div class="flex-1 text-center border-b border-blue-light uppercase h-12">
+      <%= register.client_name %>
+    </div>
+    <div class="flex-1 text-center border-b border-green-light uppercase h-12">
+      <%= register.input_quantity %>
+    </div>
+    <div class="flex-1 text-center border-b border-red-light uppercase h-12">
+      <%= register.output_quantity %>
+    </div>
 
-        </td>
+    <div class="flex-1  text-center border-b border-grey-light uppercase h-12">
+            <%= link to: Routes.products_register_path(@conn, :show, @product, register), 
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+              do %>
+                <i class="fas fa-paper-plane"></i>
+          <% end %>
+                      <%= if  register.pdf  != nil and  register.rastreio  != nil do %>
+      <%= link to: register.pdf, target: "_blank",
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
+              do %>
+                <i class="far fa-file-pdf"></i>
+          <% end %>
 
-			</tr>
+               <%= link to: register.rastreio,  target: "_blank",
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue-dark focus:outline-none active:shadow-none mr-2"
+              do %>                <i class="fas fa-truck-loading"></i>
+          <% end %>
+            <% end %>
+            <%= if @current_user.role == "admin" do %>
+
+                     <%= link to:  Routes.products_register_path(@conn, :edit, @product, register) , 
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-green text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-green-light focus:outline-none active:shadow-none mr-2"
+              do %>
+                <i class="far fa-edit"></i>
+          <% end %>
+              <%= link to: Routes.products_register_path(@conn, :delete, @product, register), method: :delete, data: [confirm: "Tem certeza?"],
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
+              do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+              <% end%>
+     
+    </div>
+  </div>
       <% end %>
-		</tbody>
-	</table>
-</div>
-<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_path(@conn, :show, @product) %></span>
+
+      <% end %>
+
+<span>
+<%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_path(@conn, :show, @product) %></span> 
 
             <%= if @current_user.role == "admin" do %>
 
@@ -77,4 +144,4 @@
      class: 
       "h-16 w-16 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
       do %><i class="fas fa-plus"></i><% end %>
-      <% end %>
+      <% end %> 

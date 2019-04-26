@@ -34,7 +34,6 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformation do
       rastreio: rastreio,
       pdf: pdf
     }
-    IO.inspect nota
     nota
   end
 
