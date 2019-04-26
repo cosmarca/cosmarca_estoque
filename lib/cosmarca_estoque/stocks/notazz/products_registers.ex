@@ -9,8 +9,8 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
 
   @spec products_registers(atom() | %{user: atom() | %{key_notazz: any()}}) :: [any()]
   def products_registers(product) do
-    intial_date = build_date(7, 01)
-    final_date = build_date(6, 00)
+    intial_date = build_date(6, 00, 00)
+    final_date = build_date(6, 59, 59)
 
     {:ok, response} =
       HTTPoison.post(
@@ -26,19 +26,18 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
     |> Enum.filter(&find_products(&1.product_name, product.name))
   end
 
-  @spec build_date(number(), any()) :: <<_::64, _::_*8>>
-  def build_date(minus_hour, second) do
+  def build_date(minus_hour, minute, second) do
     date = DateTime.utc_now()
     hour = date.hour - minus_hour
 
-    hour =
+    {day, hour} =
       if hour < 0 do
-        hour + 24
+        {date.day - 1, hour + 24}
       else
-        hour
+        {date.day, hour}
       end
 
-    "#{date.year}-#{date.month}-#{date.day}+#{hour}%3A00%3A#{second}"
+    "#{date.year}-#{date.month}-#{day}+#{hour}%3A#{minute}%3A#{second}"
   end
 
   defp find_products(notazz_element_name, product_name) do
@@ -46,6 +45,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
   end
 
   defp notazz_type(%{"xml" => xml, "rastreio" => rastreio, "pdf" => pdf}) do
+    IO.inspect(xml)
     {:ok, response} = HTTPoison.get(xml)
 
     response.body
@@ -53,8 +53,14 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
   end
 
   defp process_body(key, initial_date, final_date) do
-    "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{
-      initial_date
-    }%22%2C+%22FINAL_DATE%22%3A+%22#{final_date}%22%7D%7D"
+    body =
+      "fields=%7B%22API_KEY%22+%3A+%22#{key}%22%2C+%22METHOD%22%3A+%22consult_all_nfe_55%22%2C+%22FILTER%22%3A+%7B+%22STATUS%22+%3A%22Autorizada%22%2C+%22INITIAL_DATE%22%3A+%22#{
+        initial_date
+      }%22%2C+%22FINAL_DATE%22%3A+%22#{final_date}%22%7D%7D"
+
+    IO.inspect(initial_date)
+    IO.inspect(final_date)
+    IO.inspect(body)
+    body
   end
 end

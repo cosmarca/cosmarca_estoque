@@ -43,7 +43,7 @@
           <% end %>
 
                <%= link to: register.rastreio,  target: "_blank",
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue focus:outline-none active:shadow-none mr-2"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue-dark focus:outline-none active:shadow-none mr-2"
               do %>                <i class="fas fa-truck-loading"></i>
           <% end %>
             <% end %>
