@@ -19,16 +19,24 @@
 
 <div class="border-b p-3">       
 
+
+    <div class="flex-1 text-center border-b border-grey-light uppercase h-12">
+
+
+                      <%= if  @register.pdf  != nil and  @register.rastreio  != nil do %>
       <%= link to: @register.pdf, target: "_blank",
-              class: "bg-red hover:bg-red-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="far fa-file-pdf"></i>
           <% end %>
- |
+
                <%= link to: @register.rastreio,  target: "_blank",
-              class: "bg-green hover:bg-green-dark text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue-dark focus:outline-none active:shadow-none mr-2"
               do %>                <i class="fas fa-truck-loading"></i>
           <% end %>
+            <% end %>
+          
+  </div>
 </div>
 
 <div class="border-b p-3">
@@ -37,5 +45,7 @@
   <%= if @current_user.role == "admin" do %>
 
 <span><%= link "Editar", class: "bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_register_path(@conn, :edit, @stock, @register) %></span>
+<span><%= link "Deletar", class: "bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_register_path(@conn, :delete, @stock, @register), method: :delete, data: [confirm: "Tem certeza?"] %></span>
+
 <%end %>
 <span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_register_path(@conn, :index, @stock ) %></span>

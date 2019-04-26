@@ -16,14 +16,11 @@
     <div class="flex-1 text-center border-b border-r border-red-light uppercase h-12">
       Qt. Saida
     </div>
-
-    <div class="flex-1 text-center border-b border-r border-grey-light uppercase h-12">
-    Acoes
-    </div>
 </div>
 
 <%= for register <- @registers do %>
-
+       <%= link to: Routes.products_register_path(@conn, :show, @product, register)  do %>
+        
       <%= if register.input_quantity >= register.output_quantity  do %>
 
   <div class="flex hover:bg-green-lightest mb-4">
@@ -44,40 +41,6 @@
       <%= register.output_quantity %>
     </div>
 
-    <div class="flex-1 text-center border-b border-grey-light uppercase h-12">
-
-       <%= link to: Routes.products_register_path(@conn, :show, @product, register), 
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
-              do %>
-                <i class="fas fa-paper-plane"></i>
-          <% end %>
-                      <%= if  register.pdf  != nil and  register.rastreio  != nil do %>
-      <%= link to: register.pdf, target: "_blank",
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
-              do %>
-                <i class="far fa-file-pdf"></i>
-          <% end %>
-
-               <%= link to: register.rastreio,  target: "_blank",
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue-dark focus:outline-none active:shadow-none mr-2"
-              do %>                <i class="fas fa-truck-loading"></i>
-          <% end %>
-            <% end %>
-            <%= if @current_user.role == "admin" do %>
-
-                     <%= link to:  Routes.products_register_path(@conn, :edit, @product, register) , 
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-green text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-green-light focus:outline-none active:shadow-none mr-2"
-              do %>
-                <i class="far fa-edit"></i>
-          <% end %>
-              <%= link to: Routes.products_register_path(@conn, :delete, @product, register), method: :delete, data: [confirm: "Tem certeza?"],
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
-              do %>
-                <i class="fas fa-trash"></i>
-              <% end %>
-              <% end%>
-     
-  </div>
   </div>
           <% else %>
   <div class="flex hover:bg-red-lightest mb-4">
@@ -96,43 +59,9 @@
     <div class="flex-1 text-center border-b border-red-light uppercase h-12">
       <%= register.output_quantity %>
     </div>
-
-    <div class="flex-1  text-center border-b border-grey-light uppercase h-12">
-            <%= link to: Routes.products_register_path(@conn, :show, @product, register), 
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
-              do %>
-                <i class="fas fa-paper-plane"></i>
-          <% end %>
-                      <%= if  register.pdf  != nil and  register.rastreio  != nil do %>
-      <%= link to: register.pdf, target: "_blank",
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
-              do %>
-                <i class="far fa-file-pdf"></i>
-          <% end %>
-
-               <%= link to: register.rastreio,  target: "_blank",
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue-dark focus:outline-none active:shadow-none mr-2"
-              do %>                <i class="fas fa-truck-loading"></i>
-          <% end %>
-            <% end %>
-            <%= if @current_user.role == "admin" do %>
-
-                     <%= link to:  Routes.products_register_path(@conn, :edit, @product, register) , 
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-green text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-green-light focus:outline-none active:shadow-none mr-2"
-              do %>
-                <i class="far fa-edit"></i>
-          <% end %>
-              <%= link to: Routes.products_register_path(@conn, :delete, @product, register), method: :delete, data: [confirm: "Tem certeza?"],
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
-              do %>
-                <i class="fas fa-trash"></i>
-              <% end %>
-              <% end%>
-     
-    </div>
   </div>
       <% end %>
-
+          <% end %>
       <% end %>
 
 <span>
