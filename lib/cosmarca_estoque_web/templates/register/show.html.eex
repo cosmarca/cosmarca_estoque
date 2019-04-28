@@ -7,6 +7,14 @@
     <strong>Produto:</strong>
     <%= @register.products.name %>
 </div>
+<div class="border-b p-3">
+    <strong>Nota Fiscal:</strong>
+    <%= @register.nNf %>
+</div>
+<div class="border-b p-3">
+    <strong>Nome do Cliente:</strong>
+    <%= @register.client_name %>
+</div>
 
 <div class="border-b p-3">
     <strong>Quantitade Entrada:</strong>
