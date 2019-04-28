@@ -1,13 +1,13 @@
 
-  <div class="flex mb-4">
+  <div class="flex text-xs mb-4">
   
-    <div class="flex-1 text-center border-b border-r border-grey-light h-12">
+    <div id="head-register" class="flex-1 text-center border-b border-r border-grey-light h-12">
     Dados do Registro
     </div>
-    <div class="flex-1 text-center border-b border-r border-grey-light uppercase h-12">
+    <div id="head-register-nf"  class="flex-1 text-center border-b border-r border-grey-light uppercase h-12">
     Nota Fiscal
     </div>
-    <div class="flex-1 text-center border-b border-r border-blue-light uppercase h-12">
+    <div id="head-register-client" class="flex-1 text-center border-b border-r border-blue-light uppercase h-12">
      Cliente
     </div>
     <div class="flex-1 text-center border-b border-r border-green-light uppercase h-12">
@@ -23,40 +23,40 @@
         
       <%= if register.input_quantity >= register.output_quantity  do %>
 
-  <div class="flex hover:bg-green-lightest mb-4">
+  <div class="flex text-xs hover:bg-green-lightest mb-4">
   
-    <div class="flex-1 text-center border-b border-grey-light h-12">
+    <div id="field-register" class="flex-1 text-center border-b border-grey-light h-12">
       <%= register.user.first_name %> - <%= register.updated_at %>
     </div>
-    <div class="flex-1 text-center border-b border-grey-light uppercase h-12">
+    <div id="field-register-nf" class="flex-1 text-center border-b border-grey-light uppercase h-12">
       <%= register.nNf %>
     </div>
-    <div class="flex-1 text-center border-b border-blue-light uppercase h-12">
+    <div id="field-register-client" class="flex-1 text-center border-b border-blue-light uppercase h-12">
       <%= register.client_name %>
     </div>
-    <div class="flex-1 text-center border-b border-green-light uppercase h-12">
+    <div id="field-register-input" class="flex-1 text-center bg-green-lightest border-b border-green-light uppercase h-12">
       <%= register.input_quantity %>
     </div>
-    <div class="flex-1 text-center border-b border-red-light uppercase h-12">
+    <div id="field-register-output" class="flex-1 text-center border-b border-red-light uppercase h-12">
       <%= register.output_quantity %>
     </div>
 
   </div>
           <% else %>
-  <div class="flex hover:bg-red-lightest mb-4">
-    <div class="flex-1 text-center border-b border-grey-light h-12">
+  <div class="flex text-xs hover:bg-red-lightest mb-4">
+    <div id="field-register" class="flex-1 text-center border-b border-grey-light h-12">
       <%= register.user.first_name %> - <%= register.updated_at %>
     </div>
-    <div class="flex-1 text-center border-b border-grey-light uppercase h-12">
+    <div id="field-register-nf" class="flex-1 text-center border-b border-grey-light uppercase h-12">
       <%= register.nNf %>
     </div>
-    <div class="flex-1 text-center border-b border-blue-light uppercase h-12">
+    <div id="field-register-client" class="flex-1 text-center border-b border-blue-light uppercase h-12">
       <%= register.client_name %>
     </div>
-    <div class="flex-1 text-center border-b border-green-light uppercase h-12">
+    <div id="field-register-input" class="flex-1 text-center border-b border-green-light uppercase h-12">
       <%= register.input_quantity %>
     </div>
-    <div class="flex-1 text-center border-b border-red-light uppercase h-12">
+    <div id="field-register-output" class="flex-1 text-center border-b bg-red-lightest border-red-light uppercase h-12">
       <%= register.output_quantity %>
     </div>
   </div>

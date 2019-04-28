@@ -20,27 +20,23 @@
 <div class="border-b p-3">       
 
 
-    <div class="flex-1 text-center border-b border-grey-light uppercase h-12">
 
 
                       <%= if  @register.pdf  != nil and  @register.rastreio  != nil do %>
       <%= link to: @register.pdf, target: "_blank",
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
+              class:  "py-2 px-4 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="far fa-file-pdf"></i>
           <% end %>
 
                <%= link to: @register.rastreio,  target: "_blank",
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue-dark focus:outline-none active:shadow-none mr-2"
+              class:  "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue-dark focus:outline-none active:shadow-none mr-2"
               do %>                <i class="fas fa-truck-loading"></i>
           <% end %>
             <% end %>
           
-  </div>
 </div>
 
-<div class="border-b p-3">
-</div>
 <hr />
   <%= if @current_user.role == "admin" do %>
 

@@ -2,3 +2,13 @@ a  {
     text-decoration: none;
     color: black;
 }
+
+
+@media screen and (max-width: 600px){
+    #field-register{ display: none;}
+    #field-register-nf{display: none;}
+    #field-register-client{display: none;}
+    #head-register{display: none;}
+    #head-register-client{display: none;}
+    #head-register-nf{display: none;}
+}   
