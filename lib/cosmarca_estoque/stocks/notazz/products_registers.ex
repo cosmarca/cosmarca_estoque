@@ -9,8 +9,8 @@ defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
 
   @spec products_registers(atom() | %{user: atom() | %{key_notazz: any()}}) :: [any()]
   def products_registers(product) do
-    intial_date = build_date(6, 00, 00)
-    final_date = build_date(6, 59, 59)
+    intial_date = build_date(8, 00, 00)
+    final_date = build_date(8, 59, 59)
 
     {:ok, response} =
       HTTPoison.post(
