@@ -8,7 +8,6 @@ defmodule CosmarcaEstoqueWeb.NotazzController do
 
 
   def create(conn, params) do
-    IO.inspect conn
     IO.inspect params
     # with {:ok, %Notazz{} = notazz} <- Notazzs.create_notazz(notazz_params) do
       conn
