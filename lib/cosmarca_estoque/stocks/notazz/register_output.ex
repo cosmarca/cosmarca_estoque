@@ -22,7 +22,6 @@ defmodule CosmarcaEstoque.Stocks.Notazz.RegisterOutput do
         "client_name" => x.client_name,
         "rastreio" => x.rastreio
       }
-      IO.inspect register
       Stocks.create_register(
         register,
         product.id,
