@@ -8,16 +8,27 @@ defmodule CosmarcaEstoqueWeb.NotazzController do
   alias CosmarcaEstoque.Stocks.Notazz.RegisterOutput
   alias CosmarcaEstoque.Stocks
 
-  def create(conn, %{"xml" => xml, "pdf" => pdf}) do
-    nota = notazz_type(xml, nil, pdf)
+  def create(conn, %{"xml" => xml, "pdf" => pdf, "statusNota" => statusNota}) do
 
-    Stocks.list_products()
-    |> Enum.find(&find_products(nota.product_name, &1.name))
-    |> RegisterOutput.create_register(nota)
+    cond do
+      statusNota == "Autorizada" ->
+        nota = notazz_type(xml, nil, pdf)
 
-    conn
-    |> put_status(:created)
-    |> render("show.json", notazz: nota.product_name)
+        Stocks.list_products()
+        |> Enum.find(&find_products(nota.product_name, &1.name))
+        |> RegisterOutput.create_register(nota)
+
+        conn
+        |> put_status(:created)
+        |> render("show.json", notazz: nota.product_name)
+
+      true ->
+        conn
+        |> put_status(:created)
+        |> render("show.json", notazz: "Erro ao processar a Nota")
+
+    end
+
 
   end
 
