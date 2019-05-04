@@ -13,7 +13,6 @@
                         'Elixir.CosmarcaEstoque.Application',
                         'Elixir.CosmarcaEstoque.Auth.GuardianSerializer',
                         'Elixir.CosmarcaEstoque.DataCase',
-                        'Elixir.CosmarcaEstoque.Notazzs',
                         'Elixir.CosmarcaEstoque.Notazzs.Notazz',
                         'Elixir.CosmarcaEstoque.Repo',
                         'Elixir.CosmarcaEstoque.Scheduler',

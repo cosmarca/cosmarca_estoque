@@ -159,6 +159,9 @@ defmodule CosmarcaEstoque.Stocks do
     product.register
   end
 
+  def get_product_by_name(name), do: Repo.get_by(Products, name: name)
+
+
   @doc """
   Returns the list of registers.
 
