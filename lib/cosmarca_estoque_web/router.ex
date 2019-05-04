@@ -59,6 +59,5 @@ defmodule CosmarcaEstoqueWeb.Router do
   scope "/api", CosmarcaEstoqueWeb do
     pipe_through :api
     resources "/nota", NotazzController, except: [:new, :edit]
-
   end
 end

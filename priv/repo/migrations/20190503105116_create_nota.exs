@@ -7,6 +7,5 @@ defmodule CosmarcaEstoque.Repo.Migrations.CreateNota do
 
       timestamps()
     end
-
   end
 end

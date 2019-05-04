@@ -1,8 +1,6 @@
 defmodule CosmarcaEstoque.Stocks.Notazz.Producs_Registers do
   use HTTPoison.Base
 
-  alias CosmarcaEstoque.Stocks.Notazz.NotazzInformation
-
   # @url "https://app.notazz.com/api"
   # @content_type [{"Content-Type", "application/x-www-form-urlencoded"}]
   # @expected_fields ~w( rastreio emissao xml statusNota pdf)

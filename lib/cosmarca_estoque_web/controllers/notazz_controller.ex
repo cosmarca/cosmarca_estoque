@@ -6,23 +6,19 @@ defmodule CosmarcaEstoqueWeb.NotazzController do
   # alias CosmarcaEstoque.Accounts
   action_fallback CosmarcaEstoqueWeb.FallbackController
   alias CosmarcaEstoque.Stocks.Notazz.RegisterOutput
-alias CosmarcaEstoque.Stocks
+  alias CosmarcaEstoque.Stocks
 
-  def create(conn, params) do
-    %{"xml" => xml, "pdf" => pdf, "token" => token} = params
-
+  def create(conn, %{"xml" => xml, "pdf" => pdf}) do
     nota = notazz_type(xml, nil, pdf)
-    Stocks.get_product_by_name(nota.product_name)
+
+    Stocks.list_products()
+    |> Enum.find(&find_products(nota.product_name, &1.name))
     |> RegisterOutput.create_register(nota)
 
-    # Accounts.get_user_by_token(token)
+    conn
+    |> put_status(:created)
+    |> render("show.json", notazz: nota.product_name)
 
-    # with {:ok, %Notazz{} = notazz} <- Notazzs.create_notazz(notazz_params) do
-      conn
-      |> put_status(:created)
-      # |> put_resp_header("location", Routes.notazz_path(conn, :show, notazz))
-      |> render("show.json", notazz: nil)
-    # end
   end
 
   defp find_products(notazz_element_name, product_name) do
@@ -34,5 +30,4 @@ alias CosmarcaEstoque.Stocks
     response.body
     |> NotazzInformation.create(rastreio, pdf)
   end
-
 end
