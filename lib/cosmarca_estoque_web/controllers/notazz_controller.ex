@@ -17,19 +17,19 @@ defmodule CosmarcaEstoqueWeb.NotazzController do
         Stocks.list_products()
         |> Enum.find(&find_products(nota.product_name, &1.name))
         |> RegisterOutput.create_register(nota)
-
-        conn
-        |> put_status(:created)
-        |> render("show.json", notazz: nota.product_name)
+        mensagemRetorno(conn, nota.product_name)
 
       true ->
-        conn
-        |> put_status(:created)
-        |> render("show.json", notazz: "Erro ao processar a Nota")
-
+        mensagemRetorno(conn, "Erro ao processar a Nota")
     end
 
 
+  end
+
+  defp mensagemRetorno(conn, msg) do
+    conn
+    |> put_status(:created)
+    |> render("show.json", notazz: msg)
   end
 
   defp find_products(notazz_element_name, product_name) do
