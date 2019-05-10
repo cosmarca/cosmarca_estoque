@@ -13,7 +13,7 @@ config :cosmarca_estoque, CosmarcaEstoqueWeb.Endpoint,
   load_from_system_env: true,
   http: [:inet6, port: System.get_env("PORT") || 4000],
   url: [host: "cosmarca.com.br", port: 80],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]]
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true,
   secrete_key_base: "${SECRET_KEY_BASE}"
