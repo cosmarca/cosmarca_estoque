@@ -9,36 +9,36 @@
 	<table class="text-left w-full">
 		<thead class="flex text-white w-full">
 			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nome</th>
-				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Sobrenome</th>
-				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Email</th>
-				<th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Papel</th>
-        <th class="p-4 w-1/4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Acoes</th>
+				<th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Nome</th>
+				<th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Sobrenome</th>
+				<th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Email</th>
+				<th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Papel</th>
+        <th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Acoes</th>
 			</tr>
 		</thead>
     <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
 		<tbody class="bg-white flex flex-col items-center justify-between w-full">
 			        <%= for user <- @users do %>
 
-      <tr class="flex w-full mb-4 hover:bg-grey-lighter">
-				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.first_name %></td>
-				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.last_name %></td>
-				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.email %></td>
-				<td class="p-4 w-1/4 border-b border-grey-light"><%= user.role %></td>
-        <td class="p-4 w-1/4 border-b border-grey-light">
+      <tr class="flex w-full mb-4 hover:bg-grey-300">
+				<td class="p-4 w-1/4 border-b border-grey-200"><%= user.first_name %></td>
+				<td class="p-4 w-1/4 border-b border-grey-200"><%= user.last_name %></td>
+				<td class="p-4 w-1/4 border-b border-grey-200"><%= user.email %></td>
+				<td class="p-4 w-1/4 border-b border-grey-200"><%= user.role %></td>
+        <td class="p-4 w-1/4 border-b border-grey-200">
         <div class="flex items-center justify-between">
         <%= link to: Routes.user_path(@conn, :show, user), 
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue-400 text-white font-sans font-semibold text-sm border-blue-500 hover:text-white hover:bg-blue-200 focus:outline-none active:shadow-none mr-2"
                 do %>
                 <i class="fas fa-paper-plane"></i>
           <% end %>
               <%= link to: Routes.user_path(@conn, :edit, user),
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-green text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-green-light focus:outline-none active:shadow-none mr-2"
+              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-green-400 text-white font-sans font-semibold text-sm border-green-700 hover:text-white hover:bg-green-200 focus:outline-none active:shadow-none mr-2"
                 do %> 
                 <i class="far fa-edit"></i>
               <% end %>
               <%= link to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
-                           class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-red hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
+                           class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red-400 text-white font-sans font-semibold text-sm border-red hover:text-white hover:bg-red-200 focus:outline-none active:shadow-none mr-2"
                  do %>
                 <i class="fas fa-trash"></i>
               <% end %>
@@ -57,5 +57,5 @@
   <%= link to: Routes.user_path(@conn, :new),
 
   class: 
-  "h-16 w-16 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+  "h-8 w-8 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue-500 text-white font-sans font-semibold text-sm border-blue-500 hover:text-white hover:bg-blue-200 focus:outline-none active:shadow-none mr-2"
   do %><i class="fas fa-plus"></i><% end %>

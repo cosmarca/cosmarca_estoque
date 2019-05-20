@@ -11,7 +11,7 @@
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="uppercase text-grey-500">Beauty</h5>
-                                <h3 class="text-3xl">$3249 <span class="text-green"><i class="fas fa-caret-up"></i></span></h3>
+                                <h3 class="text-3xl">$3249 <span class="text-green-100"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -23,11 +23,11 @@
                     <div class="bg-white border rounded shadow p-2">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-blue-dark"><i class="fas fa-users fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3 bg-blue-700"><i class="fas fa-users fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="uppercase text-grey">Total de Usuários</h5>
-                                <h3 class="text-3xl"><%= CosmarcaEstoque.Repo.aggregate(CosmarcaEstoque.Accounts.User, :count, :id) %> <span class="text-blue"><i class="fas fa-exchange-alt"></i></span></h3>
+                                <h3 class="text-3xl"><%= CosmarcaEstoque.Repo.aggregate(CosmarcaEstoque.Accounts.User, :count, :id) %> <span class="text-blue-500"><i class="fas fa-exchange-alt"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -39,11 +39,11 @@
                     <div class="bg-white border rounded shadow p-2">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-yellow-dark"><i class="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3 bg-yellow-700"><i class="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="uppercase text-grey">New Users</h5>
-                                <h3 class="text-3xl">2 <span class="text-yellow-dark"><i class="fas fa-caret-up"></i></span></h3>
+                                <h3 class="text-3xl">2 <span class="text-yellow-700"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -54,10 +54,10 @@
                     <div class="bg-white border rounded shadow p-2">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-blue-dark"><i class="fas fa-server fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3 bg-blue-700"><i class="fas fa-server fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="uppercase text-grey">Server Uptime</h5>
+                                <h5 class="uppercase text-grey-500">Server Uptime</h5>
                                 <h3 class="text-3xl">152 days</h3>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                     <div class="bg-white border rounded shadow p-2">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-indigo-dark"><i class="fas fa-tasks fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3 bg-indigo-700"><i class="fas fa-tasks fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="uppercase text-grey">To Do List</h5>
@@ -84,11 +84,11 @@
                     <div class="bg-white border rounded shadow p-2">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-red-dark"><i class="fas fa-inbox fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3 bg-red-700"><i class="fas fa-inbox fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="uppercase text-grey">Issues</h5>
-                                <h3 class="text-3xl">3 <span class="text-red"><i class="fas fa-caret-up"></i></span></h3>
+                                <h3 class="text-3xl">3 <span class="text-red-300"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
             </div>
 
 			<!--Divider-->
-			<hr class="border-b-2 border-grey-light my-8 mx-4">
+			<hr class="border-b-2 border-grey-100 my-8 mx-4">
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
@@ -105,7 +105,7 @@
                     <!--Graph Card-->
                     <div class="bg-white border rounded shadow">
                         <div class="border-b p-3">
-                            <h5 class="uppercase text-grey-dark">Graph</h5>
+                            <h5 class="uppercase text-grey-700">Graph</h5>
                         </div>
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -147,7 +147,7 @@
                     <!--Graph Card-->
                     <div class="bg-white border rounded shadow">
                         <div class="border-b p-3">
-                            <h5 class="uppercase text-grey-dark">Graph</h5>
+                            <h5 class="uppercase text-grey-700">Graph</h5>
                         </div>
                         <div class="p-5">
                             <canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -176,7 +176,7 @@
                     <!--Graph Card-->
                     <div class="bg-white border rounded shadow">
                         <div class="border-b p-3">
-                            <h5 class="uppercase text-grey-dark">Graph</h5>
+                            <h5 class="uppercase text-grey-700">Graph</h5>
                         </div>
                         <div class="p-5">
                             <canvas id="chartjs-1" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -214,7 +214,7 @@
                     <!--Graph Card-->
                     <div class="bg-white border rounded shadow">
                         <div class="border-b p-3">
-                            <h5 class="uppercase text-grey-dark">Graph</h5>
+                            <h5 class="uppercase text-grey-700">Graph</h5>
                         </div>
                         <div class="p-5"><canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
@@ -239,7 +239,7 @@
                     <!--Template Card-->
                     <div class="bg-white border rounded shadow">
                         <div class="border-b p-3">
-                            <h5 class="uppercase text-grey-dark">Template</h5>
+                            <h5 class="uppercase text-grey-700">Template</h5>
                         </div>
                         <div class="p-5">
              

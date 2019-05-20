@@ -1,7 +1,7 @@
 
 <%= if @conn.assigns[:current_user] do %>
 
-<nav id="header" class="bg-white-900 fixed w-full z-10 pin-t shadow">
+<nav id="header" class="bg-white fixed w-full z-10 pin-t shadow">
 	
 
     <div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
