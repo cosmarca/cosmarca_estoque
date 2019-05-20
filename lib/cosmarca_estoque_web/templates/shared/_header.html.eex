@@ -1,15 +1,15 @@
 
 <%= if @conn.assigns[:current_user] do %>
 
-<nav id="header" class="bg-white fixed w-full z-10 pin-t shadow">
+<nav id="header" class="bg-white-900 fixed w-full z-10 pin-t shadow">
 	
 
     <div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
         
             <div class="w-1/2 pl-2 md:pl-0">
-                <%= link class: "text-black text-base xl:text-xl no-underline hover:no-underline font-bold",  
+                <%= link class: "text-black-900 text-base xl:text-xl no-underline hover:no-underline font-bold",  
                 to: Routes.page_path(@conn, :index) do %>
-                    <i class="far fa-copyright text-blue-dark pr-3"></i><span class="text-blue-dark">Cosmarca</span>
+                    <i class="far fa-copyright text-blue-700 pr-3"></i><span class="text-blue-700">Cosmarca</span>
                 <% end %>
             </div>
 
@@ -27,20 +27,20 @@
                             <div id="userMenu" class="bg-white rounded shadow-md mt-2 absolute mt-12 pin-t pin-r min-w-full overflow-auto z-30 invisible">
                                 <ul class="list-reset">
                                 <li>
-                                    <%= link  class: "px-4 py-2 block text-black hover:bg-grey-light no-underline hover:no-underline", to: Routes.user_path(@conn, :show,  @current_user) do  %>
+                                    <%= link  class: "px-4 py-2 block text-black hover:bg-grey-100 no-underline hover:no-underline", to: Routes.user_path(@conn, :show,  @current_user) do  %>
                                     Minha Conta
                                     <% end %>
                                 </li>
-                                <li><a href="#" class="px-4 py-2 block text-black hover:bg-grey-light no-underline hover:no-underline">Notificações</a></li>
-                                <li><hr class="border-t mx-2 border-grey-ligght"></li>
-                                <li><%= link to: Routes.session_path(@conn, :logout) , class: "px-4 py-2 block text-black hover:bg-grey-light no-underline hover:no-underline" do %>Logout<% end %></li>
+                                <li><a href="#" class="px-4 py-2 block text-black hover:bg-grey-100 no-underline hover:no-underline">Notificações</a></li>
+                                <li><hr class="border-t mx-2 border-grey-100"></li>
+                                <li><%= link to: Routes.session_path(@conn, :logout) , class: "px-4 py-2 block text-black-900 hover:bg-grey-100 no-underline hover:no-underline" do %>Logout<% end %></li>
                                 </ul>
                             </div>
                         </div>
 
 
                         <div class="block lg:hidden pr-4">
-                            <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-grey border-grey-dark hover:text-black hover:border-teal appearance-none focus:outline-none">
+                            <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-grey border-grey-700 hover:text-black hover:border-teal appearance-none focus:outline-none">
                                 <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
                             </button>
                         </div>
@@ -52,19 +52,19 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white z-20" id="nav-content">
             <ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
                 <li class="mr-6 my-2 md:my-0">
-                    <%= link  class: "block py-1 md:py-3 pl-1 align-middle text-blue-dark no-underline hover:text-black border-b-2 border-blue-dark hover:border-blue-dark" ,  to: Routes.page_path(@conn, :index)  do %>
-                        <i class="fas fa-home fa-fw mr-3 text-blue-dark"></i><span class="pb-1 md:pb-0 text-sm">DashBoard</span>
+                    <%= link  class: "block py-1 md:py-3 pl-1 align-middle text-blue-500 no-underline hover:text-black border-b-2 border-blue-500 hover:border-blue-700" ,  to: Routes.page_path(@conn, :index)  do %>
+                        <i class="fas fa-home fa-fw mr-3 text-blue-500"></i><span class="pb-1 md:pb-0 text-sm">DashBoard</span>
                     <% end %>
                 </li>
                 <%= if @current_user.role == "admin" do %>
                 <li class="mr-6 my-2 md:my-0">
-                    <%= link  class: "block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-pink",  to: Routes.user_path(@conn, :index) do %>
+                    <%= link  class: "block py-1 md:py-3 pl-1 align-middle text-green-500 no-underline hover:text-black-500 border-b-2 border-white-100 hover:border-green-500",  to: Routes.user_path(@conn, :index) do %>
                         <i class="fas fa-users"></i></i><span class="pb-1 md:pb-0 text-sm">Usuários</span>
                     <% end %>
                 </li>
                 <% end %>
                 <li class="mr-6 my-2 md:my-0">
-                <%= link  class: "block py-1 md:py-3 pl-1 align-middle text-grey no-underline hover:text-black border-b-2 border-white hover:border-purple", to: Routes.products_path(@conn, :index) do %>
+                <%= link  class: "block py-1 md:py-3 pl-1 align-middle text-purple-500 no-underline hover:text-black-500 border-b-2 border-white hover:border-purple-500", to: Routes.products_path(@conn, :index) do %>
                     <i class="fab fa-product-hunt"></i><span class="pb-1 md:pb-0 text-sm">Produtos</span>
                 </li>
                 <% end %>
