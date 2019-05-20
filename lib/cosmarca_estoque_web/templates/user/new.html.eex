@@ -1,5 +1,4 @@
 <div class="font-bold text-xl mb-2">Novo Usuário</div>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
-<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.user_path(@conn, :index) %></span>
-
+<%= link "Voltar", class: "bg-white hover:bg-black hover:text-white text-black font-bold py-1 px-2 rounded-full" , to: Routes.user_path(@conn, :index) %></span> 

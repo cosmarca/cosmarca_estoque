@@ -1,6 +1,4 @@
 <h1>Editar Usuário</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :update, @user)) %>
-<span><%= link "Voltar", 
- class: 
-      "py-2 px-4 shadow-md no-underline rounded-full bg-grey text-white font-sans font-semibold text-sm border-grey hover:text-white hover:bg-grey-light focus:outline-none active:shadow-none mr-2", to: Routes.user_path(@conn, :index) %></span>
+<%= link "Voltar", class: "bg-white hover:bg-black hover:text-white text-black font-bold py-1 px-2 rounded-full" , to: Routes.user_path(@conn, :index) %></span> 

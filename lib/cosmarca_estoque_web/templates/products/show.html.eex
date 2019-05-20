@@ -1,10 +1,10 @@
 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
 <div class="border-b p-3">
-    <h5 class="uppercase text-grey-dark">Dados do Produto</h5>
+    <h5 class="uppercase ">Dados do Produto</h5>
 </div>
 
 <div class="border-b p-3">
-    <strong>Nome:</strong>
+    <strong >Nome:</strong>
     <%= @products.name %>
 </div>
 
@@ -16,11 +16,14 @@
 <hr />
 
 <div class="border-b p-3">
-<span><%= link "Registros do Estoque", class: "bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_register_path(@conn, :index, @products) %></span>
+<span><%= link "Registros do Estoque", class: "bg-blue-700 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_register_path(@conn, :index, @products) %></span>
   <%= if @current_user.role == "admin" do %>
 
-<span><%= link "Editar", class: "bg-green hover:bg-green-dark text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_path(@conn, :edit, @products) %></span>
+<span><%= link "Editar", class: "bg-green-700 hover:bg-green-400 text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_path(@conn, :edit, @products) %></span>
+<span><%= link "Deletar", class: "bg-red-700 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full",  to: Routes.products_path(@conn, :delete, @products), method: :delete, data: [confirm: "Are you sure?"] %></span>
+
 <% end %>
-<span><%= link "Voltar", class: "bg-grey hover:bg-grey-dark text-white font-bold py-2 px-4 rounded-full" , to: Routes.products_path(@conn, :index) %></span>
+
 </div>
 </div>
+<%= link "Voltar", class: "bg-white hover:bg-black hover:text-white text-black font-bold py-1 px-2 rounded-full" , to: Routes.products_path(@conn, :index) %></span> 
