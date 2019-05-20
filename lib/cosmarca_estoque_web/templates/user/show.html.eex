@@ -26,9 +26,11 @@
       "py-2 px-4 shadow-md no-underline rounded-full bg-green-700 text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-green-400 focus:outline-none active:shadow-none mr-2",  to: Routes.user_path(@conn, :edit, @user) %></span>
 <span>
 
+  <%= if @current_user.role == "admin" do %>
+
 <span><%= link "Deletar", class: "bg-red-700 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full",  to: Routes.user_path(@conn, :delete, @user), method: :delete, data: [confirm: "Tem certeza?"] %></span>
-
-<%= link "Voltar", class: "bg-white hover:bg-black hover:text-white text-black font-bold py-1 px-2 rounded-full" , to: Routes.user_path(@conn, :index) %></span> 
-
-</span></div>
+</span>
+<% end %>
 </div>
+</div>
+

@@ -6,17 +6,24 @@
     </div>
   <% end %>
 
-  <div class="flex flex-wrap -mx-3 mb-2">
-    <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
-      <%= number_input f, :input_quantity, class: "block appearance-none w-full bg-white border border-grey-light hover:border-grey px-4 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline", id: "input-quantity", placeholder: "qt Entrada" %>
-      <%= error_tag f, :input_quantity %>
-    </div>
-    <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
-       <%= number_input f, :output_quantity, class: "block appearance-none w-full bg-white border border-grey-light hover:border-grey px-4 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline", id: "output-quantity", placeholder: "qt Saída" %>
-      <%= error_tag f, :output_quantity %>
-    </div>
-     <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
-        <%= submit "Registrar",  class: "appearance-none bg-indigo text-white text-base font-semibold tracking-wide uppercase p-3 rounded shadow hover:bg-indigo-light" %>
-   </div>
+ <div class="mb-4">
+    <label class="block  text-sm font-bold mb-2" for="fancy_name">
+        Quantidade Entrada
+    </label>
+  <%= number_input f, :input_quantity, class: "shadow appearance-none border rounded w-full 
+    py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", id: "fancy_name" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :input_quantity %></p>
+  </div>
+
+   <div class="mb-4">
+    <label class="block  text-sm font-bold mb-2" for="fancy_name">
+        Quantidade Saida
+    </label>
+  <%= number_input f, :output_quantity, class: "shadow appearance-none border rounded w-full 
+    py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", id: "fancy_name" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :output_quantity %></p>
+  </div>
+
+        <%= submit "Registrar",  class: "appearance-none bg-indigo-700 text-white text-base font-semibold tracking-wide uppercase p-3 rounded shadow hover:bg-indigo-400" %>
   </div>
 <%end%></div>
