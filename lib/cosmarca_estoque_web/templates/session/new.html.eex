@@ -1,4 +1,6 @@
-<%= form_for @changeset, @action, [class: "w-full max-w-xs"], fn f -> %>
+<div class="w-full max-w-xs ">
+
+<%= form_for @changeset, @action, [class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "], fn f -> %>
 
 
   <div class="mb-4">
@@ -16,9 +18,11 @@
   </div>
 
   <div class="flex items-center justify-between">
-    <%= submit "Submit", class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" %>
-    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-700" href="#">
+    <%= submit "Logar", class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" %>
+    <%# <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-700" href="#">
         Forgot Password?
-    </a>
+    </a> %>
   </div>
 <% end %>
+
+</div>
