@@ -59,3 +59,6 @@
   class: 
   "h-8 w-8 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue-500 text-white font-sans font-semibold text-sm border-blue-500 hover:text-white hover:bg-blue-200 focus:outline-none active:shadow-none mr-2"
   do %><i class="fas fa-plus"></i><% end %>
+
+
+
