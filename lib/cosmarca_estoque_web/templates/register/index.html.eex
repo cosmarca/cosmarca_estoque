@@ -34,7 +34,7 @@
     <div id="field-register-client" class="flex-1 text-center border-b border-blue-200 uppercase h-12">
       <%= register.client_name %>
     </div>
-    <div id="field-register-input" class="flex-1 text-center bg-green-200est border-b border-green-200 uppercase h-12">
+    <div id="field-register-input" class="flex-1 text-center bg-green-100 border-b border-green-200 uppercase h-12">
       <%= register.input_quantity %>
     </div>
     <div id="field-register-output" class="flex-1 text-center border-b border-red-200 uppercase h-12">
@@ -43,7 +43,7 @@
 
   </div>
           <% else %>
-  <div class="flex text-xs hover:bg-red-200est mb-4">
+  <div class="flex text-xs hover:bg-red-100 mb-4">
     <div id="field-register" class="flex-1 text-center border-b border-grey-200 h-12">
       <%= register.user.first_name %> - <%= register.updated_at %>
     </div>
