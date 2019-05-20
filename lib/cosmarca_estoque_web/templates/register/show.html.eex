@@ -27,15 +27,14 @@
 
 <div class="border-b p-3">       
 
-
-
-
-                      <%= if  @register.pdf  != nil and  @register.rastreio  != nil do %>
+                      <%= if  @register.pdf  != nil  do %>
       <%= link to: @register.pdf, target: "_blank",
               class:  "py-2 px-4 shadow-md no-underline rounded-full bg-red text-white font-sans font-semibold text-sm border-green hover:text-white hover:bg-red-light focus:outline-none active:shadow-none mr-2"
               do %>
                 <i class="far fa-file-pdf"></i>
           <% end %>
+        <% end %>
+                              <%= if @register.rastreio  != nil do %>
 
                <%= link to: @register.rastreio,  target: "_blank",
               class:  "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-green hover:text-yellow hover:bg-blue-dark focus:outline-none active:shadow-none mr-2"

@@ -22,7 +22,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformation do
   @client_name ~x"//infNFe/dest/xNome/text()"
 
   def create(xml_doc, rastreio, pdf) do
-    nota = %CosmarcaEstoque.Stocks.Notazz.NotazzInformation{
+    %CosmarcaEstoque.Stocks.Notazz.NotazzInformation{
       cnpj: xml_to_string(xml_doc, @cnpj),
       business_name: xml_to_string(xml_doc, @business_name),
       fancy_name: xml_to_string(xml_doc, @fancy_name),
@@ -34,7 +34,6 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformation do
       rastreio: rastreio,
       pdf: pdf
     }
-    nota
   end
 
   defp xml_to_integer(xml_doc, path) do

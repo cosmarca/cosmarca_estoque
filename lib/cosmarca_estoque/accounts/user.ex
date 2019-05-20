@@ -9,7 +9,7 @@ defmodule CosmarcaEstoque.Accounts.User do
     field :password_hash, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
-    field :key_notazz, :string
+    field :token, :string
     field :cnpj, :string
     field :business_name, :string
     field :fancy_name, :string
@@ -29,7 +29,7 @@ defmodule CosmarcaEstoque.Accounts.User do
       :last_name,
       :password,
       :password_confirmation,
-      :key_notazz,
+      :token,
       :cnpj,
       :business_name,
       :fancy_name,

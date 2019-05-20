@@ -56,7 +56,8 @@ defmodule CosmarcaEstoqueWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", CosmarcaEstoqueWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", CosmarcaEstoqueWeb do
+    pipe_through :api
+    resources "/nota", NotazzController, except: [:new, :edit]
+  end
 end
