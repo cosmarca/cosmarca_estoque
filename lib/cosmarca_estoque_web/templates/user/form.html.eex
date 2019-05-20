@@ -1,109 +1,109 @@
 
 <%= form_for @changeset, @action, [class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"], fn f -> %>
   <%= if @changeset.action do %>
-    <div class="bg-red-lightest border border-red-light text-red-dark px-4 py-3 rounded relative" role="alert">
+    <div class="bg-red-100 border border-red-light text-red-500-700 px-4 py-3 rounded relative" role="alert">
       <strong class="font-bold">Algo deu errado!</strong>
       <span class="block sm:inline">Favor validar os erros abaixo!</span>
       <span class="absolute pin-t pin-b pin-r px-4 py-3">
-        <svg class="fill-current h-6 w-6 text-red" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
       </span>
     </div>
   <% end %>
 
   <div class="mb-4">
-    <%= label f, :email, class: "block text-grey-darker text-sm font-bold mb-2", for: "email" %>
+    <%= label f, :email, class: "block text-sm font-bold mb-2", for: "email" %>
     <%= text_input f, :email, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "email", placeholder: "Ex: cosmarca@coscmarca.com.br" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :email %></p>
+    py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", id: "email", placeholder: "Ex: cosmarca@coscmarca.com.br" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :email %></p>
   </div>
 
   <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="first_name">
+    <label class="block text-sm font-bold mb-2" for="first_name">
         Nome
     </label>
     <%= text_input f, :first_name, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "first_name", placeholder: "Cosmarca Produtos" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :first_name %></p>
+    py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", id: "first_name", placeholder: "Cosmarca Produtos" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :first_name %></p>
   </div>
 
 
   <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="last_name">
+    <label class="block text-sm font-bold mb-2" for="last_name">
         Sobre Nome
     </label>
     <%= text_input f, :last_name, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "last_name", placeholder: "Produtos de cosméticos" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :last_name %></p>
+    py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", id: "last_name", placeholder: "Produtos de cosméticos" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :last_name %></p>
   </div>
 
  <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="cnpj">
+    <label class="block t text-sm font-bold mb-2" for="cnpj">
         CNPJ
     </label>
   <%= text_input f, :cnpj, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "cnpj", placeholder: "ex: 111111 (somente números)" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :cnpj %></p>
+    py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", id: "cnpj", placeholder: "ex: 111111 (somente números)" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :cnpj %></p>
   </div>
 
  <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="business_name">
+    <label class="block  text-sm font-bold mb-2" for="business_name">
         Nome da Empresa
     </label>
   <%= text_input f, :business_name, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "business_name", placeholder: "ex: Cosmarca Cosméticos" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :business_name %></p>
+    py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", id: "business_name", placeholder: "ex: Cosmarca Cosméticos" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :business_name %></p>
   </div>
 
  <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="fancy_name">
+    <label class="block  text-sm font-bold mb-2" for="fancy_name">
         Nome Fantasia
     </label>
   <%= text_input f, :fancy_name, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "fancy_name", placeholder: "ex: Cosmarca Cosméticos de Osasco" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :fancy_name %></p>
+    py-2 px-3 leading-tight focus:outline-none focus:shadow-outline", id: "fancy_name", placeholder: "ex: Cosmarca Cosméticos de Osasco" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :fancy_name %></p>
   </div>
   
   <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+    <label class="block t text-sm font-bold mb-2" for="password">
         Senha
     </label>
     <%= password_input f, :password, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "password" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :password %></p>
+    py-2 px-3 t leading-tight focus:outline-none focus:shadow-outline", id: "password" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :password %></p>
   </div>
   
     <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="password_confirmation">
+    <label class="block t text-sm font-bold mb-2" for="password_confirmation">
         Confirmar Senha
     </label>
     <%= password_input f, :password_confirmation, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "password_confirmation" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :password_confirmation %></p>
+    py-2 px-3 t leading-tight focus:outline-none focus:shadow-outline", id: "password_confirmation" %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :password_confirmation %></p>
   </div>
 
   <%= if @current_user.role == "admin" do %>
  <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="fancy_name">
+    <label class="block t text-sm font-bold mb-2" for="fancy_name">
         Token
     </label>
   <%= text_input f, :token, class: "shadow appearance-none border rounded w-full 
-    py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline", id: "key_notazz", placeholder: "ex: yzdk2832e0ufeowrf2oiveef..." %>
-    <p class="text-red text-xs italic"><%= error_tag f, :token %></p>
+    py-2 px-3 t leading-tight focus:outline-none focus:shadow-outline", id: "key_notazz", placeholder: "ex: yzdk2832e0ufeowrf2oiveef..." %>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :token %></p>
   </div>
 
     <div class="mb-4">
-    <label class="block text-grey-darker text-sm font-bold mb-2" for="role">
+    <label class="block t text-sm font-bold mb-2" for="role">
         Papel
     </label>
     <%= select f, :role, ["admin", "user"],  class: "block appearance-none w-full bg-white border border-grey-light hover:border-grey px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline", id: "role" %>
-    <p class="text-red text-xs italic"><%= error_tag f, :role %></p>
+    <p class="text-red-500 text-xs italic"><%= error_tag f, :role %></p>
   </div>
   <% end %>
 
  <div class="flex items-center justify-between">
     <%= submit "Salvar Usuário",  
      class: 
-      "py-2 px-4 shadow-md no-underline rounded-full bg-blue text-white font-sans font-semibold text-sm border-blue hover:text-white hover:bg-blue-light focus:outline-none active:shadow-none mr-2"
+      "py-2 px-4 shadow-md no-underline rounded-full bg-blue-400 text-white font-sans font-semibold text-sm border-blue-700 hover:text-white hover:bg-blue-200 focus:outline-none active:shadow-none mr-2"
        %>
   </div>
 <% end %>

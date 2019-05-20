@@ -2,16 +2,16 @@
 
   <div class="flex text-xs mb-4">
   
-    <div id="head-register" class="flex-1 text-center border-b border-r border-green-200 h-12">
+    <div id="head-first_name" class="flex-1 text-center border-b border-r border-green-200 h-12">
     Nome
     </div>
-    <div id="head-register-nf"  class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
+    <div id="head-last_name"  class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
    SobreNome
     </div>
-    <div id="head-register-client" class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
+    <div id="head-email" class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
      Email
     </div>
-    <div class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
+    <div id="head-role" class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
       Papel
     </div>
 </div>
