@@ -1,64 +1,54 @@
-<div class="container bg-white">
-
-  <h3 class="text-grey-dark mb-8">
-    Lista de Usuários 
-    
-
-  </h3>
-
-	<table class="text-left w-full">
-		<thead class="flex text-white w-full">
-			<tr class="flex w-full mb-4">
-				<th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Nome</th>
-				<th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Sobrenome</th>
-				<th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Email</th>
-				<th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Papel</th>
-        <th class="p-4 w-1/4 bg-green-400 font-bold uppercase text-sm text-grey-800 border-b border-green-900">Acoes</th>
-			</tr>
-		</thead>
-    <!-- Remove the nasty inline CSS fixed height on production and replace it with a CSS class — this is just for demonstration purposes! -->
-		<tbody class="bg-white flex flex-col items-center justify-between w-full">
-			        <%= for user <- @users do %>
-
-      <tr class="flex w-full mb-4 hover:bg-grey-300">
-				<td class="p-4 w-1/4 border-b border-grey-200"><%= user.first_name %></td>
-				<td class="p-4 w-1/4 border-b border-grey-200"><%= user.last_name %></td>
-				<td class="p-4 w-1/4 border-b border-grey-200"><%= user.email %></td>
-				<td class="p-4 w-1/4 border-b border-grey-200"><%= user.role %></td>
-        <td class="p-4 w-1/4 border-b border-grey-200">
-        <div class="flex items-center justify-between">
-        <%= link to: Routes.user_path(@conn, :show, user), 
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-blue-400 text-white font-sans font-semibold text-sm border-blue-500 hover:text-white hover:bg-blue-200 focus:outline-none active:shadow-none mr-2"
-                do %>
-                <i class="fas fa-paper-plane"></i>
-          <% end %>
-              <%= link to: Routes.user_path(@conn, :edit, user),
-              class:  "py-1 px-2 shadow-md no-underline rounded-full bg-green-400 text-white font-sans font-semibold text-sm border-green-700 hover:text-white hover:bg-green-200 focus:outline-none active:shadow-none mr-2"
-                do %> 
-                <i class="far fa-edit"></i>
-              <% end %>
-              <%= link to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] , alt: "deletar usuario",
-                           class:  "py-1 px-2 shadow-md no-underline rounded-full bg-red-400 text-white font-sans font-semibold text-sm border-red hover:text-white hover:bg-red-200 focus:outline-none active:shadow-none mr-2"
-                 do %>
-                <i class="fas fa-trash"></i>
-              <% end %>
-            </div>
-
-        </td>
-
-			</tr>
-      <% end %>
-		</tbody>
-	</table>
 
 
+  <div class="flex text-xs mb-4">
+  
+    <div id="head-register" class="flex-1 text-center border-b border-r border-green-200 h-12">
+    Nome
+    </div>
+    <div id="head-register-nf"  class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
+   SobreNome
+    </div>
+    <div id="head-register-client" class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
+     Email
+    </div>
+    <div class="flex-1 text-center border-b border-r border-green-200 uppercase h-12">
+      Papel
+    </div>
 </div>
 
-  <%= link to: Routes.user_path(@conn, :new),
+<%= for user <- @users do %>
+           <%= link to: Routes.user_path(@conn, :show, user)  do %>
+        
 
-  class: 
-  "h-8 w-8 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue-500 text-white font-sans font-semibold text-sm border-blue-500 hover:text-white hover:bg-blue-200 focus:outline-none active:shadow-none mr-2"
-  do %><i class="fas fa-plus"></i><% end %>
+  <div class="flex text-xs hover:bg-green-100 mb-4">
+  
+    <div id="field-first_name" class="flex-1 text-center border-b border-green-200 h-12">
+      <%= user.first_name %>
+    </div>
+    <div id="field-last_name" class="flex-1 text-center border-b border-green-200 uppercase h-12">
+      <%= user.last_name %>
+    </div>
+    <div id="field-email" class="flex-1 text-center border-b border-green-200 uppercase h-12">
+            <%= user.email %>
+    </div>
+    <div id="field-role" class="flex-1 text-center border-b border-green-200 uppercase h-12">
+            <%= user.role %>
+
+    </div>
+  </div>
+          <% end %>
+      <% end %>
+
+
+            <%= if @current_user.role == "admin" do %>
+
+  <%= link to: Routes.user_path(@conn, :new),
+     class: 
+      "h-8 w-8 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue-400 text-white font-sans font-semibold text-sm border-blue-800 hover:text-white hover:bg-blue-700 focus:outline-none active:shadow-none mr-2"
+      do %><i class="fas fa-plus"></i><% end %>
+      <% end %> 
+
+
 
 
 
