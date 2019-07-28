@@ -7,6 +7,6 @@ defmodule CosmarcaEstoqueWeb.NotazzView do
   end
 
   def render("notazz.json", %{notazz: notazz}) do
-    %{mensagem: "Produto: #{notazz} registrado com sucesso" }
+    %{mensagem: "Nota: #{notazz} registrada com sucesso" }
   end
 end
