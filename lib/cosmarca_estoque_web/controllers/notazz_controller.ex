@@ -6,7 +6,6 @@ defmodule CosmarcaEstoqueWeb.NotazzController do
   alias CosmarcaEstoque.Stocks.Notazz.RegisterOutput
 
   def create(conn, %{"xml" => xml, "pdf" => pdf, "statusNota" => statusNota}) do
-
     cond do
       statusNota == "Autorizada" ->
         nota = notazz_type(xml, nil, pdf)
@@ -15,8 +14,6 @@ defmodule CosmarcaEstoqueWeb.NotazzController do
       true ->
         mensagemRetorno(conn, "Nao Autorizada")
     end
-
-
   end
 
   defp mensagemRetorno(conn, msg) do
