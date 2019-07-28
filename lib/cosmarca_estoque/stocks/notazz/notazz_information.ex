@@ -17,9 +17,6 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformation do
     )
   end
 
-  defstruct nNF: nil, client_name: nil, fancy_name: nil,
-  business_name: nil, cnpj: nil, products: nil
-
   def create(xml_doc, rastreio, pdf) do
     Map.put(notazz_map(xml_doc), :rastreio, rastreio)
     |> Map.put(:pdf, pdf)
