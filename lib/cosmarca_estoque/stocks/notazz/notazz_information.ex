@@ -1,7 +1,6 @@
 defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformation do
   import SweetXml
 
-
   defp notazz_map(xml_doc) do
     xpath(xml_doc,
     ~x"//infNFe"e,
@@ -18,20 +17,12 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformation do
     )
   end
 
+  defstruct nNF: nil, client_name: nil, fancy_name: nil,
+  business_name: nil, cnpj: nil, products: nil
+
   def create(xml_doc, rastreio, pdf) do
-    notazz_map(xml_doc)
-    # %CosmarcaEstoque.Stocks.Notazz.NotazzInformation{
-    #   cnpj: xml_to_string(xml_doc, @cnpj),
-    #   business_name: xml_to_string(xml_doc, @business_name),
-    #   fancy_name: xml_to_string(xml_doc, @fancy_name),
-    #   product_name: xml_to_string(xml_doc, @product_name),
-    #   metric_type: xml_to_string(xml_doc, @metric_type),
-    #   nNf: xml_to_string(xml_doc, @nNF),
-    #   client_name: xml_to_string(xml_doc, @client_name),
-    #   sell_amount: xml_to_integer(xml_doc, @sell_amount),
-    #   rastreio: rastreio,
-    #   pdf: pdf
-    # }
+    Map.put(notazz_map(xml_doc), :rastreio, rastreio)
+    |> Map.put(:pdf, pdf)
   end
 
 end

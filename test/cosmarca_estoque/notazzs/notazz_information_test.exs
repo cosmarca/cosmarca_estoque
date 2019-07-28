@@ -3,7 +3,20 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformationTest do
 
   describe "should create nota in xml" do
     test "should read NF" do
-      assert "" ==  CosmarcaEstoque.Notazzs.CreateNf.should_pick_det("/Users/gustavo/Development/repositories/github/smartdevbr/cosmarca_estoque/test/cosmarca_estoque/notazzs/nota.xml")
+      {:ok, xml} = File.read("test/cosmarca_estoque/notazzs/nota.xml")
+      assert %{
+        business_name: "LHT INTERMEDIACAO DE NEGOCIOS DIGITAL LTDA",
+        client_name: "ROSILANE SCOPEL",
+        cnpj: "29654819000154",
+        fancy_name: "LHT DIGITAL",
+        nNF: "182",
+        products: [
+          %{amount: 1.0, name: "ClaryClean Amostra Gratis", type: "UN"},
+          %{amount: 3.0, name: "ClaryClean", type: "UN"}
+        ],
+        pdf: nil,
+        rastreio: nil
+      } ==  CosmarcaEstoque.Stocks.Notazz.NotazzInformation.create(xml, nil, nil)
     end
   end
 end
