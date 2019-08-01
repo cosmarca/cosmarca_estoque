@@ -11,6 +11,7 @@ defmodule CosmarcaEstoqueWeb.NotazzController do
         nota = notazz_type(xml, nil, pdf)
         RegisterOutput.create_register(nota, pdf)
         mensagemRetorno(conn, nota.nNF)
+
       true ->
         mensagemRetorno(conn, "Nao Autorizada")
     end
