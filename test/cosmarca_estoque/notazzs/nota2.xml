@@ -1,0 +1,195 @@
+<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+<infNFe Id="NFe53190829654819000154550010000095141014852762" versao="4.00">
+<ide>
+<cUF>53</cUF>
+<cNF>01485276</cNF>
+<natOp>VENDA</natOp>
+<mod>55</mod>
+<serie>1</serie>
+<nNF>9514</nNF>
+<dhEmi>2019-08-08T10:10:49-03:00</dhEmi>
+<dhSaiEnt>2019-08-08T10:10:49-03:00</dhSaiEnt>
+<tpNF>1</tpNF>
+<idDest>2</idDest>
+<cMunFG>5300108</cMunFG>
+<tpImp>1</tpImp>
+<tpEmis>1</tpEmis>
+<cDV>2</cDV>
+<tpAmb>1</tpAmb>
+<finNFe>1</finNFe>
+<indFinal>1</indFinal>
+<indPres>2</indPres>
+<procEmi>0</procEmi>
+<verProc>Notazz v2.0.0</verProc>
+</ide>
+<emit>
+<CNPJ>29654819000154</CNPJ>
+<xNome>LHT INTERMEDIACAO DE NEGOCIOS DIGITAL LTDA</xNome>
+<xFant>LHT DIGITAL</xFant>
+<enderEmit>
+<xLgr>Avenida Pau Brasil</xLgr>
+<nro>407</nro>
+<xCpl>PARTE N42 EDIF E-BUSINES</xCpl>
+<xBairro>Norte (Aguas Claras)</xBairro>
+<cMun>5300108</cMun>
+<xMun>Brasilia</xMun>
+<UF>DF</UF>
+<CEP>71916500</CEP>
+<cPais>1058</cPais>
+<xPais>Brasil</xPais>
+<fone>0000000000</fone>
+</enderEmit>
+<IE>0784404100177</IE>
+<CRT>3</CRT>
+</emit>
+<dest>
+<CPF>05637688605</CPF>
+<xNome>Solene Antunes Macedo Alves</xNome>
+<enderDest>
+<xLgr>Rua Juiz Costa Val</xLgr>
+<nro>240</nro>
+<xCpl>Casa</xCpl>
+<xBairro>Santa Efigenia</xBairro>
+<cMun>3106200</cMun>
+<xMun>Belo Horizonte</xMun>
+<UF>MG</UF>
+<CEP>30240350</CEP>
+<cPais>1058</cPais>
+<xPais>Brasil</xPais>
+<fone>31991527740</fone>
+</enderDest>
+<indIEDest>9</indIEDest>
+</dest>
+<det nItem="1">
+<prod>
+<cProd>720</cProd>
+<cEAN>SEM GTIN</cEAN>
+<xProd>ClaryClean</xProd>
+<NCM>33049990</NCM>
+<CFOP>6108</CFOP>
+<uCom>UN</uCom>
+<qCom>2.0000</qCom>
+<vUnCom>103.5000</vUnCom>
+<vProd>207.00</vProd>
+<cEANTrib>SEM GTIN</cEANTrib>
+<uTrib>UN</uTrib>
+<qTrib>2.0000</qTrib>
+<vUnTrib>103.5000</vUnTrib>
+<vFrete>29.90</vFrete>
+<indTot>1</indTot>
+</prod>
+<imposto>
+<vTotTrib>8.28</vTotTrib>
+<ICMS>
+<ICMS40>
+<orig>0</orig>
+<CST>41</CST>
+</ICMS40>
+</ICMS>
+<PIS>
+<PISNT>
+<CST>08</CST>
+</PISNT>
+</PIS>
+<COFINS>
+<COFINSNT>
+<CST>08</CST>
+</COFINSNT>
+</COFINS>
+</imposto>
+</det>
+<total>
+<ICMSTot>
+<vBC>0.00</vBC>
+<vICMS>0.00</vICMS>
+<vICMSDeson>0.00</vICMSDeson>
+<vFCPUFDest>0.00</vFCPUFDest>
+<vICMSUFDest>0.00</vICMSUFDest>
+<vICMSUFRemet>0.00</vICMSUFRemet>
+<vFCP>0.00</vFCP>
+<vBCST>0.00</vBCST>
+<vST>0.00</vST>
+<vFCPST>0.00</vFCPST>
+<vFCPSTRet>0.00</vFCPSTRet>
+<vProd>207.00</vProd>
+<vFrete>29.90</vFrete>
+<vSeg>0.00</vSeg>
+<vDesc>0.00</vDesc>
+<vII>0.00</vII>
+<vIPI>0.00</vIPI>
+<vIPIDevol>0.00</vIPIDevol>
+<vPIS>0.00</vPIS>
+<vCOFINS>0.00</vCOFINS>
+<vOutro>0.00</vOutro>
+<vNF>236.90</vNF>
+<vTotTrib>8.28</vTotTrib>
+</ICMSTot>
+</total>
+<transp>
+<modFrete>0</modFrete>
+<transporta>
+<CNPJ>34028316003129</CNPJ>
+<xNome>EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS</xNome>
+<IE>112388853119</IE>
+<xEnder>RUA MERGENTHALER 592 bloco2 Vila Leopoldina</xEnder>
+<xMun>Sao Paulo</xMun>
+<UF>SP</UF>
+</transporta>
+</transp>
+<pag>
+<detPag>
+<indPag>0</indPag>
+<tPag>01</tPag>
+<vPag>236.90</vPag>
+</detPag>
+</pag>
+<infAdic>
+<infAdFisco>Isento de ICMS conforme artigo 3 do ricms/sp</infAdFisco>
+<infCpl>REF.: 1485276|1485322</infCpl>
+</infAdic>
+<infRespTec>
+<CNPJ>19600655000129</CNPJ>
+<xContato>Vinicius da Costa Couto</xContato>
+<email>suporte@notazz.com</email>
+<fone>37984089238</fone>
+</infRespTec>
+</infNFe>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<Reference URI="#NFe53190829654819000154550010000095141014852762">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<DigestValue>xu6tp/SkWV+6L+ROBQqqTpTJ2gI=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>
+SaxH92+A3aHUbLXgNDBxvDKaD20BNXPPynipSY9EQmCxtjq2i2RAiceUMQU5xDgh5RsufWKFjfHa/vtPsTWxU/SLpe7HVa/gUP8Gl3JlDoT9xFtyk4D/dinMS5CW+qW0UUgF+/DmDdBYB6Wq5U/RPI4RadWmETk2ev1pAY9pdrDutpCioJ09QYYE7YVv4CoBVE6zG3snveoq6mD14ZvOern7pJkmAJJrnzRRtrjuOKhhBZDlyXypKw+idkfb8nlr6eSYxRJZ1c1roKHnhECYHvPfJbkI+SiWe3hACje0bellbLoaT2HisCVsquGMUw6DogTownlawJxHX0ZrWOPQLA==
+</SignatureValue>
+<KeyInfo>
+<X509Data>
+<X509Certificate>
+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
+</X509Certificate>
+</X509Data>
+</KeyInfo>
+</Signature>
+</NFe>
+<protNFe versao="4.00">
+<infProt>
+<tpAmb>1</tpAmb>
+<verAplic>SVRS201907121522</verAplic>
+<chNFe>53190829654819000154550010000095141014852762</chNFe>
+<dhRecbto>2019-08-08T10:10:50-03:00</dhRecbto>
+<nProt>353190034154069</nProt>
+<digVal>xu6tp/SkWV+6L+ROBQqqTpTJ2gI=</digVal>
+<cStat>100</cStat>
+<xMotivo>Autorizado o uso da NF-e</xMotivo>
+</infProt>
+</protNFe>
+</nfeProc>

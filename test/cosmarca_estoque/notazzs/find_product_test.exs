@@ -42,19 +42,20 @@ defmodule CosmarcaEstoque.Stocks.Notazz.FindProductTest do
           user_id: 3
         }
 
-        assert [%{id: 2, name: "skin renov - creme redutor de estrias"}] == CosmarcaEstoque.Repo.all("query")
+        assert [%{id: 2, name: "skin renov - creme redutor de estrias"}] ==
+                 CosmarcaEstoque.Repo.all("query")
 
+        {:ok, result} =
+          Find.find_by("Skin Renov - Creme Redutor de Estrias | Kit Trio - 3 Unidades")
 
-        {:ok, result} = Find.find_by("Skin Renov - Creme Redutor de Estrias | Kit Trio - 3 Unidades")
         assert "skin renov - creme redutor de estrias" == result.name
-
       end
     end
   end
 
   def skin_renov() do
     [
-      %{"name": "skin renov - creme redutor de estrias", "id": 2}
+      %{name: "skin renov - creme redutor de estrias", id: 2}
     ]
   end
 

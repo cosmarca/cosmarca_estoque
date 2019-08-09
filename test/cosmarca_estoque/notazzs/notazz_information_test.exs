@@ -20,4 +20,19 @@ defmodule CosmarcaEstoque.Stocks.Notazz.NotazzInformationTest do
              } == CosmarcaEstoque.Stocks.Notazz.NotazzInformation.create(xml, nil, nil)
     end
   end
+
+  test "should read NF with one product" do
+    {:ok, xml} = File.read("test/cosmarca_estoque/notazzs/nota2.xml")
+
+    assert %{
+             business_name: "LHT INTERMEDIACAO DE NEGOCIOS DIGITAL LTDA",
+             cnpj: "29654819000154",
+             fancy_name: "LHT DIGITAL",
+             pdf: nil,
+             rastreio: nil,
+             client_name: "Solene Antunes Macedo Alves",
+             nNF: "9514",
+             products: [%{type: "UN", amount: 2.0, name: "ClaryClean"}]
+           } == CosmarcaEstoque.Stocks.Notazz.NotazzInformation.create(xml, nil, nil)
+  end
 end
