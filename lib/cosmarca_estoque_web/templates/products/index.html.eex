@@ -1,31 +1,51 @@
+<div class="flex text-xs mb-4">
 
-
-  <div class="flex text-xs mb-4">
-  
     <div id="head-product-name" class="flex-1 text-center border-b border-r border-purple-200 h-12">
-    Nome do Produto
+        Nome do Produto
     </div>
 </div>
 
 <%= for products <- @products do %>
-                   <%= link to: Routes.products_path(@conn, :show, products)  do %>
-        
-
-  <div class="flex text-xs hover:bg-purple-100 mb-4">
-  
-    <div id="field-first_name" class="flex-1 text-center border-b border-purple-200 h-12">
-      <%= products.name %>
-    </div>
-  
-  </div>
-          <% end %>
-      <% end %>
+    <%= link to: Routes.products_path(@conn, :show, products)  do %>
 
 
-            <%= if @current_user.role == "admin" do %>
+        <div class="flex text-xs hover:bg-purple-100 mb-4">
 
-    <%= link to: Routes.products_path(@conn, :new),
+            <div id="field-first_name" class="flex-1 text-center border-b border-purple-200 h-12">
+                <%= products.name %>
+                    <div id="field-first_name" class="flex-1 text-center border-b border-purple-200 h-12">
+
+                    <%= if CosmarcaEstoque.Stocks.ProductAmount.percentage_stock(products.register) > 50 do %>
+                   <h5 class="text-green-700"> Quantidade em estoque: 
+                        <%= CosmarcaEstoque.Stocks.ProductAmount.qt_stock(products.register) %>
+                    </h5>
+                    <% end %>
+                    <%= if CosmarcaEstoque.Stocks.ProductAmount.percentage_stock(products.register)  < 50  and CosmarcaEstoque.Stocks.ProductAmount.percentage_stock(products.register) > 30 do %>
+                           <h5 class="text-yellow-700"> Quantidade em estoque: 
+                        <%= CosmarcaEstoque.Stocks.ProductAmount.qt_stock(products.register) %>
+                    </h5>
+                    <% end %>
+                    <%= if CosmarcaEstoque.Stocks.ProductAmount.percentage_stock(products.register) < 30  do %>
+
+                        <h5 class="text-red-700"> Quantidade em estoque: 
+                          <%= CosmarcaEstoque.Stocks.ProductAmount.qt_stock(products.register) %> - Repor Estoque!
+                         </h5>
+                    <% end %>
+
+                    </div>
+            </div>
+
+
+        </div>
+        <% end %>
+            <% end %>
+
+
+                <%= if @current_user.role == "admin" do %>
+
+                    <%= link to: Routes.products_path(@conn, :new),
      class: 
       "h-8 w-8 float-right flex items-center justify-center h-6 w-6 shadow-md no-underline rounded-full bg-blue-400 text-white font-sans font-semibold text-sm border-blue-800 hover:text-white hover:bg-blue-700 focus:outline-none active:shadow-none mr-2"
-      do %><i class="fas fa-plus"></i><% end %>
-      <% end %> 
+      do %><i class="fas fa-plus"></i>
+                        <% end %>
+                            <% end %>

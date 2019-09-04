@@ -19,7 +19,7 @@ defmodule CosmarcaEstoque.Stocks do
 
   """
   def list_products do
-    Repo.all(Products)
+    Repo.all(Products) |> Repo.preload(:register)
   end
 
   def list_products_by_user(user_id) do
