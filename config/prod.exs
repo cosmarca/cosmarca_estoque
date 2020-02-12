@@ -12,7 +12,7 @@ use Mix.Config
 config :cosmarca_estoque, CosmarcaEstoqueWeb.Endpoint,
   load_from_system_env: true,
   http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: "app.cosmarca.com.br", port: 80],
+  url: [host: "log-zarah.me", port: 80],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true,
