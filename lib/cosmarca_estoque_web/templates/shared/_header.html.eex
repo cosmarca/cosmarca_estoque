@@ -9,7 +9,7 @@
             <div class="w-1/2 pl-2 md:pl-0">
                 <%= link class: "text-black-900 text-base xl:text-xl no-underline hover:no-underline font-bold",  
                 to: Routes.page_path(@conn, :index) do %>
-                    <i class="far fa-copyright text-blue-700 pr-3"></i><span class="text-blue-700">Cosmarca</span>
+                    <span class="text-blue-700">Zarah
                 <% end %>
             </div>
 
