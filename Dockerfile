@@ -1,4 +1,4 @@
-FROM elixir:latest
+FROM elixir:1.10
 ARG app_name=cosmarca_estoque
 ARG phoenix_subdir=.
 ARG build_env=prod
