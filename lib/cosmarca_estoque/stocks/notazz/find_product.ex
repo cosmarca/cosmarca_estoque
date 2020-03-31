@@ -7,6 +7,7 @@ defmodule CosmarcaEstoque.Stocks.Notazz.FindProduct do
   def find_by(name) do
     name = String.downcase(name)
     product = Repo.get_by(Products, name: name)
+
     cond do
       product != nil -> {:ok, product}
       product == nil -> filter_product(name)
