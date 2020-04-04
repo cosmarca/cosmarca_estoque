@@ -11,12 +11,11 @@ use Mix.Config
 # before starting your production server.
 config :cosmarca_estoque, CosmarcaEstoqueWeb.Endpoint,
   load_from_system_env: true,
-  http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: "log-zarah.me", port: 80],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/cache_manifest.json",
+  http: [port: {:system, "PORT"}],
+  check_origin: false,
   server: true,
-  secrete_key_base: "${SECRET_KEY_BASE}"
+  root: ".",
+  cache_static_manifest: "priv/static/cache_manifest.json"
 
 config :cosmarca_estoque, CosmarcaEstoque.Repo,
   username: "postgres",

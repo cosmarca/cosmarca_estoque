@@ -14,10 +14,11 @@ defmodule CosmarcaEstoqueWeb.PageController do
         products = CosmarcaEstoque.Stocks.list_products_by_user(current_user.id)
 
         products =
-          Enum.map(products, fn x -> %{product: x, product_info: ProductAmount.product_info(x.register)} end)
+          Enum.map(products, fn x ->
+            %{product: x, product_info: ProductAmount.product_info(x.register)}
+          end)
 
         render(conn, "user.html", products: products)
     end
   end
-
 end

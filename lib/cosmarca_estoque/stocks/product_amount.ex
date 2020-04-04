@@ -1,6 +1,6 @@
 defmodule CosmarcaEstoque.Stocks.ProductAmount do
-
-  def product_info(register), do: %{qt_stock: qt_stock(register), percentage_stock: percentage_stock(register)}
+  def product_info(register),
+    do: %{qt_stock: qt_stock(register), percentage_stock: percentage_stock(register)}
 
   def qt_stock(register) do
     entrada = sum_in(register)
@@ -11,6 +11,7 @@ defmodule CosmarcaEstoque.Stocks.ProductAmount do
   def percentage_stock(register) do
     entrada = sum_in(register)
     saida = sum_out(register)
+
     cond do
       entrada == 0 ->
         100
