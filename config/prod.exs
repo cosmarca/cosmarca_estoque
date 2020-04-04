@@ -19,11 +19,11 @@ config :cosmarca_estoque, CosmarcaEstoqueWeb.Endpoint,
   secrete_key_base: "${SECRET_KEY_BASE}"
 
 config :cosmarca_estoque, CosmarcaEstoque.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  url: "${DATABASE_URL}",
-  database: "",
-  ssl: true,
-  pool_size: 2
+  username: "postgres",
+  password: "testemunho",
+  database: "cosmarca_estoque_prod",
+  socket_dir: "/tmp/cloudsql/sunlit-utility-272820:us-central1:painelzarah-db-prod",
+  pool_size: 15
 
 # Do not print debug messages in production
 config :logger, level: :info
